@@ -1,0 +1,12 @@
+<h3>Edit Profil</h3>
+<form method="POST" action="/profile/edit">
+    <label>Name:</label>
+    <input type="text" name="name" placeholder="Name" value="{{ user.name}}">
+    <label>Description:</label>
+    <input type="text" name="description" placeholder="Description" value="{{ user.description}}">
+    <input type="number" name="age" placeholder="Age" value="{{ user.age}}">
+    <label>Location</label>
+    <input type="text" name="country" placeholder="Country" value="{{ user.location.country}}">
+    <input type="text" name="city" placeholder="City" value="{{ user.location.city}}">
+    <button type="submit" name="" id="submit">Edit</button>
+</form>
