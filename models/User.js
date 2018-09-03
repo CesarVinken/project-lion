@@ -17,7 +17,7 @@ const userSchema = new Schema(
     tandems: [Schema.Types.ObjectId],
     picture: {
       type: String,
-      default: "placeholderProfil.png"
+      default: "placeholderProfile.png"
     },
     description: String,
     gender: {

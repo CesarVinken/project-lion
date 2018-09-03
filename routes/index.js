@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-/* GET home page */
+/* Lading Page */
 router.get("/", (req, res, next) => {
   res.render("index");
   console.log(req.user);

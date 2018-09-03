@@ -88,7 +88,7 @@ app.use("/event", eventRoutes);
 // const tandemRoutes = require("./routes/tandem");
 // app.use("/tandem", tandemRoutes);
 
-// const profilRoutes = require("./routes/profil");
-// app.use("/profil", profilRoutes);
+const profileRoutes = require("./routes/profile");
+app.use("/profile", profileRoutes);
 
 module.exports = app;
