@@ -5,12 +5,15 @@ const eventSchema = new Schema(
   {
     title: String,
     date: Date,
+    picture: {
+      type: String,
+      default: "placeholder.png"
+    },
     location: {
       country: String,
       city: String,
       street: String
     },
-    recurring: Boolean,
     description: String,
     language: String,
     user: Schema.Types.ObjectId,

@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
   {
-    username: String,
     password: String,
     email: String,
+    name: String,
     nativeLanguage: String,
     learningLanguages: [String],
     location: {

@@ -1,11 +1,10 @@
 <h3>Edit event</h3>
 <form method="POST" action="/event/edit/{{ event._id}}">
     <label>Title:</label>
-    <input type="text" name="name" placeholder="Name" value="{{ event.title}}">
+    <input type="text" name="title" placeholder="Name" value="{{ event.title}}">
     <label>Description:</label>
     <input type="text" name="description" placeholder="Description" value="{{ event.description}}">
     <input type="date" name="date" placeholder="Date" value="{{ event.date}}">
-    <input type="checkbox" name="recurring" value="true" value="{{ event.recurring}}"> Recurring<br>
     <input type="String" name="language" placeholder="Language" value="{{ event.language}}">
     <label>Address</label>
     <input type="text" name="country" placeholder="Country" value="{{ event.location.country}}">

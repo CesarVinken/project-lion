@@ -38,8 +38,7 @@ router.post("/new", (req, res, next) => {
       country: req.body.country,
       city: req.body.city,
       street: req.body.street
-    },
-    recurring: req.body.recurring
+    }
   });
   newevent.save(error => {
     if (error) {
@@ -67,7 +66,17 @@ router.get("/:id", (req, res, next) => {
 });
 
 router.post("/edit/:id", (req, res, next) => {
+  console.log(req.body);
   req.body.location = { country: req.body.country, city: req.body.city, street: req.body.street };
+  //   Event.findById(req.params.id, (error, event) => {
+  //     if (error) {
+  //       next(error);
+  //     } else if (event.user === req.user._id) {
+  //       next(new Error("Something went wrong"));
+  //     } else {
+  //       res.render("event/edit", { event });
+  //     }
+  //   });
   Event.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
     .then(event => {
       res.redirect("/event/" + req.params.id);
@@ -86,7 +95,6 @@ router.post("/edit/:id", (req, res, next) => {
   //     } else {
   //       event.title = req.body.title;
   //       event.description = req.body.description;
-  //       event.recurring = req.body.recurring;
   //       event.save(error => {
   //         if (error) {
   //           next(error);
