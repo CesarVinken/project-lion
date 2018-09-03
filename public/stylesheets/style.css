@@ -13,13 +13,18 @@ a {
 }
 
 nav {
-  background-color: #5533ff;
-  height: 44px;
-  font-size: 0.9rem;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background-color: red;
+}
+@media (min-width : 820px) {
+  nav {
+    background-color: #5533ff;
+    height: 44px;
+    font-size: 0.9rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
 nav .nav-container {
   display: flex;

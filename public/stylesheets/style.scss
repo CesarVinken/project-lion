@@ -1,5 +1,6 @@
 $main-color-a: #5533ff;
 $main-font: "Telex", sans-serif;
+$screen-large: "(min-width : 820px)";
 
 * {
   margin: 0;
@@ -16,13 +17,17 @@ a {
 }
 
 nav {
-  background-color: $main-color-a;
-  height: 44px;
-  font-size: 0.9rem;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background-color: red;
+
+  @media #{$screen-large} {
+    background-color: $main-color-a;
+    height: 44px;
+    font-size: 0.9rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   .nav-container {
     display: flex;
     justify-content: flex-start;
