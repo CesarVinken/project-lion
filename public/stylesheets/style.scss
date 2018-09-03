@@ -1,6 +1,7 @@
 $main-color-a: #5533ff;
 $main-font: "Telex", sans-serif;
-$screen-large: "(min-width : 820px)";
+$screen-middle: "(min-width : 480px)";
+$screen-large: "(min-width : 1024px)";
 
 * {
   margin: 0;
@@ -18,32 +19,66 @@ a {
 
 nav {
   background-color: red;
-
-  @media #{$screen-large} {
-    background-color: $main-color-a;
-    height: 44px;
-    font-size: 0.9rem;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .nav-container {
+  height: 44px;
+  font-size: 0.9rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .nav-group {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 0 20px;
-
     .nav-route-links {
-      margin-left: 40px;
+      margin-left: 0px;
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
     }
   }
+  .left {
+    padding: 0 0 0 20px;
+  }
+
+  .right {
+    padding-right: 16px;
+  }
+
   a {
     color: white;
-    padding: 0 20px;
+    padding-left: 12px;
     text-decoration: none;
   }
   a:hover {
     color: black;
+  }
+  img {
+    height: 44px;
+  }
+
+  @media #{$screen-middle} {
+    background-color: green;
+    .nav-group {
+      .nav-route-links {
+        padding-left: 20px;
+        justify-content: flex-start;
+      }
+    }
+    a {
+      padding: 0 20px;
+    }
+  }
+  @media #{$screen-large} {
+    background-color: $main-color-a;
+
+    .nav-group {
+      .nav-route-links {
+        padding-left: 20px;
+        justify-content: flex-start;
+      }
+    }
+    a {
+      padding: 0 20px;
+    }
   }
 }

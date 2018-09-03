@@ -14,34 +14,64 @@ a {
 
 nav {
   background-color: red;
+  height: 44px;
+  font-size: 0.9rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-@media (min-width : 820px) {
-  nav {
-    background-color: #5533ff;
-    height: 44px;
-    font-size: 0.9rem;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-}
-nav .nav-container {
+nav .nav-group {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 0 20px;
 }
-nav .nav-container .nav-route-links {
-  margin-left: 40px;
+nav .nav-group .nav-route-links {
+  margin-left: 0px;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+nav .left {
+  padding: 0 0 0 20px;
+}
+nav .right {
+  padding-right: 16px;
 }
 nav a {
   color: white;
-  padding: 0 20px;
+  padding-left: 12px;
   text-decoration: none;
 }
 nav a:hover {
   color: black;
+}
+nav img {
+  height: 44px;
+}
+@media (min-width : 480px) {
+  nav {
+    background-color: green;
+  }
+  nav .nav-group .nav-route-links {
+    padding-left: 20px;
+    justify-content: flex-start;
+  }
+  nav a {
+    padding: 0 20px;
+  }
+}
+@media (min-width : 1024px) {
+  nav {
+    background-color: #5533ff;
+  }
+  nav .nav-group .nav-route-links {
+    padding-left: 20px;
+    justify-content: flex-start;
+  }
+  nav a {
+    padding: 0 20px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
