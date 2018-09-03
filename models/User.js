@@ -15,7 +15,10 @@ const userSchema = new Schema(
     ownEvents: [Schema.Types.ObjectId],
     events: [Schema.Types.ObjectId],
     tandems: [Schema.Types.ObjectId],
-    profilePicture: String,
+    picture: {
+      type: String,
+      default: "placeholderProfil.png"
+    },
     description: String,
     gender: {
       type: String,
