@@ -8,7 +8,7 @@ router.get("/", (req, res, next) => {
     if (error) {
       next(error);
     } else {
-      res.render("event/index", { events });
+      res.render("event/index", { events, name: req.user.name });
     }
   });
 });
@@ -67,7 +67,11 @@ router.get("/:id", (req, res, next) => {
 
 router.post("/edit/:id", (req, res, next) => {
   console.log(req.body);
-  req.body.location = { country: req.body.country, city: req.body.city, street: req.body.street };
+  req.body.location = {
+    country: req.body.country,
+    city: req.body.city,
+    street: req.body.street
+  };
   //   Event.findById(req.params.id, (error, event) => {
   //     if (error) {
   //       next(error);
