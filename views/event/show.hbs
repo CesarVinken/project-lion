@@ -1,3 +1,8 @@
 <h3>{{ event.title}}</h3>
-{{ event.description}}<br> {{ event.language}}<br>
+{{ event.description}}<br> {{ event.language}}<br> <br> {{#if event.userAttending}}
+<a href="/event/unattend/{{event._id}}">Unattend Event</a><br> {{else}}
+<a href="/event/attend/{{event._id}}">Attend Event</a><br> {{/if}}
+
+
+<br>
 <a href="/event">Back to all events</a>

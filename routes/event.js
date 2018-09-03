@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Event = require("../models/Event");
+const User = require("../models/User");
 
 router.get("/", (req, res, next) => {
   Event.find((error, events) => {
@@ -55,6 +56,11 @@ router.get("/:id", (req, res, next) => {
       next(error);
     } else {
       console.log(event);
+      if (event.attendees.indexOf(req.user._id) === -1) {
+        event.userAttending = false;
+      } else {
+        event.userAttending = true;
+      }
       res.render("event/show", { event });
     }
   });
@@ -113,15 +119,51 @@ router.get("/delete/:id", (req, res, next) => {
 });
 
 router.get("/attend/:id", (req, res, next) => {
-  // Todo
-  res.redirect("/event");
-  console.log("user attending event");
+  Event.findOneAndUpdate(
+    { _id: req.params.id },
+    { $push: { attendees: req.user._id } },
+    (error, event) => {
+      if (error) {
+        next(error);
+      } else {
+        User.findOneAndUpdate(
+          { _id: req.user._id },
+          { $push: { events: req.params.id } },
+          (error, event) => {
+            if (error) {
+              next(error);
+            } else {
+              res.redirect("/event/" + req.params.id);
+            }
+          }
+        );
+      }
+    }
+  );
 });
 
 router.get("/unattend/:id", (req, res, next) => {
-  // Todo
-  res.redirect("/event");
-  console.log("user unattending event");
+  Event.findOneAndUpdate(
+    { _id: req.params.id },
+    { $pull: { attendees: req.user._id } },
+    (error, event) => {
+      if (error) {
+        next(error);
+      } else {
+        User.findOneAndUpdate(
+          { _id: req.user._id },
+          { $pull: { events: req.params.id } },
+          (error, event) => {
+            if (error) {
+              next(error);
+            } else {
+              res.redirect("/event/" + req.params.id);
+            }
+          }
+        );
+      }
+    }
+  );
 });
 
 module.exports = router;

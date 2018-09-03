@@ -12,7 +12,7 @@ const userSchema = new Schema(
       country: String,
       city: String
     },
-    owneEvents: [Schema.Types.ObjectId],
+    ownEvents: [Schema.Types.ObjectId],
     events: [Schema.Types.ObjectId],
     tandems: [Schema.Types.ObjectId],
     profilePicture: String,
