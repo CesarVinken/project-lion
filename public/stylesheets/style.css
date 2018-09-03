@@ -1,77 +1,59 @@
 * {
   margin: 0;
   padding: 0;
-}
+  color: black; }
 
 body {
   font-size: 14px;
-  font-family: "Telex", sans-serif;
-}
+  font-family: "Telex", sans-serif; }
 
 a {
-  color: #5533ff;
-}
+  color: #5533ff; }
 
 nav {
-  background-color: red;
+  background-color: #5533ff;
   height: 44px;
   font-size: 0.9rem;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-}
-nav .nav-group {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-nav .nav-group .nav-route-links {
-  margin-left: 0px;
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-}
-nav .left {
-  padding: 0 0 0 20px;
-}
-nav .right {
-  padding-right: 16px;
-}
-nav a {
-  color: white;
-  padding-left: 12px;
-  text-decoration: none;
-}
-nav a:hover {
-  color: black;
-}
-nav img {
-  height: 44px;
-}
-@media (min-width : 480px) {
-  nav {
-    background-color: green;
-  }
-  nav .nav-group .nav-route-links {
-    padding-left: 20px;
+  align-items: center; }
+  nav .nav-group {
+    display: flex;
     justify-content: flex-start;
-  }
-  nav a {
-    padding: 0 20px;
-  }
-}
-@media (min-width : 1024px) {
-  nav {
-    background-color: #5533ff;
-  }
-  nav .nav-group .nav-route-links {
-    padding-left: 20px;
-    justify-content: flex-start;
-  }
-  nav a {
-    padding: 0 20px;
-  }
-}
+    align-items: center; }
+    nav .nav-group .nav-route-links {
+      margin-left: 0px;
+      display: flex;
+      justify-content: space-around;
+      text-align: center; }
+    nav .nav-group #nav-user-name {
+      display: none; }
+    nav .nav-group .dropdown {
+      height: 44px; }
+      nav .nav-group .dropdown .menu {
+        right: 0;
+        left: auto; }
+  nav .left {
+    padding: 0 0 0 20px; }
+  nav .right {
+    padding-right: 16px; }
+  nav a,
+  nav p {
+    color: white;
+    padding: 12px;
+    text-decoration: none; }
+  nav a:hover {
+    color: black; }
+  nav img {
+    height: 44px; }
+  @media (min-width: 480px) {
+    nav .nav-group .nav-route-links {
+      padding-left: 20px;
+      justify-content: flex-start; }
+    nav .nav-group #nav-user-name {
+      display: inline; }
+    nav a {
+      padding: 0 20px; } }
 
 /*# sourceMappingURL=style.css.map */

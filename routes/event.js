@@ -8,7 +8,7 @@ router.get("/", (req, res, next) => {
     if (error) {
       next(error);
     } else {
-      res.render("event/index", { events });
+      res.render("event/index", { events, name: req.user.name });
     }
   });
 });

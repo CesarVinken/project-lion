@@ -1,12 +1,22 @@
 <nav>
   <div class="nav-group left">
-    <img src="images/temp-logo.png" alt="logo">
+    <img src="/images/temp-logo.png" alt="logo">
     <div class="nav-route-links">
       <a href="">Find Events</a>
       <a href="">Find Tandems</a>
     </div>
   </div>
   <div class="nav-group right">
-    <img src="images/placeholderProfile.png" alt="profile">
+    <div id="nav-name-container">
+      <p id="nav-user-name">{{this}}</p>
+    </div>
+    <div class="ui dropdown">
+      <img id="nav-avatar" src="/images/placeholderProfile.png" alt="profile">
+      <div class="menu" ">
+        <div class="item " data-value="male ">My profile</div>
+        <div class="item " data-value="female ">Log out</div>
+      </div>
+    </div>
   </div>
+
 </nav>

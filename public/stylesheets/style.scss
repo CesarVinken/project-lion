@@ -6,6 +6,7 @@ $screen-large: "(min-width : 1024px)";
 * {
   margin: 0;
   padding: 0;
+  color: black;
 }
 
 body {
@@ -18,7 +19,7 @@ a {
 }
 
 nav {
-  background-color: red;
+  background-color: $main-color-a;
   height: 44px;
   font-size: 0.9rem;
   width: 100%;
@@ -35,6 +36,17 @@ nav {
       justify-content: space-around;
       text-align: center;
     }
+    #nav-user-name {
+      display: none;
+    }
+
+    .dropdown {
+      height: 44px;
+      .menu {
+        right: 0;
+        left: auto;
+      }
+    }
   }
   .left {
     padding: 0 0 0 20px;
@@ -44,9 +56,10 @@ nav {
     padding-right: 16px;
   }
 
-  a {
+  a,
+  p {
     color: white;
-    padding-left: 12px;
+    padding: 12px;
     text-decoration: none;
   }
   a:hover {
@@ -57,24 +70,13 @@ nav {
   }
 
   @media #{$screen-middle} {
-    background-color: green;
     .nav-group {
       .nav-route-links {
         padding-left: 20px;
         justify-content: flex-start;
       }
-    }
-    a {
-      padding: 0 20px;
-    }
-  }
-  @media #{$screen-large} {
-    background-color: $main-color-a;
-
-    .nav-group {
-      .nav-route-links {
-        padding-left: 20px;
-        justify-content: flex-start;
+      #nav-user-name {
+        display: inline;
       }
     }
     a {
