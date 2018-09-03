@@ -29,15 +29,17 @@ router.get("/:id?", (req, res, next) => {
   let id = req.user._id;
 
   if (req.params.id != null) {
+    console.log("params != null");
     id = req.params.id;
   }
   User.findById(id, (error, user) => {
     if (error) {
       next(error);
     } else {
-      if (user._id === req.user._i) {
+      if (user._id.equals(req.user._id)) {
         user.ownProfile = true;
       }
+
       res.render("profile/show", { user });
     }
   });
