@@ -1,0 +1,18 @@
+<h3></h3>
+All events
+</h3>
+<a href="/event/new">Create new event</a>
+<ul>
+    {{#each events}}
+    <li>
+        <a href="/event/{{ this._id}}">
+            {{ this.title}}<span> - {{ this.description }}</span>
+        </a>
+        |
+        <a href="/event/edit/{{ this._id}}">Edit</a>
+        |
+        <a href="/event/delete/{{ this._id}}">Delete</a>
+    </li>
+    {{/each }}
+</ul>
+</di
