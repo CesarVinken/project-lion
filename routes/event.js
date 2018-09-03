@@ -4,7 +4,7 @@ const Event = require("../models/Event");
 const User = require("../models/User");
 
 router.get("/", (req, res, next) => {
-  Event.find((error, events) => {
+  Event.find({ attendees: req.user._id }, (error, events) => {
     if (error) {
       next(error);
     } else {
@@ -18,7 +18,7 @@ router.get("/find", (req, res, next) => {
     if (error) {
       next(error);
     } else {
-      res.render("event/find", { events });
+      res.render("event/index", { events });
     }
   });
 });
@@ -67,21 +67,19 @@ router.get("/:id", (req, res, next) => {
 
 router.post("/edit/:id", (req, res, next) => {
   console.log(req.body);
-  req.body.location = {
-    country: req.body.country,
-    city: req.body.city,
-    street: req.body.street
-  };
-  //   Event.findById(req.params.id, (error, event) => {
-  //     if (error) {
-  //       next(error);
-  //     } else if (event.user === req.user._id) {
-  //       next(new Error("Something went wrong"));
-  //     } else {
-  //       res.render("event/edit", { event });
-  //     }
-  //   });
-  Event.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
+  req.body.location = { country: req.body.country, city: req.body.city, street: req.body.street };
+  Event.findById(req.params.id, (error, event) => {
+    if (error) {
+      next(error);
+    } else if (event.user === req.user._id) {
+      next(new Error("Something went wrong"));
+    } else {
+      res.render("event/edit", { event });
+    }
+  });
+  Event.findOneAndUpdate({ $and: [{ _id: req.params.id }, { user: req.user._id }] }, req.body, {
+    new: true
+  })
     .then(event => {
       res.redirect("/event/" + req.params.id);
     })
@@ -121,13 +119,22 @@ router.get("/edit/:id", (req, res, next) => {
 });
 
 router.get("/delete/:id", (req, res, next) => {
-  Event.remove({ _id: req.params.id }, function(error, event) {
-    if (error) {
-      next(error);
-    } else {
-      res.redirect("/event");
+  User.findOneAndUpdate({ id: req.params.id }, { $pull: { ownEvents: req.params.id } });
+  User.update(
+    { events: req.params.id },
+    { $pull: { events: req.params.id } },
+    { new: true },
+    (error, users) => {
+      console.log(users);
+      Event.remove({ _id: req.params.id }, function(error, event) {
+        if (error) {
+          next(error);
+        } else {
+          res.redirect("/event");
+        }
+      });
     }
-  });
+  );
 });
 
 router.get("/attend/:id", (req, res, next) => {
