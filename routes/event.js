@@ -61,7 +61,7 @@ router.get("/:id", (req, res, next) => {
 });
 
 router.post("/edit/:id", (req, res, next) => {
-  console.log(req.body);
+  req.body.location = { country: req.body.country, city: req.body.city, street: req.body.street };
   Event.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true })
     .then(event => {
       res.redirect("/event/" + req.params.id);
