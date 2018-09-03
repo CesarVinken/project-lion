@@ -1,8 +1,44 @@
+$main-color-a: #5533ff;
+$main-font: "Telex", sans-serif;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-family: $main-font;
 }
 
 a {
-  color: #00B7FF;
+  color: $main-color-a;
+}
+
+nav {
+  background-color: $main-color-a;
+  height: 44px;
+  font-size: 0.9rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .nav-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 20px;
+
+    .nav-route-links {
+      margin-left: 40px;
+    }
+  }
+  a {
+    color: white;
+    padding: 0 20px;
+    text-decoration: none;
+  }
+  a:hover {
+    color: black;
+  }
 }
