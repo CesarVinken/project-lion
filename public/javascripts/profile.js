@@ -762,7 +762,7 @@ function getLanguageList() {
   $("#multi-select-learning").html(languageList);
 }
 
-function setUserLanguages(userObj) {
+function setUserLanguages() {
   if (user.knownLanguages) {
     user.knownLanguages.forEach(language => {
       $("#multi-select-known").dropdown("set selected", language);

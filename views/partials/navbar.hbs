@@ -8,10 +8,10 @@
   </div>
   <div class="nav-group right">
     <div id="nav-name-container">
-      <p id="nav-user-name">{{this}}</p>
+      <p id="nav-user-name">{{this.name}}</p>
     </div>
     <div class="ui dropdown">
-      <img id="nav-avatar" src="/images/placeholderProfile.png" alt="profile">
+      <img id="nav-avatar" src="{{this.picture}}" alt="profile">
       <div class="menu">
         <div class="item" data-value="profile">My profile</div>
         <div class="item" data-value="logout">Log out</div>

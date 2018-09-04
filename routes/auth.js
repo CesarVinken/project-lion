@@ -36,12 +36,12 @@ authRoutes.post("/signup", util.checkLogout, (req, res, next) => {
   const pr = !!req.files
     ? new Promise((resolve, reject) => {
         const { picture } = req.files;
-        const path = `public/images/profiles/${picture.name}`;
+        const path = `public/images/${picture.name}`;
 
         picture.mv(path, function(err) {
           if (err) return next(err);
-          upload(`public/images/profiles/${picture.name}`).then(result => {
-            fs.unlinkSync(`public/images/profiles/${picture.name}`);
+          upload(`public/images/${picture.name}`).then(result => {
+            fs.unlinkSync(`public/images/${picture.name}`);
             name = result.secure_url;
             resolve(name);
           });

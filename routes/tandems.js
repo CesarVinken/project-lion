@@ -7,7 +7,7 @@ router.get("/find", (req, res, next) => {
     if (error) {
       next(error);
     } else {
-      res.render("tandems/find", { tandems, name: req.user.name });
+      res.render("tandems/find", { tandems, user: req.user });
     }
   });
 });
@@ -17,15 +17,21 @@ router.get("/:id?", (req, res, next) => {
     if (error) {
       next(error);
     } else {
-      res.render("tandems/index", { tandems, name: req.user.name });
+      res.render("tandems/index", { tandems, user: req.user });
     }
   });
 });
 
 router.get("/add/:id", (req, res, next) => {
-  User.findOneAndUpdate({ _id: req.params.id }, { $push: { tandems: req.user._id } })
+  User.findOneAndUpdate(
+    { _id: req.params.id },
+    { $push: { tandems: req.user._id } }
+  )
     .then(user => {
-      return User.findOneAndUpdate({ _id: req.user._id }, { $push: { tandems: req.params.id } });
+      return User.findOneAndUpdate(
+        { _id: req.user._id },
+        { $push: { tandems: req.params.id } }
+      );
     })
     .then(user => {
       res.redirect("/tandems/" + req.params.id);
@@ -38,10 +44,16 @@ router.get("/add/:id", (req, res, next) => {
 router.get("/block/:id", (req, res, next) => {
   User.findOneAndUpdate(
     { _id: req.user._id },
-    { $push: { blockedUsers: req.params.id }, $pull: { tandems: req.params.id } }
+    {
+      $push: { blockedUsers: req.params.id },
+      $pull: { tandems: req.params.id }
+    }
   )
     .then(user => {
-      return User.findOneAndUpdate({ _id: req.params.id }, { $pull: { tandems: req.user._id } });
+      return User.findOneAndUpdate(
+        { _id: req.params.id },
+        { $pull: { tandems: req.user._id } }
+      );
     })
     .then(user => {
       res.redirect("/tandems/");
