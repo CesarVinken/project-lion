@@ -13,18 +13,4 @@ $(document).ready(function() {
       }
     }
   });
-
-  $("#multi-select-known").dropdown({
-    onChange: val => {
-      console.log("known languages!");
-      console.log(val);
-    }
-  });
-
-  $("#multi-select-learning").dropdown({
-    onChange: val => {
-      console.log("learning languages!");
-      console.log(val);
-    }
-  });
 });

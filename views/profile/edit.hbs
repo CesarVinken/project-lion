@@ -1,4 +1,6 @@
 {{> navbar user.name}}
+<script src='/javascripts/profile.js'></script>
+
 <h3>
     Edit Profile</h3>
 <div class="form-group">
@@ -15,24 +17,15 @@
             <input type="number" name="age" placeholder="Age" value="{{ user.age}}">
         </div>
         </br>
-        <div class="form-group">
+        <div class="form-group" type="hidden" hidden>
             <h3>My Languages</h3>
             <label>Languages I know:</label>
             <select name="known-languages" multiple="" id="multi-select-known">
-                {{!-- {{#each language}}
-                <option value="{{this}}">{{this.name}}</option>
-                {{/each}} --}}
                 <option value="">Select a language</option>
-                <option value="DE">German</option>
-                <option value="EN">English</option>
-                <option value="NL">Dutch</option>
             </select>
             <label>Languages I am learning:</label>
             <select name="learning-languages" multiple="" id="multi-select-learning">
                 <option value="">Select a language</option>
-                <option value="DE">German</option>
-                <option value="EN">English</option>
-                <option value="NL">Dutch</option>
             </select>
         </div>
         </br>
