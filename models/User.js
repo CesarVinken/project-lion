@@ -3,8 +3,19 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
   {
-    password: String,
-    email: String,
+    password: {
+      type: String,
+      required: true
+    },
+    email: {
+      type: String,
+      unique: true,
+      required: true
+    },
+    available: {
+      type: Boolean,
+      default: true
+    },
     name: String,
     knownLanguages: [String],
     learningLanguages: [String],

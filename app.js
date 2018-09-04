@@ -8,6 +8,7 @@ const hbs = require("hbs");
 const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
+const util = require("./util/util");
 
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
@@ -76,7 +77,6 @@ app.use(
 );
 app.use(flash());
 require("./passport")(app);
-const util = require("./util/util");
 
 const index = require("./routes/index");
 app.use("/", index);

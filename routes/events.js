@@ -81,13 +81,10 @@ router.post("/edits/:id", (req, res, next) => {
       res.render("events/edit", { event });
     }
   });
-  Event.findOneAndUpdate(
-    { $and: [{ _id: req.params.id }, { user: req.user._id }] },
-    req.body,
-    {
-      new: true
-    }
-  )
+  Event.findOneAndUpdate({ $and: [{ _id: req.params.id }, { user: req.user._id }] }, req.body, {
+    new: true,
+    runValidators: true
+  })
     .then(event => {
       res.redirect("/events/" + req.params.id);
     })
@@ -127,10 +124,7 @@ router.get("/edit/:id", (req, res, next) => {
 });
 
 router.get("/delete/:id", (req, res, next) => {
-  User.findOneAndUpdate(
-    { id: req.params.id },
-    { $pull: { ownEvents: req.params.id } }
-  );
+  User.findOneAndUpdate({ id: req.params.id }, { $pull: { ownEvents: req.params.id } });
   User.update(
     { events: req.params.id },
     { $pull: { events: req.params.id } },
@@ -152,6 +146,7 @@ router.get("/attend/:id", (req, res, next) => {
   Event.findOneAndUpdate(
     { _id: req.params.id },
     { $push: { attendees: req.user._id } },
+    { runValidators: true },
     (error, event) => {
       if (error) {
         next(error);
@@ -176,6 +171,7 @@ router.get("/unattend/:id", (req, res, next) => {
   Event.findOneAndUpdate(
     { _id: req.params.id },
     { $pull: { attendees: req.user._id } },
+    { runValidators: true },
     (error, event) => {
       if (error) {
         next(error);
