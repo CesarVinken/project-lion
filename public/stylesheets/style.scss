@@ -7,6 +7,8 @@ $screen-large: "(min-width : 1024px)";
 $btn-text-a: #aaaaaa;
 $btn-text-b: #ffffff;
 
+@import "./navigation";
+
 * {
   margin: 0;
   padding: 0;
@@ -22,73 +24,6 @@ a {
   color: $main-color-a;
 }
 
-nav {
-  background-color: $main-color-a;
-  height: 44px;
-  font-size: 0.9rem;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  .nav-group {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    .nav-route-links {
-      margin-left: 0px;
-      display: flex;
-      justify-content: space-around;
-      text-align: center;
-    }
-    #nav-user-name {
-      display: none;
-    }
-
-    .dropdown {
-      height: 44px;
-      .menu {
-        right: 0;
-        left: auto;
-      }
-    }
-  }
-  .left {
-    padding: 0 0 0 20px;
-  }
-
-  .right {
-    padding-right: 16px;
-  }
-
-  a,
-  p {
-    color: white;
-    padding: 12px;
-    text-decoration: none;
-  }
-  a:hover {
-    color: black;
-  }
-  img {
-    height: 44px;
-  }
-
-  @media #{$screen-middle} {
-    .nav-group {
-      .nav-route-links {
-        padding-left: 20px;
-        justify-content: flex-start;
-      }
-      #nav-user-name {
-        display: inline;
-      }
-    }
-    a {
-      padding: 0 20px;
-    }
-  }
-}
-
 form {
   display: flex;
   flex-direction: column;
@@ -101,6 +36,7 @@ form {
     textarea {
       padding: 5px 4px;
       border-radius: 4px;
+      resize: none;
     }
     label {
       margin-top: 10px;

@@ -8,7 +8,7 @@ router.get("/", (req, res, next) => {
     if (error) {
       next(error);
     } else {
-      res.render("event/index", { events, name: req.user.name });
+      res.render("events/index", { events, name: req.user.name });
     }
   });
 });
@@ -18,13 +18,13 @@ router.get("/find", (req, res, next) => {
     if (error) {
       next(error);
     } else {
-      res.render("event/index", { events });
+      res.render("events/index", { events });
     }
   });
 });
 
 router.get("/new", (req, res, next) => {
-  res.render("event/new", { name: req.user.name });
+  res.render("events/new", { name: req.user.name });
 });
 
 router.post("/new", (req, res, next) => {
@@ -44,7 +44,7 @@ router.post("/new", (req, res, next) => {
     if (error) {
       next(error);
     } else {
-      res.redirect("/event");
+      res.redirect("/events");
     }
   });
 });
@@ -60,12 +60,12 @@ router.get("/:id", (req, res, next) => {
       } else {
         event.userAttending = true;
       }
-      res.render("event/show", { event });
+      res.render("events/show", { event });
     }
   });
 });
 
-router.post("/edit/:id", (req, res, next) => {
+router.post("/edits/:id", (req, res, next) => {
   console.log(req.body);
   req.body.location = {
     country: req.body.country,
@@ -78,7 +78,7 @@ router.post("/edit/:id", (req, res, next) => {
     } else if (event.user === req.user._id) {
       next(new Error("Something went wrong"));
     } else {
-      res.render("event/edit", { event });
+      res.render("events/edit", { event });
     }
   });
   Event.findOneAndUpdate(
@@ -89,7 +89,7 @@ router.post("/edit/:id", (req, res, next) => {
     }
   )
     .then(event => {
-      res.redirect("/event/" + req.params.id);
+      res.redirect("/events/" + req.params.id);
     })
     .catch(err => {
       console.log(err.message);
@@ -109,7 +109,7 @@ router.post("/edit/:id", (req, res, next) => {
   //         if (error) {
   //           next(error);
   //         } else {
-  //           res.redirect("/event/" + req.params.id);
+  //           res.redirect("/events/" + req.params.id);
   //         }
   //       });
   //     }
@@ -121,7 +121,7 @@ router.get("/edit/:id", (req, res, next) => {
     if (error) {
       next(error);
     } else {
-      res.render("event/edit", { event });
+      res.render("events/edit", { event });
     }
   });
 });
@@ -141,7 +141,7 @@ router.get("/delete/:id", (req, res, next) => {
         if (error) {
           next(error);
         } else {
-          res.redirect("/event");
+          res.redirect("/events");
         }
       });
     }
@@ -163,7 +163,7 @@ router.get("/attend/:id", (req, res, next) => {
             if (error) {
               next(error);
             } else {
-              res.redirect("/event/" + req.params.id);
+              res.redirect("/events/" + req.params.id);
             }
           }
         );
@@ -187,7 +187,7 @@ router.get("/unattend/:id", (req, res, next) => {
             if (error) {
               next(error);
             } else {
-              res.redirect("/event/" + req.params.id);
+              res.redirect("/events/" + req.params.id);
             }
           }
         );
