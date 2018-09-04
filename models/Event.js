@@ -3,7 +3,10 @@ const Schema = mongoose.Schema;
 
 const eventSchema = new Schema(
   {
-    title: String,
+    title: {
+      type: String,
+      required: true
+    },
     date: Date,
     picture: String,
     location: {
@@ -11,10 +14,20 @@ const eventSchema = new Schema(
       city: String,
       street: String
     },
-    description: String,
-    language: String,
+    description: {
+      type: String,
+      required: true
+    },
+    language: {
+      type: String,
+      required: true
+    },
     user: Schema.Types.ObjectId,
-    attendees: [Schema.Types.ObjectId]
+    attendees: [Schema.Types.ObjectId],
+    counter: {
+      type: Number,
+      default: 1
+    }
   },
   {
     timestamps: {

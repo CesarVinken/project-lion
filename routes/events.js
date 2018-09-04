@@ -156,7 +156,7 @@ router.get("/delete/:id", (req, res, next) => {
 router.get("/attend/:id", (req, res, next) => {
   Event.findOneAndUpdate(
     { _id: req.params.id },
-    { $push: { attendees: req.user._id } },
+    { $push: { attendees: req.user._id }, $inc: { counter: 1 } },
     { runValidators: true },
     (error, event) => {
       if (error) {
@@ -181,7 +181,7 @@ router.get("/attend/:id", (req, res, next) => {
 router.get("/unattend/:id", (req, res, next) => {
   Event.findOneAndUpdate(
     { _id: req.params.id },
-    { $pull: { attendees: req.user._id } },
+    { $pull: { attendees: req.user._id }, $inc: { counter: -1 } },
     { runValidators: true },
     (error, event) => {
       if (error) {
