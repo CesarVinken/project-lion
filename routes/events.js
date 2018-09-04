@@ -9,6 +9,11 @@ router.get("/", (req, res, next) => {
     if (error) {
       next(error);
     } else {
+      for (const event of events) {
+        if (event.user.equals(req.user._id)) {
+          event.own = true;
+        }
+      }
       res.render("events/index", { events, user: req.user });
     }
   });

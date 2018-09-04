@@ -9,10 +9,11 @@
         <a href="/events/{{ this._id}}">
             {{ this.title}}<span> - {{ this.description }}</span>
         </a>
-        |
+        | {{#if this.own}}
         <a href="/events/edit/{{ this._id}}">Edit</a>
         |
         <a href="/events/delete/{{ this._id}}">Delete</a>
+        {{/if}}
     </li>
     {{/each }}<br>
     <a href="/events/new">Create new event</a>
