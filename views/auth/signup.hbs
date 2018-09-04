@@ -1,10 +1,11 @@
 <!-- views/auth/signup.hbs -->
 <h2>Signup</h2>
 
-<form action="/signup" method="POST" id="form-container">
+<form action="/signup" method="POST" id="form-container" encType="multipart/form-data">
   <label for="email">Email</label>
   <input id="email" type="text" name="email" placeholder="jon@snow.com">
-
+  <label for="picture">Profile Picture</label>
+  <input type="file" name="picture">
   <br><br>
 
   <label for="password">Password</label>

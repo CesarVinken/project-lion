@@ -13,4 +13,9 @@ function checkLogout(req, res, next) {
     next();
   }
 }
-module.exports = { checkAuthentication, checkLogout };
+
+const randomNumber = max => {
+  return Math.floor(Math.random() * max);
+};
+
+module.exports = { checkAuthentication, checkLogout, randomNumber };
