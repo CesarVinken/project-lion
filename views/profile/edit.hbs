@@ -1,13 +1,47 @@
+{{> navbar user.name}}
 <h3>
-    Edit Profil</h3>
-<form method="POST" action="/profile/edit">
-    <label>Name:</label>
-    <input type="text" name="name" placeholder="Name" value="{{ user.name}}">
-    <label>Description:</label>
-    <input type="text" name="description" placeholder="Description" value="{{ user.description}}">
-    <input type="number" name="age" placeholder="Age" value="{{ user.age}}">
-    <label>Location</label>
-    <input type="text" name="country" placeholder="Country" value="{{ user.location.country}}">
-    <input type="text" name="city" placeholder="City" value="{{ user.location.city}}">
-    <button type="submit" name="" id="submit">Edit</button>
-</form>
+    Edit Profile</h3>
+<div class="form-group">
+
+    <form method="POST" action="/profile/edit">
+        <div class="form-group">
+
+            <h3>Basic Information</h3>
+            <label>Name:</label>
+            <input type="text" name="name" placeholder="Name" value="{{ user.name}}">
+            <label>Description:</label>
+            <input type="text" name="description" placeholder="Description" value="{{ user.description}}">
+            <label>Age:</label>
+            <input type="number" name="age" placeholder="Age" value="{{ user.age}}">
+        </div>
+        </br>
+        <div class="form-group">
+            <h3>My Languages</h3>
+            <label>Languages I know:</label>
+            <select name="known-languages" multiple="" id="multi-select-known">
+                {{!-- {{#each language}}
+                <option value="{{this}}">{{this.name}}</option>
+                {{/each}} --}}
+                <option value="">Select a language</option>
+                <option value="DE">German</option>
+                <option value="EN">English</option>
+                <option value="NL">Dutch</option>
+            </select>
+            <label>Languages I am learning:</label>
+            <select name="learning-languages" multiple="" id="multi-select-learning">
+                <option value="">Select a language</option>
+                <option value="DE">German</option>
+                <option value="EN">English</option>
+                <option value="NL">Dutch</option>
+            </select>
+        </div>
+        </br>
+        <div class="form-group">
+            <h3>My Location</h3>
+            <label>Country:</label>
+            <input type="text" name="country" placeholder="Country" value="{{ user.location.country}}">
+            <label>City:</label>
+            <input type="text" name="city" placeholder="City" value="{{ user.location.city}}">
+        </div> </br>
+        <button type="submit" name="" id="submit" class="success-btn">Save Changes</button>
+    </form>

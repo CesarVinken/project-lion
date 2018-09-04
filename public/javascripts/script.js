@@ -6,9 +6,25 @@ $(document).ready(function() {
     onChange: val => {
       if (val === "profile") {
         window.location = "/profile";
-      } else {
+      } else if (val === "logout") {
         window.location = "/logout";
+      } else {
+        console.log(`unknown route: ${val}`);
       }
+    }
+  });
+
+  $("#multi-select-known").dropdown({
+    onChange: val => {
+      console.log("known languages!");
+      console.log(val);
+    }
+  });
+
+  $("#multi-select-learning").dropdown({
+    onChange: val => {
+      console.log("learning languages!");
+      console.log(val);
     }
   });
 });
