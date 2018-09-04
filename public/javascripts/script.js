@@ -4,7 +4,7 @@ $(document).ready(function() {
       if (val === "profile") {
         window.location = "/profile";
       } else {
-        console.log("log out");
+        window.location = "/logout";
       }
     }
   });
