@@ -35,7 +35,10 @@ router.get("/edit/", (req, res, next) => {
     if (error) {
       next(error);
     } else {
-      res.render("profile/edit", { user });
+      res.render("profile/edit", {
+        user,
+        userString: JSON.stringify(user)
+      });
     }
   });
 });

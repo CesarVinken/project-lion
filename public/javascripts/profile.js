@@ -731,7 +731,7 @@ isoLangs = {
 };
 
 $(document).ready(function() {
-  getLanguageOptions();
+  getLanguageList();
 
   $("#multi-select-known").dropdown({
     onChange: val => {
@@ -740,19 +740,17 @@ $(document).ready(function() {
     }
   });
 
-  $("#multi-select-known").click(() => {
-    console.log("Hello?");
-  });
-
   $("#multi-select-learning").dropdown({
     onChange: val => {
       console.log("learning languages!");
       console.log(val);
     }
   });
+
+  setUserLanguages();
 });
 
-function getLanguageOptions() {
+function getLanguageList() {
   let languageList = `<option value="">Select a language</option>`;
 
   for (const language in isoLangs) {
@@ -762,4 +760,17 @@ function getLanguageOptions() {
   }
   $("#multi-select-known").html(languageList);
   $("#multi-select-learning").html(languageList);
+}
+
+function setUserLanguages(userObj) {
+  if (user.knownLanguages) {
+    user.knownLanguages.forEach(language => {
+      $("#multi-select-known").dropdown("set selected", language);
+    });
+  }
+  if (user.learningLanguages) {
+    user.learningLanguages.forEach(language => {
+      $("#multi-select-learning").dropdown("set selected", language);
+    });
+  }
 }
