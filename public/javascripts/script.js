@@ -1,6 +1,9 @@
 $(document).ready(function() {
+  $("#logo").click(() => {
+    window.location = "/";
+  });
   $(".ui.dropdown").dropdown({
-    onChange: function(val) {
+    onChange: val => {
       if (val === "profile") {
         window.location = "/profile";
       } else {
