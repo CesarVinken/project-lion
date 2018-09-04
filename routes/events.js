@@ -39,7 +39,7 @@ router.post("/new", (req, res, next) => {
     return new Event({
       title: req.body.title,
       description: req.body.description,
-      language: req.body.language,
+      language: req.body.languageknown,
       date: req.body.date,
       user: req.user,
       attendees: [req.user._id],
@@ -57,6 +57,9 @@ router.post("/new", (req, res, next) => {
     })
     .then(event => {
       res.redirect("/events/" + event._id);
+    })
+    .catch(error => {
+      next(error);
     });
 });
 
@@ -83,15 +86,6 @@ router.post("/edit/:id", (req, res, next) => {
     city: req.body.city,
     street: req.body.street
   };
-  // Event.findById(req.params.id, (error, event) => {
-  //   if (error) {
-  //     next(error);
-  //   } else if (event.user === req.user._id) {
-  //     next(new Error("Something went wrong"));
-  //   } else {
-  //     res.render("events/edit", { event });
-  //   }
-  // });
   Event.findOneAndUpdate({ $and: [{ _id: req.params.id }, { user: req.user._id }] }, req.body, {
     new: true,
     runValidators: true
@@ -103,25 +97,6 @@ router.post("/edit/:id", (req, res, next) => {
       console.log(err.message);
       next(err);
     });
-  // Alternative
-  //    const { title, cuisine, calories, type } = req.body
-  //return Food.findOneAndUpdate({ index }, { title, cuisine, calories, type }, { new: true });
-
-  //   Event.findById(req.params.id, (error, event) => {
-  //     if (error) {
-  //       next(error);
-  //     } else {
-  //       event.title = req.body.title;
-  //       event.description = req.body.description;
-  //       event.save(error => {
-  //         if (error) {
-  //           next(error);
-  //         } else {
-  //           res.redirect("/events/" + req.params.id);
-  //         }
-  //       });
-  //     }
-  //   });
 });
 
 router.get("/edit/:id", (req, res, next) => {
