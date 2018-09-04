@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Event = require("../models/Event");
 const User = require("../models/User");
+const cloud = require("../utils/cloudinary");
 
 router.get("/", (req, res, next) => {
   Event.find({ attendees: req.user._id }, (error, events) => {
