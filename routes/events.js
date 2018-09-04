@@ -25,7 +25,10 @@ router.get("/find", (req, res, next) => {
 });
 
 router.get("/new", (req, res, next) => {
-  res.render("events/new", { user: req.user });
+  res.render("events/new", {
+    user: req.user,
+    userString: JSON.stringify(req.user)
+  });
 });
 
 router.post("/new", (req, res, next) => {
@@ -127,7 +130,11 @@ router.get("/edit/:id", (req, res, next) => {
     if (error) {
       next(error);
     } else {
-      res.render("events/edit", { event, user: req.user });
+      res.render("events/edit", {
+        event,
+        user: req.user,
+        userString: JSON.stringify(req.user)
+      });
     }
   });
 });

@@ -1,7 +1,10 @@
 {{> navbar user}}
+<script>const user = {{{ userString }}}</script>
+<script src='/javascripts/data.js'></script>
+<script src='/javascripts/event.js'></script>
+
 <h2>Create new Event</h2>
 <form method="POST" action="/events/new" encType="multipart/form-data">
-
     <h3>Basic Info</h3>
     <div class="form-group">
         <label for="title">Event title</label>
@@ -11,7 +14,12 @@
         <label for="date">Event date</label>
         <input type="date" id="date" name="date" placeholder="Date">
         <label for="language">Event language</label>
-        <input type="text" id="languages-known" name="languages-known" placeholder="The language for this event..">
+        <div class="ui dropdown">
+            <input type="hidden" name="language">
+            <div class="text"></div>
+            <div class="menu" id="event-language">
+            </div>
+        </div>
     </div>
     </br>
     <h3>Event Picture</h3>
@@ -23,7 +31,12 @@
     <h3>Address</h3>
     <div class="form-group">
         <label for="country">Country</label>
-        <input type="text" id="country" name="country" placeholder="Country">
+        <div class="ui dropdown">
+            <input type="hidden" name="country">
+            <div class="default text">Country</div>
+            <div class="menu" id="user-country">
+            </div>
+        </div>
         <label for="city">City</label>
         <input type="text" id="city" name="city" placeholder="City">
         <label for="street">Street</label>

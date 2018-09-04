@@ -1,11 +1,10 @@
 {{> navbar user}}
 <script>const user = {{{ userString }}}</script>
+<script src='/javascripts/data.js'></script>
 <script src='/javascripts/profile.js'></script>
 
-<h3>
-    Edit Profile</h3>
+<h3>Edit Profile</h3>
 <div class="form-group">
-
     <form method="POST" action="/profile/edit">
         <div class="form-group">
 
@@ -23,11 +22,11 @@
         <div class="form-group" type="hidden" hidden>
             <h3>My Languages</h3>
             <label>Languages I know:</label>
-            <select name="known-languages" multiple="" id="multi-select-known">
+            <select name="known-languages" class="search selection" multiple="" id="multi-select-known">
                 <option value="">Select a language</option>
             </select>
             <label>Languages I am learning:</label>
-            <select name="learning-languages" multiple="" id="multi-select-learning">
+            <select name="learning-languages" class="search selection" multiple="" id="multi-select-learning">
                 <option value="">Select a language</option>
             </select>
         </div>
@@ -35,7 +34,13 @@
         <div class="form-group">
             <h3>My Location</h3>
             <label>Country:</label>
-            <input type="text" name="country" placeholder="Country" value="{{ user.location.country}}">
+            <div class="ui dropdown">
+                <input type="hidden" name="country">
+                <div class="default text">Country</div>
+                <div class="menu" id="user-country">
+                </div>
+            </div>
+            {{!-- <input type="text" name="country" placeholder="Country" value="{{ user.location.country}}"> --}}
             <label>City:</label>
             <input type="text" name="city" placeholder="City" value="{{ user.location.city}}">
         </div> </br>
