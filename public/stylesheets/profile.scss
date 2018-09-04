@@ -1,4 +1,47 @@
+$upper-part-height: 250px;
+
+#content-wrapper-profile {
+  margin-top: 30px;
+  font-size: 1rem;
+  width: 80vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  .column {
+    display: flex;
+    flex-direction: column;
+    margin: 0 10vw;
+
+    #basic-info {
+      height: $upper-part-height;
+      margin: 20px 0;
+    }
+  }
+
+  .row {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
 #profile-pic-large {
-  width: 200px;
-  margin: 10px 0;
+  height: $upper-part-height;
+  width: 240px;
+
+  margin: 20px 0;
+}
+
+.lang-list {
+  margin: 0 0 0 14px;
+  list-style: none;
+}
+
+.info-category {
+  font-weight: 800;
+  width: 180px;
+}
+
+#user-profile-name {
+  font-size: 2.4rem;
+  margin: 0 0 20px 0;
 }

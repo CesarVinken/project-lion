@@ -1,7 +1,71 @@
-{{> navbar user.name}}
+<script src='/javascripts/profile.js'></script> {{> navbar user.name}}
+
 <div class="content-wrapper">
-  <img id="profile-pic-large" src="/images/{{user.picture}}"> <br>Name: {{user.name}} <br>Age: {{user.age}}
-  <br><br> {{#if user.ownProfile}}
+  <div id="content-wrapper-profile">
+    <div class="column">
+      <img id="profile-pic-large" src="/images/{{user.picture}}">
+      <section id="location">
+        <hr>
+
+        <h3>Location</h3>
+        <div class="row">
+          <p class="info-category">Country:</p>
+          <p>{{user.location.country}}</p>
+        </div>
+        <div class="row">
+          <p class="info-category">City:</p>
+          <p>{{user.location.city}}</p>
+        </div>
+      </section>
+    </div>
+
+    <div class="column">
+      <section id="basic-info">
+        <div>
+          <p id="user-profile-name"> {{user.name}}</p>
+        </div>
+        {{#if user.ownProfile}}
+        <div class="row">
+          <p class="info-category">Email address:</p>
+          <p>{{user.email}}</p>
+        </div>
+        {{/if}}
+        <div class="row">
+          <p class="info-category">Age:</p>
+          <p>{{user.age}}</p>
+        </div>
+        <div>
+          <p class="info-category">About me:</p>
+          <textarea readonly rows="4" cols="50">{{user.description}}</textarea>
+        </div>
+      </section>
+      <section id="language">
+        <hr>
+        <h3>Languages</h3>
+        <div class="row">
+          <p class="info-category">Languages I know:</p>
+          <ul class="lang-list">{{#each user.knownLanguages}}
+            <li>
+              <script>document.write(isoLangs.{{ this}}.name)</script>
+            </li>{{/each}}
+          </ul>
+        </div>
+        </br>
+        <div class="row">
+          <p class="info-category">Languages I am learning:</p>
+          <ul class="lang-list">{{#each user.learningLanguages}}
+            <li>
+              <script>document.write(isoLangs.{{ this}}.name)</script>
+            </li>{{/each}}
+          </ul>
+        </div>
+        </br>
+      </section>
+    </div>
+  </div>
+  </br>
+  </br>
+  {{#if user.ownProfile}}
   <a href="/profile/edit" class="success-btn">Edit</a><br>
   <a href="/delete/" class="danger-btn">Delete Account</a><br> {{/if}}
 </div>
