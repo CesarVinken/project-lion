@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
-
+//upsert : true
 router.post("/edit/", (req, res, next) => {
   const location = { country: req.body.country, city: req.body.city };
   const { name, age, email, description } = req.body;

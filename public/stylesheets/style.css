@@ -44,6 +44,10 @@ nav {
     nav a {
       padding: 0 20px; } }
 
+#profile-pic-large {
+  width: 200px;
+  margin: 10px 0; }
+
 * {
   margin: 0;
   padding: 0;
@@ -71,14 +75,36 @@ form {
       resize: none; }
     form .form-group label {
       margin-top: 10px; }
-  form #submit {
-    background-color: #20a2ff;
-    color: #ffffff;
-    width: 280px;
-    padding: 8px 0;
-    border-radius: 4px;
-    font-size: 1.1rem; }
-  form #submit:hover {
-    background-color: #258cd6; }
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.success-btn {
+  background-color: #20a2ff;
+  color: #ffffff;
+  width: 280px;
+  padding: 8px 0;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  text-align: center; }
+
+.success-btn:hover {
+  color: #ffffff;
+  background-color: #258cd6; }
+
+.danger-btn {
+  background-color: #bb1111;
+  color: #ffffff;
+  width: 280px;
+  padding: 8px 0;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  text-align: center; }
+
+.danger-btn:hover {
+  color: #ffffff;
+  background-color: #970f0f; }
 
 /*# sourceMappingURL=style.css.map */

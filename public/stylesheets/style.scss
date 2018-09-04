@@ -8,6 +8,7 @@ $btn-text-a: #aaaaaa;
 $btn-text-b: #ffffff;
 
 @import "./navigation";
+@import "./profile";
 
 * {
   margin: 0;
@@ -42,15 +43,39 @@ form {
       margin-top: 10px;
     }
   }
-  #submit {
-    background-color: $main-color-b;
-    color: $btn-text-b;
-    width: 280px;
-    padding: 8px 0;
-    border-radius: 4px;
-    font-size: 1.1rem;
-  }
-  #submit:hover {
-    background-color: $main-color-b-hover;
-  }
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.success-btn {
+  background-color: $main-color-b;
+  color: $btn-text-b;
+  width: 280px;
+  padding: 8px 0;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.success-btn:hover {
+  color: $btn-text-b;
+  background-color: $main-color-b-hover;
+}
+
+.danger-btn {
+  background-color: rgb(187, 17, 17);
+  color: $btn-text-b;
+  width: 280px;
+  padding: 8px 0;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  text-align: center;
+}
+.danger-btn:hover {
+  color: $btn-text-b;
+  background-color: rgb(151, 15, 15);
 }

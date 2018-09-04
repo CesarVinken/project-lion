@@ -1,5 +1,7 @@
-<img src="/images/{{user.picture}}"> <br>Name: {{user.name}} <br>Age: {{user.age}}
-
-<br><br> {{#if user.ownProfile}}
-<a href="/profile/edit">Edit</a><br>
-<a href="/delete/">Delete Account</a><br> {{/if}}
+{{> navbar user.name}}
+<div class="content-wrapper">
+  <img id="profile-pic-large" src="/images/{{user.picture}}"> <br>Name: {{user.name}} <br>Age: {{user.age}}
+  <br><br> {{#if user.ownProfile}}
+  <a href="/profile/edit" class="success-btn">Edit</a><br>
+  <a href="/delete/" class="danger-btn">Delete Account</a><br> {{/if}}
+</div>
