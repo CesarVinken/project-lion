@@ -3,8 +3,7 @@ const passport = require("passport");
 const authRoutes = express.Router();
 const User = require("../models/User");
 const util = require("../utils/util");
-const fs = require("fs");
-const { upload } = require("../utils/cloudinary");
+const cloud = require("../utils/cloudinary");
 
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
@@ -33,23 +32,9 @@ authRoutes.get("/signup", util.checkLogout, (req, res, next) => {
 });
 
 authRoutes.post("/signup", util.checkLogout, (req, res, next) => {
-  const pr = !!req.files
-    ? new Promise((resolve, reject) => {
-        const { picture } = req.files;
-        const path = `public/images/${picture.name}`;
+  const pr = cloud.picUpload(req.files, "Profile");
 
-        picture.mv(path, function(err) {
-          if (err) return next(err);
-          upload(`public/images/${picture.name}`).then(result => {
-            fs.unlinkSync(`public/images/${picture.name}`);
-            name = result.secure_url;
-            resolve(name);
-          });
-        });
-      })
-    : Promise.resolve("public/images/placeholderProfile.png");
-
-  pr.then(name => {
+  pr.then(picture => {
     const email = req.body.email;
     const password = req.body.password;
     if (email === "" || password === "") {
@@ -68,7 +53,7 @@ authRoutes.post("/signup", util.checkLogout, (req, res, next) => {
 
       const newUser = new User({
         email,
-        picture: name,
+        picture,
         password: hashPass,
         age: req.body.age,
         country: req.body.country,

@@ -5,10 +5,7 @@ const eventSchema = new Schema(
   {
     title: String,
     date: Date,
-    picture: {
-      type: String,
-      default: "placeholderEvent.png"
-    },
+    picture: String,
     location: {
       country: String,
       city: String,
