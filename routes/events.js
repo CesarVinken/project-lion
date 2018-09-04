@@ -9,7 +9,7 @@ router.get("/", (req, res, next) => {
     if (error) {
       next(error);
     } else {
-      res.render("events/index", { events, name: req.user });
+      res.render("events/index", { events, user: req.user });
     }
   });
 });
@@ -25,7 +25,7 @@ router.get("/find", (req, res, next) => {
 });
 
 router.get("/new", (req, res, next) => {
-  res.render("events/new", { name: req.user });
+  res.render("events/new", { user: req.user });
 });
 
 router.post("/new", (req, res, next) => {
@@ -65,7 +65,7 @@ router.get("/:id", (req, res, next) => {
       } else {
         event.userAttending = true;
       }
-      res.render("events/show", { event });
+      res.render("events/show", { event, user: req.user });
     }
   });
 });
@@ -86,10 +86,14 @@ router.post("/edits/:id", (req, res, next) => {
       res.render("events/edit", { event });
     }
   });
-  Event.findOneAndUpdate({ $and: [{ _id: req.params.id }, { user: req.user._id }] }, req.body, {
-    new: true,
-    runValidators: true
-  })
+  Event.findOneAndUpdate(
+    { $and: [{ _id: req.params.id }, { user: req.user._id }] },
+    req.body,
+    {
+      new: true,
+      runValidators: true
+    }
+  )
     .then(event => {
       res.redirect("/events/" + req.params.id);
     })
@@ -123,13 +127,16 @@ router.get("/edit/:id", (req, res, next) => {
     if (error) {
       next(error);
     } else {
-      res.render("events/edit", { event });
+      res.render("events/edit", { event, user: req.user });
     }
   });
 });
 
 router.get("/delete/:id", (req, res, next) => {
-  User.findOneAndUpdate({ id: req.params.id }, { $pull: { ownEvents: req.params.id } });
+  User.findOneAndUpdate(
+    { id: req.params.id },
+    { $pull: { ownEvents: req.params.id } }
+  );
   User.update(
     { events: req.params.id },
     { $pull: { events: req.params.id } },
