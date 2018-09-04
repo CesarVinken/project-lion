@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require("../models/User");
 
 router.get("/find", (req, res, next) => {
-  User.find({}, (error, tandems) => {
+  User.find({ _id: { $nin: [req.user._id] } }, (error, tandems) => {
     if (error) {
       next(error);
     } else {
