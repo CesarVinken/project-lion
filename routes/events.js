@@ -29,6 +29,16 @@ router.get("/find", (req, res, next) => {
   });
 });
 
+router.post("/find", (req, res, next) => {
+  Event.find((error, events) => {
+    if (error) {
+      next(error);
+    } else {
+      res.render("events/find", { events, user: req.user });
+    }
+  });
+});
+
 router.get("/new", (req, res, next) => {
   res.render("events/new", {
     user: req.user,

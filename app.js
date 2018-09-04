@@ -33,12 +33,53 @@ const debug = require("debug")(`${app_name}:${path.basename(__filename).split(".
 
 const app = express();
 
+var http = require("http").createServer(app);
+var io = require("socket.io")(http);
+
+var nsp = io.of("/events");
+nsp.on("connection", function(socket) {
+  console.log(socket);
+  console.log("user connected");
+  socket.on("disconnect", function() {
+    console.log("user disconnected");
+  });
+  socket.on("message", function(msg) {
+    socket.emit("message", msg);
+    console.log("message: " + msg);
+  });
+});
+nsp.emit("hi", "everyone!");
+
+io.on("connection", function(socket) {
+  console.log(socket);
+  console.log("user connected");
+  socket.on("disconnect", function() {
+    console.log("user disconnected");
+  });
+  socket.on("message", function(msg) {
+    io.emit("message", msg);
+    console.log("message: " + msg);
+  });
+});
+
 // Middleware Setup
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(fileUpload());
+
+// Enable authentication using session + passport
+app.use(
+  session({
+    secret: "projectlionsafe",
+    resave: true,
+    saveUninitialized: true,
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
+  })
+);
+app.use(flash());
+require("./passport")(app);
 
 // Express View engine setup
 
@@ -68,18 +109,6 @@ hbs.registerPartials(__dirname + "/views/partials");
 // default value for title local
 app.locals.title = "Project Lion";
 
-// Enable authentication using session + passport
-app.use(
-  session({
-    secret: "projectlionsafe",
-    resave: true,
-    saveUninitialized: true,
-    store: new MongoStore({ mongooseConnection: mongoose.connection })
-  })
-);
-app.use(flash());
-require("./passport")(app);
-
 const index = require("./routes/index");
 app.use("/", index);
 
@@ -98,3 +127,28 @@ const profileRoutes = require("./routes/profile");
 app.use("/profile", profileRoutes);
 
 module.exports = app;
+
+// to www? conflict with socket.io
+http.on("error", error => {
+  if (error.syscall !== "listen") {
+    throw error;
+  }
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case "EACCES":
+      console.error(`Port ${process.env.PORT} requires elevated privileges`);
+      process.exit(1);
+      break;
+    case "EADDRINUSE":
+      console.error(`Port ${process.env.PORT}is already in use`);
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+});
+
+http.listen(process.env.PORT, () => {
+  console.log(`Listening on http://localhost:${process.env.PORT}`);
+});

@@ -20,6 +20,24 @@ router.get("/find", (req, res, next) => {
   );
 });
 
+router.post("/find", (req, res, next) => {
+  User.find(
+    {
+      $and: [
+        { _id: { $ne: req.user._id, $nin: req.user.blockedUsers } },
+        { tandems: { $ne: req.user._id } }
+      ]
+    },
+    (error, tandems) => {
+      if (error) {
+        next(error);
+      } else {
+        res.render("tandems/find", { tandems, user: req.user });
+      }
+    }
+  );
+});
+
 router.get("/:id?", (req, res, next) => {
   User.find({ tandems: req.user._id }, (error, tandems) => {
     if (error) {
