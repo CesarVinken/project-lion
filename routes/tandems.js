@@ -2,55 +2,50 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 
-router.post("/edit/", (req, res, next) => {
-  req.body.location = { country: req.body.country, city: req.body.city };
-  User.findOneAndUpdate({ _id: req.user._id }, req.body, { new: true, runValidators: true })
-    .then(user => {
-      res.redirect("/profile/" + req.user._id);
-    })
-    .catch(err => {
-      console.log(err.message);
-      next(err);
-    });
-});
-
-router.get("/edit/", (req, res, next) => {
-  console.log(req.user._id);
-  User.findById(req.user._id, (error, user) => {
+router.get("/find", (req, res, next) => {
+  User.find({}, (error, tandems) => {
     if (error) {
       next(error);
     } else {
-      res.render("profile/edit", { user });
+      res.render("tandems/find", { tandems, name: req.user.name });
     }
   });
 });
 
 router.get("/:id?", (req, res, next) => {
-  let id = req.user._id;
-
-  if (req.params.id != null) {
-    id = req.params.id;
-  }
-  User.findById(id, (error, user) => {
+  User.find({ tandems: req.user._id }, (error, tandems) => {
     if (error) {
       next(error);
     } else {
-      if (user._id === req.user._i) {
-        user.ownProfile = true;
-      }
-      res.render("profile/show", { user });
+      res.render("tandems/index", { tandems, name: req.user.name });
     }
   });
 });
 
-router.get("/delete", (req, res, next) => {
-  User.remove({ _id: req.user._id }, function(error, user) {
-    if (error) {
+router.get("/add/:id", (req, res, next) => {
+  User.findOneAndUpdate({ _id: req.params.id }, { $push: { tandems: req.user._id } })
+    .then(user => {
+      return User.findOneAndUpdate({ _id: req.user._id }, { $push: { tandems: req.params.id } });
+    })
+    .then(user => {
+      res.redirect("/tandems/" + req.params.id);
+    })
+    .catch(error => {
       next(error);
-    } else {
-      res.redirect("/");
-    }
-  });
+    });
+});
+
+router.get("/block/:id", (req, res, next) => {
+  User.findOneAndUpdate(
+    { _id: req.user._id },
+    { $push: { blockedUsers: req.params.id }, $pull: { tandems: req.params.id } }
+  )
+    .then(user => {
+      return User.findOneAndUpdate({ _id: req.params.id }, { $pull: { tandems: req.user._id } });
+    })
+    .then(user => {
+      res.redirect("/tandems/");
+    });
 });
 
 module.exports = router;

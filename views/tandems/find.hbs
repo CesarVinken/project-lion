@@ -1,12 +1,11 @@
 {{> navbar name}}
-<h3>My tandems</h3>
+<h3>Find Tandems</h3>
 <ul>
     {{#each tandems}}
     <li>
         <a href="/profile/{{ this._id}}">
             {{ this.name}}<span> - {{ this.description }}</span>
-        </a>
-        <a href="/tandems/block/{{ this._id}}">Block</a>
+        </a> - <a href="/tandems/add/{{ this._id}}">Add</a>
     </li>
     {{/each }}
 </ul>
