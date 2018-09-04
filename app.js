@@ -76,12 +76,15 @@ app.use(
 );
 app.use(flash());
 require("./passport")(app);
+const util = require("./util/util");
 
 const index = require("./routes/index");
 app.use("/", index);
 
 const authRoutes = require("./routes/auth");
 app.use("/", authRoutes);
+
+app.use(util.checkAuthentication);
 
 const eventRoutes = require("./routes/events");
 app.use("/events", eventRoutes);

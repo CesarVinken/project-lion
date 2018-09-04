@@ -2,12 +2,18 @@ const express = require("express");
 const passport = require("passport");
 const authRoutes = express.Router();
 const User = require("../models/User");
+const util = require("../util/util");
 
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
-authRoutes.get("/login", (req, res, next) => {
+authRoutes.get("/logout", util.checkAuthentication, (req, res) => {
+  req.logout();
+  res.redirect("/");
+});
+
+authRoutes.get("/login", util.checkLogout, (req, res, next) => {
   res.render("auth/login", { message: req.flash("error") });
 });
 
@@ -21,11 +27,11 @@ authRoutes.post(
   })
 );
 
-authRoutes.get("/signup", (req, res, next) => {
+authRoutes.get("/signup", util.checkLogout, (req, res, next) => {
   res.render("auth/signup");
 });
 
-authRoutes.post("/signup", (req, res, next) => {
+authRoutes.post("/signup", util.checkLogout, (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
   if (email === "" || password === "") {
@@ -60,11 +66,6 @@ authRoutes.post("/signup", (req, res, next) => {
       }
     });
   });
-});
-
-authRoutes.get("/logout", (req, res) => {
-  req.logout();
-  res.redirect("/");
 });
 
 module.exports = authRoutes;
