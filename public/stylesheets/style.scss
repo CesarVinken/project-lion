@@ -1,7 +1,11 @@
 $main-color-a: #5533ff;
+$main-color-b: #20a2ff;
+$main-color-b-hover: #258cd6;
 $main-font: "Telex", sans-serif;
 $screen-middle: "(min-width : 480px)";
 $screen-large: "(min-width : 1024px)";
+$btn-text-a: #aaaaaa;
+$btn-text-b: #ffffff;
 
 * {
   margin: 0;
@@ -82,5 +86,35 @@ nav {
     a {
       padding: 0 20px;
     }
+  }
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    width: 280px;
+    input,
+    textarea {
+      padding: 5px 4px;
+      border-radius: 4px;
+    }
+    label {
+      margin-top: 10px;
+    }
+  }
+  #submit {
+    background-color: $main-color-b;
+    color: $btn-text-b;
+    width: 280px;
+    padding: 8px 0;
+    border-radius: 4px;
+    font-size: 1.1rem;
+  }
+  #submit:hover {
+    background-color: $main-color-b-hover;
   }
 }

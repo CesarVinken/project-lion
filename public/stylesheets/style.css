@@ -56,4 +56,28 @@ nav {
     nav a {
       padding: 0 20px; } }
 
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  form .form-group {
+    display: flex;
+    flex-direction: column;
+    width: 280px; }
+    form .form-group input,
+    form .form-group textarea {
+      padding: 5px 4px;
+      border-radius: 4px; }
+    form .form-group label {
+      margin-top: 10px; }
+  form #submit {
+    background-color: #20a2ff;
+    color: #ffffff;
+    width: 280px;
+    padding: 8px 0;
+    border-radius: 4px;
+    font-size: 1.1rem; }
+  form #submit:hover {
+    background-color: #258cd6; }
+
 /*# sourceMappingURL=style.css.map */

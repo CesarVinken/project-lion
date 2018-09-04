@@ -1,13 +1,31 @@
-<h3>Create new Event</h3>
+{{> navbar name}}
+<h2>Create new Event</h2>
 <form method="POST" action="/event/new">
-    <input type="text" name="title" placeholder="Title">
-    <input type="text" name="description" placeholder="description">
-    <input type="date" name="date" placeholder="Date">
-    <input type="String" name="language" placeholder="Language">
-    <label>Address</label>
-    <input type="text" name="country" placeholder="Country">
-    <input type="text" name="city" placeholder="City">
-    <input type="text" name="street" placeholder="Street">
+
+    <h3>Basic Info</h3>
+    <div class="form-group">
+        <label for="title">Event title</label>
+        <input type="text" id="title" name="title" placeholder="Title">
+        <label for="description">Event description</label>
+        <textarea rows="4" type="text" id="description" name="description" placeholder="My event is about.."></textarea>
+        <label for="date">Event date</label>
+        <input type="date" id="date" name="date" placeholder="Date">
+        <label for="language">Event language</label>
+        <input type="text" id="languages-known" name="languages-known" placeholder="The language for this event..">
+    </div>
+    </br>
+    <h3>Address</h3>
+    <div class="form-group">
+        <label for="country">Country</label>
+        <input type="text" id="country" name="country" placeholder="Country">
+        <label for="city">City</label>
+        <input type="text" id="city" name="city" placeholder="City">
+        <label for="street">Street</label>
+        <input type="text" id="street" name="street" placeholder="Street">
+    </div>
+    </br>
     <input type="submit" name="" id="submit">
+    </br>
+
 </form>
 <div id="map"></div>
