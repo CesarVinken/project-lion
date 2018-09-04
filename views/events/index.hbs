@@ -1,8 +1,8 @@
 {{> navbar user}}
-<h3></h3>
-All events
+<h3>
+    My events
 </h3>
-<a href="/events/new">Create new event</a>
+
 <ul>
     {{#each events}}
     <li>
@@ -14,6 +14,7 @@ All events
         |
         <a href="/events/delete/{{ this._id}}">Delete</a>
     </li>
-    {{/each }}
+    {{/each }}<br>
+    <a href="/events/new">Create new event</a>
 </ul>
 </di

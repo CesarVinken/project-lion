@@ -19,7 +19,7 @@ router.get("/find", (req, res, next) => {
     if (error) {
       next(error);
     } else {
-      res.render("events/index", { events, user: req.user });
+      res.render("events/find", { events, user: req.user });
     }
   });
 });
@@ -31,27 +31,28 @@ router.get("/new", (req, res, next) => {
 router.post("/new", (req, res, next) => {
   const pr = cloud.picUpload(req.files, "Event");
   pr.then(picture => {
-    const newevent = new Event({
+    return new Event({
       title: req.body.title,
       description: req.body.description,
       language: req.body.language,
       date: req.body.date,
       user: req.user,
+      attendees: [req.user._id],
       location: {
         country: req.body.country,
         city: req.body.city,
         street: req.body.street
       },
       picture
+    }).save();
+  })
+    .then(event => {
+      User.findOneAndUpdate({ _id: req.user._id }, { $push: { events: event._id } });
+      return event;
+    })
+    .then(event => {
+      res.redirect("/events/" + event._id);
     });
-    newevent.save(error => {
-      if (error) {
-        next(error);
-      } else {
-        res.redirect("/events");
-      }
-    });
-  });
 });
 
 router.get("/:id", (req, res, next) => {
@@ -70,30 +71,26 @@ router.get("/:id", (req, res, next) => {
   });
 });
 
-router.post("/edits/:id", (req, res, next) => {
+router.post("/edit/:id", (req, res, next) => {
   console.log(req.body);
   req.body.location = {
     country: req.body.country,
     city: req.body.city,
     street: req.body.street
   };
-  Event.findById(req.params.id, (error, event) => {
-    if (error) {
-      next(error);
-    } else if (event.user === req.user._id) {
-      next(new Error("Something went wrong"));
-    } else {
-      res.render("events/edit", { event });
-    }
-  });
-  Event.findOneAndUpdate(
-    { $and: [{ _id: req.params.id }, { user: req.user._id }] },
-    req.body,
-    {
-      new: true,
-      runValidators: true
-    }
-  )
+  // Event.findById(req.params.id, (error, event) => {
+  //   if (error) {
+  //     next(error);
+  //   } else if (event.user === req.user._id) {
+  //     next(new Error("Something went wrong"));
+  //   } else {
+  //     res.render("events/edit", { event });
+  //   }
+  // });
+  Event.findOneAndUpdate({ $and: [{ _id: req.params.id }, { user: req.user._id }] }, req.body, {
+    new: true,
+    runValidators: true
+  })
     .then(event => {
       res.redirect("/events/" + req.params.id);
     })
@@ -133,10 +130,7 @@ router.get("/edit/:id", (req, res, next) => {
 });
 
 router.get("/delete/:id", (req, res, next) => {
-  User.findOneAndUpdate(
-    { id: req.params.id },
-    { $pull: { ownEvents: req.params.id } }
-  );
+  User.findOneAndUpdate({ id: req.params.id }, { $pull: { ownEvents: req.params.id } });
   User.update(
     { events: req.params.id },
     { $pull: { events: req.params.id } },
