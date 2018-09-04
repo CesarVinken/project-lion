@@ -1,6 +1,6 @@
 {{> navbar name}}
 <h2>Create new Event</h2>
-<form method="POST" action="/events/new">
+<form method="POST" action="/events/new" encType="multipart/form-data">
 
     <h3>Basic Info</h3>
     <div class="form-group">
@@ -12,6 +12,12 @@
         <input type="date" id="date" name="date" placeholder="Date">
         <label for="language">Event language</label>
         <input type="text" id="languages-known" name="languages-known" placeholder="The language for this event..">
+    </div>
+    </br>
+    <h3>Event Picture</h3>
+    <div class="form-group">
+        <label for="picture">Upload a Picture for your event</label>
+        <input type="file" name="picture">
     </div>
     </br>
     <h3>Address</h3>
