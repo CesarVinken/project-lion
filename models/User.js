@@ -6,7 +6,7 @@ const userSchema = new Schema(
     password: String,
     email: String,
     name: String,
-    nativeLanguage: [String],
+    knownLanguages: [String],
     learningLanguages: [String],
     location: {
       country: String,
