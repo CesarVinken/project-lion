@@ -763,14 +763,16 @@ function getLanguageList() {
 }
 
 function setUserLanguages() {
-  if (user.knownLanguages) {
-    user.knownLanguages.forEach(language => {
-      $("#multi-select-known").dropdown("set selected", language);
-    });
-  }
-  if (user.learningLanguages) {
-    user.learningLanguages.forEach(language => {
-      $("#multi-select-learning").dropdown("set selected", language);
-    });
+  if (user) {
+    if (user.knownLanguages) {
+      user.knownLanguages.forEach(language => {
+        $("#multi-select-known").dropdown("set selected", language);
+      });
+    }
+    if (user.learningLanguages) {
+      user.learningLanguages.forEach(language => {
+        $("#multi-select-learning").dropdown("set selected", language);
+      });
+    }
   }
 }
