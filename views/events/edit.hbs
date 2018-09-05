@@ -1,5 +1,5 @@
-{{> navbar user}}
-<script>const user = {{{ userString }}}</script>
+{{> navbar data}}
+<script> const data = {{{ dataString }}}</script>
 <script src='/javascripts/data.js'></script>
 <script src='/javascripts/event.js'></script>
 
@@ -11,16 +11,12 @@
             <label for="title">Event title</label>
             <input type="text" id="title" name="title" placeholder="Title" value="{{ event.title}}">
             <label for="description">Event description</label>
-            <textarea rows="4" type="text" id="description" name="description" placeholder="My event is about.." value="{{ event.description}}"></textarea>
+            <textarea rows="4" type="text" id="description" name="description" placeholder="My event is about..">{{ event.description}}</textarea>
             <label for="date">Event date</label>
             <input type="date" id="date" name="date" placeholder="Date" value="{{ event.date}}">
             <label for="language">Event language</label>
-            <div class="ui dropdown">
-                <input type="hidden" name="language">
-                <div class="default text">Language</div>
-                <div class="menu" id="event-language">
-                </div>
-            </div>
+            <select class="ui search selection dropdown" name="language" id="event-language">
+            </select>
         </div>
         </br>
         <h3>Event Picture</h3>
@@ -32,12 +28,9 @@
         <h3>Address</h3>
         <div class="form-group">
             <label for="country">Country</label>
-            <div class="ui dropdown">
-                <input type="hidden" name="country">
-                <div class="default text">Country</div>
-                <div class="menu" id="user-country">
-                </div>
-            </div>
+            <select class="ui search selection dropdown" name="country" id="user-country" placeholder="Country">
+                <option value="">Country</option>
+            </select>
             <label for="city">City</label>
             <input type="text" id="city" name="city" placeholder="City" value="{{ event.location.city}}">
             <label for=" street ">Street</label>

@@ -1,15 +1,18 @@
 {{> navbar user}}
 <h3>Find Events</h3>
 
-
-<ul>
-    {{#each events}}
-    <li>
-        <a href="/events/{{ this._id}}">
-            {{ this.title}}<span> - {{ this.description }}</span>
-        </a>
-    </li>
-    {{/each }}
-</ul>
-
 <a href="/events/new">Create own event</a>
+<div class="filter-container">
+    Filter options
+</div>
+<div class="results-container">
+    <ul>
+        {{#each events}}
+        <div class="tile">
+            <a href="/events/{{ this._id}}">
+                {{ this.title}}<span> - {{ this.description }}</span>
+            </a>
+        </div>
+        {{/each }}
+    </ul>
+</div>

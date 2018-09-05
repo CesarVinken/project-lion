@@ -16,8 +16,10 @@ $(document).ready(function() {
     }
   });
 
+  //the user object should only be passed on on the edit pages.
   if (user) {
     setUserLanguages();
+    setUserCountry();
   }
 });
 
@@ -34,10 +36,10 @@ function getLanguageList() {
 }
 
 function getCountryList() {
-  let countries = "";
+  let countries = `<option value="">Country</option>`;
 
   countryList.forEach(country => {
-    countries += `<div class="item" data-value='${country}'>${country}</div>`;
+    countries += `<option class="item" data-value='${country}'>${country}</option>`;
   });
 
   $("#user-country").html(countries);
@@ -53,5 +55,16 @@ function setUserLanguages() {
     user.learningLanguages.forEach(language => {
       $("#multi-select-learning").dropdown("set selected", language);
     });
+  }
+}
+
+function setUserCountry() {
+  if (user.location.country) {
+    var userCountry = countryList.find(element => {
+      return element === user.location.country;
+    });
+
+    console.log("The user lives in " + userCountry);
+    $("#user-country").dropdown("set selected", userCountry);
   }
 }

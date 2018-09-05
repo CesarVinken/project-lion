@@ -42,7 +42,7 @@ router.post("/find", (req, res, next) => {
 router.get("/new", (req, res, next) => {
   res.render("events/new", {
     user: req.user,
-    userString: JSON.stringify(req.user)
+    dataString: JSON.stringify({ user: req.user })
   });
 });
 
@@ -52,7 +52,7 @@ router.post("/new", (req, res, next) => {
     return new Event({
       title: req.body.title,
       description: req.body.description,
-      language: req.body.languageknown,
+      language: req.body.language,
       date: req.body.date,
       user: req.user,
       attendees: [req.user._id],
@@ -65,7 +65,10 @@ router.post("/new", (req, res, next) => {
     }).save();
   })
     .then(event => {
-      User.findOneAndUpdate({ _id: req.user._id }, { $push: { events: event._id } });
+      User.findOneAndUpdate(
+        { _id: req.user._id },
+        { $push: { events: event._id } }
+      );
       return event;
     })
     .then(event => {
@@ -99,10 +102,14 @@ router.post("/edit/:id", (req, res, next) => {
     city: req.body.city,
     street: req.body.street
   };
-  Event.findOneAndUpdate({ $and: [{ _id: req.params.id }, { user: req.user._id }] }, req.body, {
-    new: true,
-    runValidators: true
-  })
+  Event.findOneAndUpdate(
+    { $and: [{ _id: req.params.id }, { user: req.user._id }] },
+    req.body,
+    {
+      new: true,
+      runValidators: true
+    }
+  )
     .then(event => {
       res.redirect("/events/" + req.params.id);
     })
@@ -120,14 +127,17 @@ router.get("/edit/:id", (req, res, next) => {
       res.render("events/edit", {
         event,
         user: req.user,
-        userString: JSON.stringify(req.user)
+        dataString: JSON.stringify({ event, user: req.user })
       });
     }
   });
 });
 
 router.get("/delete/:id", (req, res, next) => {
-  User.findOneAndUpdate({ id: req.params.id }, { $pull: { ownEvents: req.params.id } });
+  User.findOneAndUpdate(
+    { id: req.params.id },
+    { $pull: { ownEvents: req.params.id } }
+  );
   User.update(
     { events: req.params.id },
     { $pull: { events: req.params.id } },

@@ -33,13 +33,10 @@
         </br>
         <div class="form-group">
             <h3>My Location</h3>
-            <label>Country:</label>
-            <div class="ui dropdown">
-                <input type="hidden" name="country">
-                <div class="default text">Country</div>
-                <div class="menu" id="user-country">
-                </div>
-            </div>
+            <label for="country">Country</label>
+            <select class="ui search selection dropdown" name="country" id="user-country">
+                <option value="">Country</option>
+            </select>
             <label>City:</label>
             <input type="text" name="city" placeholder="City" value="{{ user.location.city}}">
         </div> </br>
