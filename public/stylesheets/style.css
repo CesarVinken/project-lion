@@ -43,8 +43,16 @@ nav p {
 nav a:hover {
   color: black;
 }
-nav img {
+nav .nav-img {
   height: 44px;
+  width: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+nav .nav-img img {
+  max-width: 100%;
+  max-height: 100%;
 }
 @media (min-width : 480px) {
   nav .nav-group .nav-route-links {
@@ -93,8 +101,15 @@ nav img {
 
 #profile-pic-large {
   height: 250px;
-  width: 240px;
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 20px 0;
+}
+#profile-pic-large img {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .lang-list {

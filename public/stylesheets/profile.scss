@@ -33,8 +33,14 @@ $upper-part-height: 250px;
 
 #profile-pic-large {
   height: $upper-part-height;
-  width: 240px;
-
+  width: $upper-part-height;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
   margin: 20px 0;
 }
 
