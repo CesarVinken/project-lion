@@ -3,6 +3,7 @@ $main-color-b: #20a2ff;
 $main-color-b-hover: #258cd6;
 $main-font: "Telex", sans-serif;
 $screen-middle: "(min-width : 480px)";
+$screen-middle-large: "(min-width : 660px)";
 $screen-large: "(min-width : 1024px)";
 $btn-text-a: #aaaaaa;
 $btn-text-b: #ffffff;
@@ -57,12 +58,6 @@ form {
   flex-direction: column;
   align-items: center;
   margin: 0 0 20px 0;
-}
-
-.vert-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
 }
 
 .success-btn {
