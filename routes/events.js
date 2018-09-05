@@ -30,13 +30,35 @@ router.get("/find", (req, res, next) => {
 });
 
 router.post("/find", (req, res, next) => {
-  Event.find((error, events) => {
-    if (error) {
-      next(error);
-    } else {
-      res.render("events/find", { events, user: req.user });
+  let query = {
+    attendees: { $ne: req.user._id }
+  };
+  if (req.body.language !== "") {
+    query.language = req.body.language;
+  }
+  if (req.body.country !== "") {
+    query["location.country"] = req.body.country;
+  }
+  if (req.body.city !== "") {
+    query["location.city"] = req.body.city;
+  }
+  console.log(query);
+  Event.find(
+    query,
+    {
+      limit: 25, // Ending Row
+      sort: {
+        date: -1 //Sort by Date Added DESC
+      }
+    },
+    (error, events) => {
+      if (error) {
+        next(error);
+      } else {
+        res.render("tandems/find", { events, user: req.user });
+      }
     }
-  });
+  );
 });
 
 router.get("/new", (req, res, next) => {
@@ -65,10 +87,7 @@ router.post("/new", (req, res, next) => {
     }).save();
   })
     .then(event => {
-      User.findOneAndUpdate(
-        { _id: req.user._id },
-        { $push: { events: event._id } }
-      );
+      User.findOneAndUpdate({ _id: req.user._id }, { $push: { events: event._id } });
       return event;
     })
     .then(event => {
@@ -102,14 +121,10 @@ router.post("/edit/:id", (req, res, next) => {
     city: req.body.city,
     street: req.body.street
   };
-  Event.findOneAndUpdate(
-    { $and: [{ _id: req.params.id }, { user: req.user._id }] },
-    req.body,
-    {
-      new: true,
-      runValidators: true
-    }
-  )
+  Event.findOneAndUpdate({ $and: [{ _id: req.params.id }, { user: req.user._id }] }, req.body, {
+    new: true,
+    runValidators: true
+  })
     .then(event => {
       res.redirect("/events/" + req.params.id);
     })
@@ -134,10 +149,7 @@ router.get("/edit/:id", (req, res, next) => {
 });
 
 router.get("/delete/:id", (req, res, next) => {
-  User.findOneAndUpdate(
-    { id: req.params.id },
-    { $pull: { ownEvents: req.params.id } }
-  );
+  User.findOneAndUpdate({ id: req.params.id }, { $pull: { ownEvents: req.params.id } });
   User.update(
     { events: req.params.id },
     { $pull: { events: req.params.id } },
