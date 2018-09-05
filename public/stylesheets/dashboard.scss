@@ -1,0 +1,19 @@
+.background-wrapper {
+  img {
+    background-position: center;
+    background-size: cover;
+    background-repeat: repeat;
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+.dashboard-wrapper {
+  margin-top: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 20%;
+  right: 0;
+}
