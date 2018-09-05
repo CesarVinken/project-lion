@@ -1,12 +1,14 @@
 <script>eventId = `{{this._id}}`</script>
 <script src='/javascripts/event-search.js'></script>
 
-<div class="tile">
+<div class="tile-search">
   <div class="tile-image">
     <img src={{this.picture}} alt="event picture">
   </div>
   <div class="tile-content">
-    <h3>{{ this.title}}</h3>
-    <p>{{ this.description }}</p>
+    <h3>{{this.title}}</h3>
+    <p>{{this.description}}</p>
+    <p>{{this.date}}</p>
+
   </div>
 </div>

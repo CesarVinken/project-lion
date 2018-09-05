@@ -1,21 +1,30 @@
 {{> navbar user}}
 <h1>Hello {{user.name}}</h1>
-<div class="background-wrapper"><img src="{{picture}}"></div>
+<div class="background-wrapper">
+    {{!-- <img src="{{picture}}"> --}}
+</div>
 
 
-<div class="dashboard-wrapper">
-    <div class="container">
+<div class="dashboard-content-wrapper">
+
+    <div class="dashboard-group">
         <h3>My Tandems</h3>
-        <ul> {{#each tandems}}
-            <li>{{this.name}}</li>
-            {{/each}}
+        {{#if tandems}}
+        <ul>
+            {{#each tandems}} {{> tandem_tile_small this}} {{/each}}
         </ul>
+        {{else}}
+        <p>You have no ongoing conversations. <a href="/tandems/find">Find somebody to practice a language with here</a></p>
+        {{/if}}
     </div>
-    <div class="container">
-        <h3>My Event</h3>
-        <ul> {{#each events}}
-            <li>{{this.title}}</li>
-            {{/each}}
+    <div class="dashboard-group">
+        <h3>My Events</h3>
+        {{#if events}}
+        <ul>
+            {{#each events}} {{> event_tile_small this}} {{/each}}
         </ul>
+        {{else}}
+        <p>You are not subscribed to any upcoming events. <a href=" /events/find ">Find an event here</a></p>
+        {{/if}}
     </div>
 </div>
