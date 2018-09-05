@@ -4,7 +4,7 @@
 <script src='/javascripts/user-info.js'></script>
 
 <h3>Edit Profile</h3>
-<div class="form-group">
+<div class="content-wrapper">
     <form method="POST" action="/profile/edit">
         <div class="form-group">
 
@@ -40,9 +40,9 @@
                 <div class="menu" id="user-country">
                 </div>
             </div>
-            {{!-- <input type="text" name="country" placeholder="Country" value="{{ user.location.country}}"> --}}
             <label>City:</label>
             <input type="text" name="city" placeholder="City" value="{{ user.location.city}}">
         </div> </br>
         <button type="submit" name="" id="submit" class="success-btn">Save Changes</button>
     </form>
+</div>

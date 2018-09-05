@@ -3,46 +3,48 @@
 <script src='/javascripts/data.js'></script>
 <script src='/javascripts/event.js'></script>
 
-<h2>Create new Event</h2>
-<form method="POST" action="/events/new" encType="multipart/form-data">
-    <h3>Basic Info</h3>
-    <div class="form-group">
-        <label for="title">Event title</label>
-        <input type="text" id="title" name="title" placeholder="Title">
-        <label for="description">Event description</label>
-        <textarea rows="4" type="text" id="description" name="description" placeholder="My event is about.."></textarea>
-        <label for="date">Event date</label>
-        <input type="date" id="date" name="date" placeholder="Date">
-        <label for="language">Event language</label>
-        <div class="ui dropdown">
-            <input type="hidden" name="language">
-            <div class="text"></div>
-            <div class="menu" id="event-language">
+<div class="content-wrapper">
+    <h2>Create new Event</h2>
+    <form method="POST" action="/events/new" encType="multipart/form-data">
+        <h3>Basic Info</h3>
+        <div class="form-group">
+            <label for="title">Event title</label>
+            <input type="text" id="title" name="title" placeholder="Title">
+            <label for="description">Event description</label>
+            <textarea rows="4" type="text" id="description" name="description" placeholder="My event is about.."></textarea>
+            <label for="date">Event date</label>
+            <input type="date" id="date" name="date" placeholder="Date">
+            <label for="language">Event language</label>
+            <div class="ui dropdown">
+                <input type="hidden" name="language">
+                <div class="text"></div>
+                <div class="menu" id="event-language">
+                </div>
             </div>
         </div>
-    </div>
-    </br>
-    <h3>Event Picture</h3>
-    <div class="form-group">
-        <label for="picture">Upload a Picture for your event</label>
-        <input type="file" name="picture">
-    </div>
-    </br>
-    <h3>Address</h3>
-    <div class="form-group">
-        <label for="country">Country</label>
-        <div class="ui dropdown">
-            <input type="hidden" name="country">
-            <div class="default text">Country</div>
-            <div class="menu" id="user-country">
-            </div>
+        </br>
+        <h3>Event Picture</h3>
+        <div class="form-group">
+            <label for="picture">Upload a Picture for your event</label>
+            <input type="file" name="picture">
         </div>
-        <label for="city">City</label>
-        <input type="text" id="city" name="city" placeholder="City">
-        <label for="street">Street</label>
-        <input type="text" id="street" name="street" placeholder="Street">
-    </div>
-    </br>
-    <input type="submit" name="" id="submit" class="success-btn">
-    </br>
-</form>
+        </br>
+        <h3>Address</h3>
+        <div class="form-group">
+            <label for="country">Country</label>
+            <div class="ui dropdown">
+                <input type="hidden" name="country">
+                <div class="default text">Country</div>
+                <div class="menu" id="user-country">
+                </div>
+            </div>
+            <label for="city">City</label>
+            <input type="text" id="city" name="city" placeholder="City">
+            <label for="street">Street</label>
+            <input type="text" id="street" name="street" placeholder="Street">
+        </div>
+        </br>
+        <input type="submit" name="" id="submit" class="success-btn">
+        </br>
+    </form>
+</div>

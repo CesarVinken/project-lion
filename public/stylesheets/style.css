@@ -138,7 +138,8 @@ form {
 .content-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center; }
+  align-items: center;
+  margin: 0 0 20px 0; }
 
 .success-btn {
   background-color: #20a2ff;
