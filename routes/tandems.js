@@ -21,21 +21,37 @@ router.get("/find", (req, res, next) => {
 });
 
 router.post("/find", (req, res, next) => {
-  User.find(
-    {
-      $and: [
-        { _id: { $ne: req.user._id, $nin: req.user.blockedUsers } },
-        { tandems: { $ne: req.user._id } }
-      ]
-    },
-    (error, tandems) => {
-      if (error) {
-        next(error);
-      } else {
-        res.render("tandems/find", { tandems, user: req.user });
-      }
+  let query = {
+    $and: [
+      { _id: { $ne: req.user._id, $nin: req.user.blockedUsers } },
+      { tandems: { $ne: req.user._id } }
+    ]
+  };
+  //if (req.body.country != "" || req.body.city != "") query.location = {};
+
+  let maxAge = 100;
+  const minAge = parseInt(req.body.ageStart);
+  if (req.body.ageEnd !== "") {
+    maxAge = parseInt(req.body.ageEnd);
+  }
+  query.age = { $gte: minAge, $lte: maxAge };
+  if (req.body.language !== "") {
+    query.knownLanguages = req.body.language;
+  }
+  if (req.body.country !== "") {
+    query["location.country"] = req.body.country;
+  }
+  if (req.body.city !== "") {
+    query["location.city"] = req.body.city;
+  }
+  console.log(query);
+  User.find(query, (error, tandems) => {
+    if (error) {
+      next(error);
+    } else {
+      res.render("tandems/find", { tandems, user: req.user });
     }
-  );
+  });
 });
 
 router.get("/:id?", (req, res, next) => {
