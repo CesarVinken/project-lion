@@ -39,11 +39,21 @@ router.post("/find", (req, res, next) => {
 });
 
 router.get("/:id?", (req, res, next) => {
+  let current = {};
+
   User.find({ tandems: req.user._id }, (error, tandems) => {
     if (error) {
       next(error);
     } else {
-      res.render("tandems/index", { tandems, user: req.user });
+      if (req.params.id != null) {
+        User.findById(req.params.id).then(tandem => {
+          current = tandem;
+          res.render("tandems/index", { tandems, current, user: req.user });
+        });
+      } else {
+        current = tandems[0];
+        res.render("tandems/index", { tandems, current, user: req.user });
+      }
     }
   });
 });

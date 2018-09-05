@@ -1,13 +1,22 @@
 {{> navbar user}}
-<h3>My tandems</h3>
-<ul>
-    {{#each tandems}}
-    <li>
-        <a href="/profile/{{ this._id}}">
-            {{ this.name}}<span> - {{ this.description }}</span>
-        </a>
-        <a href="/tandems/block/{{ this._id}}">Block</a>
-    </li>
-    {{/each }}
-</ul>
-</di
+<h3>My Tandems</h3>
+<div class="vert-container">
+    <div class="filter-container">
+        {{#each tandems}}
+        <li><a href="/tandems/{{this._id}}">{{this.name}}</a></li> {{/each }}
+    </div>
+    <div class="results-container">
+        <ul id="messages"></ul>
+        <form action="">
+            <div id="typing" style="color:white"></div>
+            <input id="m" autocomplete="off" /><button>Send</button>
+        </form>
+        <input type="hidden" id="sender" value="{{user._id}}">
+        <input type="hidden" id="receiver" value="{{current._id}}">
+        <ul>
+
+        </ul>
+    </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+<script src="/javascripts/chat.js"></script>

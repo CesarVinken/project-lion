@@ -9,13 +9,13 @@ cloudinary.config({
 
 const picUpload = (files, type) => {
   console.log(files);
-  return files == undefined
+  return !!files
     ? new Promise((resolve, reject) => {
         const { picture } = files;
         const path = `public/images/${picture.name}`;
 
         picture.mv(path, function(err) {
-          if (err) return next(err);
+          if (err) return console.log(err);
           upload(path).then(result => {
             fs.unlinkSync(path);
             name = result.secure_url;
@@ -23,7 +23,7 @@ const picUpload = (files, type) => {
           });
         });
       })
-    : Promise.resolve("public/images/placeholder" + type + ".png");
+    : Promise.resolve("/images/placeholder" + type + ".png");
 };
 
 function upload(path) {
