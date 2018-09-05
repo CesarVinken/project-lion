@@ -20,13 +20,13 @@ router.get("/", (req, res, next) => {
 });
 
 router.get("/find", (req, res, next) => {
-  Event.find((error, events) => {
-    if (error) {
-      next(error);
-    } else {
+  Event.find({})
+    .sort([["date", -1]])
+    .limit(25)
+    .then(events => {
       res.render("events/find", { events, user: req.user });
-    }
-  });
+    })
+    .catch(err => next(err));
 });
 
 router.post("/find", (req, res, next) => {
@@ -43,24 +43,14 @@ router.post("/find", (req, res, next) => {
     query["location.city"] = req.body.city;
   }
   console.log(query);
-  Event.find(
-    query,
-    {
-      limit: 25, // Ending Row
-      sort: {
-        date: -1 //Sort by Date Added DESC
-      }
-    },
-    (error, events) => {
-      if (error) {
-        next(error);
-      } else {
-        res.render("tandems/find", { events, user: req.user });
-      }
-    }
-  );
+  Event.find(query)
+    .sort([["date", -1]])
+    .limit(25)
+    .then(events => {
+      res.render("events/find", { events, user: req.user });
+    })
+    .catch(err => next(err));
 });
-
 router.get("/new", (req, res, next) => {
   res.render("events/new", {
     user: req.user,

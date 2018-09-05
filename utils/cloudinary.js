@@ -9,7 +9,7 @@ cloudinary.config({
 
 const picUpload = (files, type) => {
   console.log(files);
-  return !!files
+  return Object.keys(files).length !== 0
     ? new Promise((resolve, reject) => {
         const { picture } = files;
         const path = `public/images/${picture.name}`;
