@@ -14,7 +14,7 @@
       <label for="Age">Age:</label>
       <input type="number" name="age" placeholder="Age" value="" required>
       <label for="description">About me:</label>
-      <textarea rows="4" type="text" name="description" placeholder="Something about me.." value=""></textarea>
+      <textarea rows="4" type="text" name="description" placeholder="Something about me.."></textarea>
       <label for="password">Password</label>
       <input id="password" type="password" name="password" placeholder="Your password">
       <label for="picture">Profile Picture</label>
@@ -35,13 +35,10 @@
     </br>
     <div class="form-group">
       <h3>My Location</h3>
-      <label for="country">Country:</label>
-      <div class="ui dropdown">
-        <input type="hidden" name="country">
-        <div class="default text">Country</div>
-        <div class="menu" id="user-country">
-        </div>
-      </div>
+      <label for="country">Country</label>
+      <select class="ui search selection dropdown" name="country" id="user-country">
+        <option value="">Country</option>
+      </select>
       <label for="city">City:</label>
       <input type="text" name="city" placeholder="City" value="">
     </div>
