@@ -1,25 +1,64 @@
-<!-- views/auth/signup.hbs -->
+<script src='/javascripts/data.js'></script>
+<script src='/javascripts/user-info.js'></script>
+
 <h2>Signup</h2>
+<div class="form-group">
+  <form action="/signup" method="POST" id="form-container" encType="multipart/form-data">
+    <div class="form-group">
 
-<form action="/signup" method="POST" id="form-container" encType="multipart/form-data">
-  <label for="email">Email</label>
-  <input id="email" type="text" name="email" placeholder="jon@snow.com">
-  <label for="picture">Profile Picture</label>
-  <input type="file" name="picture">
-  <br><br>
+      <h3>Basic Information</h3>
+      <label for="name">Name:</label>
+      <input type="text" name="name" placeholder="Name" value="" required>
+      <label for="email">E-mail address:</label>
+      <input type="text" name="email" placeholder="E-mail address" value="" required>
+      <label for="Age">Age:</label>
+      <input type="number" name="age" placeholder="Age" value="" required>
+      <label for="description">About me:</label>
+      <textarea rows="4" type="text" name="description" placeholder="Something about me.." value=""></textarea>
+      <label for="password">Password</label>
+      <input id="password" type="password" name="password" placeholder="Your password">
+      <label for="picture">Profile Picture</label>
+      <input type="file" name="picture">
+    </div>
+    </br>
+    <div class="form-group">
+      <h3>My Languages</h3>
+      <label>Languages I know:</label>
+      <select name="known-languages" class="search selection" multiple="" id="multi-select-known">
+        <option value="">Select a language</option>
+      </select>
+      <label>Languages I am learning:</label>
+      <select name="learning-languages" class="search selection" multiple="" id="multi-select-learning">
+        <option value="">Select a language</option>
+      </select>
+    </div>
+    </br>
+    <div class="form-group">
+      <h3>My Location</h3>
+      <label for="country">Country:</label>
+      <div class="ui dropdown">
+        <input type="hidden" name="country">
+        <div class="default text">Country</div>
+        <div class="menu" id="user-country">
+        </div>
+      </div>
+      <label for="city">City:</label>
+      <input type="text" name="city" placeholder="City" value="">
+    </div>
+    </br>
 
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
-  <br> {{#if message }}
-  <div class="error-message">{{ message }}</div>
-  {{/if}}
+    {{#if message }}
+    <div class="error-message">{{ message }}</div>
+    {{/if}}
+    <div class="form-group">
+      </br>
+      <button class="success-btn">Create account</button>
+      </br>
 
-  <br><br>
-
-  <button>Create account</button>
-
-  <p class="account-message">
-    Do you already have an account?
-    <a href="/login">Login</a>
-  </p>
-</form>
+      <p class="account-message">
+        Do you already have an account?
+        <a href="/login">Login</a>
+      </p>
+    </div>
+  </form>
+</div>

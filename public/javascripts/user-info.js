@@ -16,7 +16,9 @@ $(document).ready(function() {
     }
   });
 
-  setUserLanguages();
+  if (user) {
+    setUserLanguages();
+  }
 });
 
 function getLanguageList() {
@@ -42,16 +44,14 @@ function getCountryList() {
 }
 
 function setUserLanguages() {
-  if (user) {
-    if (user.knownLanguages) {
-      user.knownLanguages.forEach(language => {
-        $("#multi-select-known").dropdown("set selected", language);
-      });
-    }
-    if (user.learningLanguages) {
-      user.learningLanguages.forEach(language => {
-        $("#multi-select-learning").dropdown("set selected", language);
-      });
-    }
+  if (user.knownLanguages) {
+    user.knownLanguages.forEach(language => {
+      $("#multi-select-known").dropdown("set selected", language);
+    });
+  }
+  if (user.learningLanguages) {
+    user.learningLanguages.forEach(language => {
+      $("#multi-select-learning").dropdown("set selected", language);
+    });
   }
 }
