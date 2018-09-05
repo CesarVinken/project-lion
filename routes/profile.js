@@ -1,15 +1,16 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
+const cloud = require("../utils/cloudinary");
 
 //upsert : true
 
 router.post("/edit/", (req, res, next) => {
   const location = { country: req.body.country, city: req.body.city };
   const { name, age, email, description } = req.body;
-  User.findOneAndUpdate(
-    { _id: req.user._id },
-    {
+  const pr = cloud.picUpload(req.files, "Profile");
+  pr.then(picture => {
+    let newData = {
       location,
       age,
       name,
@@ -17,16 +18,18 @@ router.post("/edit/", (req, res, next) => {
       description,
       knownLanguages: req.body["known-languages"],
       learningLanguages: req.body["learning-languages"]
-    },
-    { new: true, runValidators: true }
-  )
-    .then(user => {
-      res.redirect("/profile/");
-    })
-    .catch(err => {
-      console.log(err.message);
-      next(err);
-    });
+    };
+    if (picture !== "/images/placeholderProfile.png") {
+      newData.picture = picture;
+    }
+    User.findOneAndUpdate({ _id: req.user._id }, newData, { new: true, runValidators: true })
+      .then(user => {
+        res.redirect("/profile/");
+      })
+      .catch(err => {
+        next(err);
+      });
+  });
 });
 
 router.get("/edit/", (req, res, next) => {

@@ -5,7 +5,7 @@
 
 <h3>Edit Profile</h3>
 <div class="content-wrapper">
-    <form method="POST" action="/profile/edit">
+    <form method="POST" action="/profile/edit" encType="multipart/form-data">
         <div class="form-group">
 
             <h3>Basic Information</h3>
@@ -18,6 +18,11 @@
             <label>About me:</label>
             <textarea rows="4" type="text" name="description" placeholder="Something about me.." value="{{ user.description}}"></textarea>
         </div>
+        <h3>Profile Picture</h3>
+        <div class="form-group">
+            <input type="file" name="picture">
+        </div>
+        </br>
         </br>
         <div class="form-group" type="hidden" hidden>
             <h3>My Languages</h3>
