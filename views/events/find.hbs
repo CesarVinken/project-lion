@@ -4,7 +4,18 @@
 <a href="/events/new">Create own event</a>
 <div class="search-container">
     <div class="filter-container">
-        Filter options
+        <form action="/tandems/find" method="POST" id="form-container">
+            <label for="language">Language</label>
+            <input type="text" name="language" placeholder="Language you want to learn" value="">
+            <label for="country">Country</label>
+            <input type="text" name="country" placeholder="Country" value="">
+            <label for="city">City:</label>
+            <input type="text" name="city" placeholder="City" value="">
+            <label for="age">Age:</label>
+            <input type="number" name="ageStart" placeholder="Min. age" value="18" min="18" maxlength="2">
+            <input type="number" name="ageEnd" placeholder="Max. age">
+            <input type="submit" value="Find Events">
+        </form>
     </div>
     <div class="results-container">
         <ul>
