@@ -1,5 +1,14 @@
+<script>const tandemId = `{{this._id}}`</script>
+<script src='/javascripts/tandem-search.js'></script>
+
 <div class="tile">
-  <a href="/profile/{{ this._id}}">
-    {{ this.name}}<span> - {{ this.description }}</span>
-  </a> - <a href="/tandems/add/{{ this._id}}">Add</a>
+  <div class="tile-image"> <img src={{this.picture}} alt="profile picture">
+  </div>
+  <div class="tile-content">
+    <h3>{{ this.name}}</h3>
+    <p>{{ this.description }}</p>
+
+    <a href="/tandems/add/{{ this._id}}">Add</a>
+  </div>
+
 </div>
