@@ -1,12 +1,13 @@
 {{> navbar user}}
 <h3>Find Tandems</h3>
-<ul>
-    {{#each tandems}}
-    <li>
-        <a href="/profile/{{ this._id}}">
-            {{ this.name}}<span> - {{ this.description }}</span>
-        </a> - <a href="/tandems/add/{{ this._id}}">Add</a>
-    </li>
-    {{/each }}
-</ul>
-</di
+<div class="vert-container">
+    <div class="filter-container">
+        Filter options
+    </div>
+    <div class="results-container">
+
+        <ul>
+            {{#each tandems}} {{> tandem_tile this}} {{/each }}
+        </ul>
+    </div>
+</div>
