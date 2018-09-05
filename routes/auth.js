@@ -53,10 +53,16 @@ authRoutes.post("/signup", util.checkLogout, (req, res, next) => {
 
       const newUser = new User({
         email,
+        name: req.body.name,
         picture,
+        knownLanguages: req.body.knownLanguages,
+        learningLanguages: req.body.learningLanguages,
         password: hashPass,
         age: req.body.age,
-        country: req.body.country,
+        location: {
+          city: req.body.city,
+          country: req.body.country
+        },
         city: req.body.city
       });
 
