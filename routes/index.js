@@ -30,7 +30,12 @@ router.get("/", (req, res, next) => {
         .sort({ date: 1 })
         .limit(3)
     ]).then(values => {
-      res.render("dashboard", { tandems: values[0], events: values[1], picture });
+      res.render("dashboard", {
+        tandems: values[0],
+        events: values[1],
+        picture,
+        user: req.user
+      });
     });
   }
 });
