@@ -34,33 +34,8 @@ const debug = require("debug")(`${app_name}:${path.basename(__filename).split(".
 const app = express();
 
 var http = require("http").createServer(app);
-var io = require("socket.io")(http);
 
-var nsp = io.of("/events");
-nsp.on("connection", function(socket) {
-  console.log(socket);
-  console.log("user connected");
-  socket.on("disconnect", function() {
-    console.log("user disconnected");
-  });
-  socket.on("message", function(msg) {
-    socket.emit("message", msg);
-    console.log("message: " + msg);
-  });
-});
-nsp.emit("hi", "everyone!");
-
-io.on("connection", function(socket) {
-  console.log(socket);
-  console.log("user connected");
-  socket.on("disconnect", function() {
-    console.log("user disconnected");
-  });
-  socket.on("message", function(msg) {
-    io.emit("message", msg);
-    console.log("message: " + msg);
-  });
-});
+require("./socket")(http);
 
 // Middleware Setup
 app.use(logger("dev"));

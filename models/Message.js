@@ -1,20 +1,18 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const messageSchema = new Schema(
-  {
-    From: Schema.Types.ObjectId,
-    To: Schema.Types.ObjectId,
-    Date: Date,
-    Delivered: Boolean
+const messageSchema = new Schema({
+  from: Schema.Types.ObjectId,
+  to: Schema.Types.ObjectId,
+  type: {
+    type: String,
+    enum: ["Tandem", "Event"],
+    required: true
   },
-  {
-    timestamps: {
-      createdAt: "created_at",
-      updatedAt: "updated_at"
-    }
-  }
-);
+  content: String,
+  date: Date,
+  delivered: Boolean
+});
 
 const Message = mongoose.model("Message", messageSchema);
-module.exports = Messafe;
+module.exports = Message;
