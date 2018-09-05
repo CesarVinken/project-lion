@@ -35,7 +35,7 @@ const app = express();
 
 var http = require("http").createServer(app);
 
-require("./socket")(http);
+require("./routes/socket")(http);
 
 // Middleware Setup
 app.use(logger("dev"));

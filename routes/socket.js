@@ -1,4 +1,4 @@
-const Message = require("./models/Message");
+const Message = require("../models/Message");
 
 // List of all connected clients
 const clients = new Map();
