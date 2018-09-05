@@ -153,7 +153,7 @@ nav {
       max-height: 100%; }
   .tile-dashboard .tile-content {
     padding: 0 8px;
-    width: calc(100% - $tile-picture-s); }
+    width: calc(100% - 80px); }
     .tile-dashboard .tile-content .message-time {
       font-size: 0.8rem;
       color: gray; }
@@ -161,33 +161,48 @@ nav {
 .search-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; }
+  justify-content: flex-start;
+  align-items: center; }
   @media (min-width: 660px) {
     .search-container {
       flex-direction: row;
       justify-content: flex-start; } }
   .search-container .filter-container {
+    height: 380px;
     width: 320px;
-    height: calc(100vh - 44px - 160px);
     padding: 0 0 0 8px;
     display: flex;
     flex-direction: column;
     align-items: center; }
     @media (min-width: 660px) {
       .search-container .filter-container {
+        height: calc(100vh - 44px - 160px);
         border-right: 1px solid black; } }
+    .search-container .filter-container .age {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin: 14px 0; }
+    .search-container .filter-container #min-age,
+    .search-container .filter-container #max-age {
+      width: 25%; }
   .search-container .results-container {
     padding: 0 0 0 8px; }
 
 .tile-search {
   border: 1px solid #e6e6e6;
   height: 120px;
-  padding: 0 4px;
   margin: 2px 0;
   display: flex;
-  align-items: center; }
+  align-items: center;
+  width: 96vw; }
+  @media (min-width: 480px) {
+    .tile-search {
+      width: 80vw; } }
   @media (min-width: 660px) {
     .tile-search {
+      padding: 0 4px;
       width: calc( 100vw - 320px - 8px - 8px); } }
   .tile-search .tile-image {
     height: 80px;
@@ -205,10 +220,11 @@ nav {
       max-height: 100%; }
   .tile-search .tile-content {
     padding: 0 8px;
-    width: calc(100% - $tile-picture-s); }
+    width: calc(100% - 80px - 30px);
+    font-size: 0.9rem; }
     @media (min-width: 660px) {
       .tile-search .tile-content {
-        width: calc(100% - $tile-picture-l); } }
+        width: calc(100% - 120px); } }
 
 * {
   margin: 0;

@@ -1,25 +1,38 @@
-<script>let tandemId = null</script> {{> navbar user}}
+{{> navbar user}}
+<script>let tandemId = null;</script>
+<script>const user = {{{ userString }}}</script>
+<script src='/javascripts/data.js'></script>
+<script src='/javascripts/user-info.js'></script>
 <h3>Find Tandems</h3>
 <div class="search-container">
     <div class="filter-container">
         <form action="/tandems/find" method="POST" id="form-container">
-            <label for="language">Language</label>
-            <input type="text" name="language" placeholder="Language you want to learn" value="">
-            <label for="country">Country</label>
-            <input type="text" name="country" placeholder="Country" value="">
-            <label for="city">City:</label>
-            <input type="text" name="city" placeholder="City" value="">
-            <label for="age">Age:</label>
-            <input type="number" name="ageStart" placeholder="Min. age" value="18" min="18" maxlength="2">
-            <input type="number" name="ageEnd" placeholder="Max. age">
-            <input type="submit" value="Find tandems">
+            <div class="form-group">
+                <label>Language:</label>
+                <select name="language" class="search selection" multiple="" id="multi-select-learning">
+                    <option value="">Select a language</option>
+                </select>
+                <label for="country">Country</label>
+                <select class="ui search selection dropdown" name="country" id="user-country">
+                    <option value="">Country</option>
+                </select>
+                <label for="city">City:</label>
+                <input type="text" name="city" placeholder="City" value="" id="user-city">
+                <div class="age">
+                    <label for="age">Min age:</label>
+                    <input type="number" name="ageStart" min="18" maxlength="2" id="min-age">
+                    <label for="age">Max age:</label>
+                    <input type="number" name="ageEnd" min="18" maxlength="2" id="max-age">
+                </div>
+            </div>
+            </br>
+            <input type="submit" value="Find tandems" class="success-btn">
         </form>
     </div>
-    <div class=" results-container ">
 
+    <div class=" results-container ">
         <ul>
             {{#each tandems}} {{> tandem_tile this}} {{/each }}
         </ul>
     </div>
 </div>
-<script src='/javascripts/data.js'></script>

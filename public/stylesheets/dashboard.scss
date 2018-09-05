@@ -63,7 +63,7 @@
   }
   .tile-content {
     padding: 0 8px;
-    width: calc(100% - $tile-picture-s);
+    width: calc(100% - #{$tile-picture-s});
 
     .message-time {
       font-size: 0.8rem;

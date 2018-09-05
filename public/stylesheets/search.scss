@@ -4,19 +4,33 @@ $filter-width: 320px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  align-items: center;
   @media #{$screen-middle-large} {
     flex-direction: row;
     justify-content: flex-start;
   }
   .filter-container {
+    height: 380px;
     width: $filter-width;
-    height: calc(100vh - #{$navbar-height} - 160px);
     padding: 0 0 0 8px;
     display: flex;
     flex-direction: column;
     align-items: center;
     @media #{$screen-middle-large} {
+      height: calc(100vh - #{$navbar-height} - 160px);
+
       border-right: 1px solid black;
+    }
+    .age {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      margin: 14px 0;
+    }
+    #min-age,
+    #max-age {
+      width: 25%;
     }
   }
 
@@ -27,16 +41,21 @@ $filter-width: 320px;
 
 .tile-search {
   border: 1px solid #e6e6e6;
+  height: $tile-picture-l;
+  margin: 2px 0;
+  display: flex;
+  align-items: center;
+  width: 96vw;
+  @media #{$screen-middle} {
+    width: 80vw;
+  }
   @media #{$screen-middle-large} {
+    padding: 0 4px;
     width: calc(
       100vw - #{$filter-width} - 8px - 8px
     ); //tile width: full width - filter space - container padding -tile padding
   }
-  height: $tile-picture-l;
-  padding: 0 4px;
-  margin: 2px 0;
-  display: flex;
-  align-items: center;
+
   .tile-image {
     height: $tile-picture-s;
     width: $tile-picture-s;
@@ -53,11 +72,13 @@ $filter-width: 320px;
       max-height: 100%;
     }
   }
+
   .tile-content {
     padding: 0 8px;
-    width: calc(100% - $tile-picture-s);
+    width: calc(100% - #{$tile-picture-s} - 30px);
+    font-size: 0.9rem;
     @media #{$screen-middle-large} {
-      width: calc(100% - $tile-picture-l);
+      width: calc(100% - #{$tile-picture-l});
     }
   }
 }
