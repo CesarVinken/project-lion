@@ -1,24 +1,38 @@
-<script>let eventId = null</script> {{> navbar user}}
+{{> navbar user}}
+<script>const user = {{{ userString }}}</script>
+<script src='/javascripts/data.js'></script>
+<script src='/javascripts/user-info.js'></script>
+
+<script>let eventId = null</script>
 <h3>Find Events</h3>
 
 <div class="search-container">
     <div class="filter-container">
         <form action="/events/find" method="POST" id="form-container">
-            <label for="language">Language</label>
-            <input type="text" name="language" placeholder="Main lagnuage of the event" value="">
-            <label for="country">Country</label>
-            <input type="text" name="country" placeholder="Country" value="">
-            <label for="city">City:</label>
-            <input type="text" name="city" placeholder="City" value="">
-            <!-- <label for="minDate">From:</label>
-            <input type="date" name="minDate" placeholder="Min. age">
-            <label for="axDate">To:</label>
-            <input type="date" name="maxDate" placeholder="Max. age">-->
-            <input type="submit" value="Find Events">
+            <div class="form-group">
+
+                <label for="language">Language</label>
+                <select name="language" class="search selection" multiple="" id="multi-select-learning">
+                    <option value="">Select a language</option>
+                </select>
+                <label for="country">Country</label>
+                <select class="ui search selection dropdown" name="country" id="user-country">
+                    <option value="">Country</option>
+                </select>
+                <label for="city">City:</label>
+                <input type="text" name="city" placeholder="City" value="">
+                <label for="minDate">From:</label>
+                <input type="date" name="minDate">
+                <label for="maxDate">To:</label>
+                <input type="date" name="maxDate">
+            </div>
+            </br>
+            <input type="submit " value="Find Events " class="success-btn ">
         </form>
-        <a href="/events/new">Create own event</a>
+        </br>
+        <a href="/events/new ">Create own event</a>
     </div>
-    <div class="results-container">
+    <div class="results-container ">
         <ul>
             {{#each events}} {{> event_tile this}} {{/each }}
         </ul>
