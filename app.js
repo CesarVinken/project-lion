@@ -18,7 +18,7 @@ const flash = require("connect-flash");
 mongoose.Promise = Promise;
 mongoose
   .connect(
-    "mongodb://localhost/project-lion",
+    process.env.MONGODB_URI,
     { useMongoClient: true }
   )
   .then(() => {
