@@ -1,0 +1,22 @@
+$filter-width: 320px;
+
+.filter-container {
+  width: $filter-width;
+  height: calc(100vh - #{$navbar-height} - 160px);
+  padding: 0 0 0 8px;
+  border-right: 1px solid black;
+}
+
+.results-container {
+  padding: 0 0 0 8px;
+}
+
+.tile {
+  border: 1px solid #e6e6e6;
+  width: calc(
+    100vw - #{$filter-width} - 8px - 8px
+  ); //tile width: full width - filter space - container padding -tile padding
+  height: 120px;
+  padding: 0 4px;
+  margin: 2px 0;
+}
