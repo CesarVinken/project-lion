@@ -1,6 +1,6 @@
 nav {
   background-color: $main-color-a;
-  height: 44px;
+  height: $navbar-height;
   font-size: 0.9rem;
   width: 100%;
   display: flex;
@@ -21,7 +21,7 @@ nav {
     }
 
     .dropdown {
-      height: 44px;
+      height: $navbar-height;
       .menu {
         right: 0;
         left: auto;
@@ -46,7 +46,7 @@ nav {
     color: black;
   }
   img {
-    height: 44px;
+    height: $navbar-height;
   }
 
   @media #{$screen-middle} {

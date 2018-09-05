@@ -49,12 +49,18 @@ nav {
   font-size: 1rem;
   width: 80vw;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center; }
+  @media (min-width: 660px) {
+    #content-wrapper-profile {
+      flex-direction: row; } }
   #content-wrapper-profile .column {
     display: flex;
     flex-direction: column;
-    margin: 0 10vw; }
+    margin: 0 2vw; }
+    @media (min-width: 1024px) {
+      #content-wrapper-profile .column {
+        margin: 0 10vw; } }
     #content-wrapper-profile .column #basic-info {
       height: 250px;
       margin: 20px 0; }
@@ -73,7 +79,10 @@ nav {
 
 .info-category {
   font-weight: 800;
-  width: 180px; }
+  width: 140px; }
+  @media (min-width: 1024px) {
+    .info-category {
+      width: 180px; } }
 
 #user-profile-name {
   font-size: 2.4rem;

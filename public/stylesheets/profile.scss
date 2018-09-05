@@ -5,13 +5,20 @@ $upper-part-height: 250px;
   font-size: 1rem;
   width: 80vw;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+
+  @media (min-width: 660px) {
+    flex-direction: row;
+  }
   justify-content: center;
   .column {
     display: flex;
     flex-direction: column;
-    margin: 0 10vw;
 
+    margin: 0 2vw;
+    @media #{$screen-large} {
+      margin: 0 10vw;
+    }
     #basic-info {
       height: $upper-part-height;
       margin: 20px 0;
@@ -38,7 +45,11 @@ $upper-part-height: 250px;
 
 .info-category {
   font-weight: 800;
-  width: 180px;
+
+  width: 140px;
+  @media #{$screen-large} {
+    width: 180px;
+  }
 }
 
 #user-profile-name {
