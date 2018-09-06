@@ -20,13 +20,12 @@
     </div>
     <div class="info-wrapper">
       <p>Location:</p>
-      <p>{{event.location.city}}, {{event.location.country}}{{#if event.location.street}},</br>{{event.location.street}}</p>{{/if}}
+      <p>{{#if event.location.city}}{{event.location.city}}, {{/if}}{{event.location.country}}{{#if event.location.street}},</br>{{event.location.street}}</p>{{/if}}
       <p>Language:</p>
       <p>{{event.language}}</p>
       <p>Date:</p>
       <p>{{event.date}}</p>
-      <p>Attendees:</p>
-      <p>{{event.counter}} </p> {{#if event.userAttending}}
+      <p>Attendees: {{event.counter}}</p> { {#if event.userAttending}}
       <a href="/events/unattend/{{event._id}}">Unattend Event</a><br> {{else}}
       <a href="/events/attend/{{event._id}}">Attend Event</a><br> {{/if}} {{#if event.own}}<a href="/events/edit/{{event._id}}">Edit
         Event
