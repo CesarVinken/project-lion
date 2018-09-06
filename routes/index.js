@@ -10,18 +10,6 @@ router.get("/", (req, res, next) => {
   } else {
     const picture = "https://picsum.photos/200/300/?random";
 
-    // const tandems = User.find({ tandems: req.user._id });
-    // const events = Even.find({ attendees: req.user._id });
-    // Promise.all()
-
-    // User.find({ tandems: req.user._id })
-    //   .then(tandems => {
-    //     return Even.find({ attendees: req.user._id });
-    //   })
-    //   .then(events => {
-    //     res.render("dashboard", { events, tandems });
-    //   });
-    // mongoose.Promise = Promise
     Promise.all([
       User.find({ tandems: req.user._id })
         .sort({ name: -1 })
@@ -30,12 +18,21 @@ router.get("/", (req, res, next) => {
       Event.find({ attendees: req.user._id })
         .sort({ date: 1 })
         .limit(3),
-      User.count({ tandems: req.user._id })
+      Event.count({ tandems: req.user._id })
     ]).then(values => {
-      console.log;
+      let tandemsMore = false;
+      let eventsMore = false;
+      if (values[1] > 3) {
+        tandemsMore = true;
+      }
+      if (values[3] > 3) {
+        eventsMore = true;
+      }
       res.render("dashboard", {
         tandems: values[0],
-        events: values[1],
+        tandemsMore,
+        events: values[2],
+        eventsMore,
         picture,
         user: req.user
       });
