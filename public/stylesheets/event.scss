@@ -1,4 +1,6 @@
-.content-wrapper.event {
+$chat-height: calc(100vh - #{$navbar-height} - 320px);
+
+.flex-column-center.event {
   flex-direction: column;
   justify-content: center;
   @media #{$screen-middle-large} {
@@ -6,22 +8,38 @@
     flex-direction: row;
   }
   .flex-column {
+    a {
+      margin-left: 5px;
+    }
     margin: 4px;
 
+    //justify-content: flex-start;
     justify-content: space-between;
     // background-color: aquamarine;
     height: 560px;
-    .flex-row {
-      .description {
-        height: 100%;
-        padding: 0 4px;
+    .flex-column {
+      justify-content: flex-start;
+      .flex-row {
+        .description {
+          height: 100%;
+          padding: 0 4px;
+        }
+        margin-bottom: 8px;
       }
-      margin-bottom: 8px;
     }
     .chat-wrapper {
       width: 66vw;
-      height: 66%;
+      // height: calc(100vh - #{$navbar-height} - 320px);
+      height: 600px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       // background-color: blue;
+      // border: 1px solid grey;
+      // margin: 4px;
+      #user-input {
+        width: 66vw;
+      }
     }
     .map-wrapper {
       display: none;
@@ -53,9 +71,4 @@
     max-width: 100%;
     max-height: 100%;
   }
-}
-
-.chat-wrapper {
-  border: 1px solid grey;
-  margin: 4px;
 }

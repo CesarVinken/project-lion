@@ -27,38 +27,3 @@
     background-color: white;
   }
 }
-
-#messages {
-  width: calc(100vw - 200px - 38px); //full width - tandem list - padding;
-  height: calc(100vh - #{$navbar-height} - 120px);
-  margin: 0 8px;
-  .message-container {
-    margin: 5px 0;
-    .inline-message {
-      padding: 8px;
-      border-radius: 14px;
-      display: inline-block;
-    }
-    .other {
-      background-color: $main-color-b;
-    }
-    .self {
-      background-color: white;
-    }
-  }
-}
-
-#user-input {
-  width: calc(100vw - 200px - 38px); //full width - tandem list - padding;
-  display: flex;
-  flex-direction: row;
-  margin: 0 8px;
-  button {
-    height: 30px;
-    width: 80px;
-  }
-  input {
-    height: 30px;
-    width: 100%;
-  }
-}

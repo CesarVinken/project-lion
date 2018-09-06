@@ -16,18 +16,20 @@
                 {{/each }}
         </ul>
     </div>
-    <div class="flex-column messages">
-        <ul id="messages">
-        </ul>
-        <form action="" id="user-input">
-            <button>Send</button>
-            <div id="typing" style="color:white"></div>
-            <input id="m" autocomplete="off" />
-        </form>
-        <input type="hidden" id="sender" value="{{user._id}}">
-        <input type="hidden" id="receiver" value="{{current._id}}">
-        <ul>
-        </ul>
+    <div class="chat-wrapper">
+        <div class="flex-column">
+            <ul class="tandem" id="messages">
+            </ul>
+            <form action="" id="user-input">
+                <button>Send</button>
+                <div id="typing" style="color:white"></div>
+                <input id="m" autocomplete="off" />
+            </form>
+            <input type="hidden" id="sender" value="{{user._id}}">
+            <input type="hidden" id="receiver" value="{{current._id}}">
+            <ul>
+            </ul>
+        </div>
     </div>
 </div>
 
