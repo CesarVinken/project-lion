@@ -7,7 +7,7 @@ router.get("/find", (req, res, next) => {
     {
       $and: [
         { _id: { $ne: req.user._id, $nin: req.user.blockedUsers } },
-        { "tandems._id": { $ne: req.user._id } }
+        { "tandems.user": { $ne: req.user._id } }
       ]
     },
     (error, tandems) => {
@@ -28,7 +28,7 @@ router.post("/find", (req, res, next) => {
   let query = {
     $and: [
       { _id: { $ne: req.user._id, $nin: req.user.blockedUsers } },
-      { "tandems._id": { $ne: req.user._id } }
+      { "tandems.user": { $ne: req.user._id } }
     ]
   };
 
@@ -66,22 +66,24 @@ router.post("/find", (req, res, next) => {
 router.get("/:id?", (req, res, next) => {
   let current = {};
 
-  User.find({ "tandems._id": req.user._id })
-    .sort([["lastAcitivity", -1]])
-    .then(tandems => {
+  User.findById(req.user._id)
+    .populate("tandems.user")
+    // .sort([["lastActivity", -1]])
+    .then(user => {
+      let tandems = user.tandems;
+      console.log(tandems);
       if (req.params.id != null) {
         for (let tandem of tandems) {
-          if (tandem._id == req.params.id) {
-            tandem.selected = true;
+          if (tandem.user._id == req.params.id) {
+            tandem.user.selected = true;
+            current = tandem;
           }
         }
-        User.findById(req.params.id).then(tandem => {
-          current = tandem;
-          res.render("tandems/index", { tandems, current, user: req.user });
-        });
+        console.log("current", current);
+        res.render("tandems/index", { tandems, current, user: req.user });
       } else {
         if (tandems.length > 0) {
-          tandems[0].selected = true;
+          tandems[0].user.selected = true;
           current = tandems[0];
         }
 
@@ -95,12 +97,12 @@ router.get("/add/:id", (req, res, next) => {
   const date = new Date();
   User.findOneAndUpdate(
     { _id: req.params.id },
-    { $push: { tandems: { _id: req.user._id, lastActivity: date } } }
+    { $push: { tandems: { user: req.user._id, lastActivity: date } } }
   )
     .then(user => {
       return User.findOneAndUpdate(
         { _id: req.user._id },
-        { $push: { tandems: { _id: req.params.id, lastActivity: date } } }
+        { $push: { tandems: { user: req.params.id, lastActivity: date } } }
       );
     })
     .then(user => {
@@ -116,7 +118,7 @@ router.get("/block/:id", (req, res, next) => {
     { _id: req.user._id },
     {
       $push: { blockedUsers: req.params.id },
-      $pull: { tandems: { _id: req.params.id } }
+      $pull: { tandems: { user: req.params.id } }
     }
   )
     .then(user => {

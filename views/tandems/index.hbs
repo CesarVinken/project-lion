@@ -4,14 +4,15 @@
 <div class="flex-row">
     <div class="flex-column tandem-list">
         <ul>
-            {{#each tandems}} {{#if this.selected}}
+            {{#each tandems}} {{#if this.user.selected}}
             <li class="current">
                 {{else}}
                 <li>{{/if}}
                     <div class="tile-image">
-                        <img src="{{this.picture}}" alt="">
+                        <img src="{{this.user.picture}}" alt="">
                     </div>
-                    <a href="/tandems/{{this._id}}">{{this.name}}</a>
+                    <a href="/tandems/{{this.user._id}}">{{this.user.name}}</a>
+                    {{!-- {{this.lastActivity}} moment(new Date(msg.date)).format("ddd h:mm")--}}
                 </li>
                 {{/each }}
         </ul>
@@ -26,7 +27,7 @@
                 <input id="m" autocomplete="off" />
             </form>
             <input type="hidden" id="sender" value="{{user._id}}">
-            <input type="hidden" id="receiver" value="{{current._id}}">
+            <input type="hidden" id="receiver" value="{{current.user._id}}">
             <ul>
             </ul>
         </div>

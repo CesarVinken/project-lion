@@ -27,7 +27,10 @@ const userSchema = new Schema(
     events: [Schema.Types.ObjectId],
     tandems: [
       {
-        _id: Schema.Types.ObjectId,
+        user: {
+          type: Schema.Types.ObjectId,
+          ref: "User"
+        },
         lastActivity: Date
       }
     ],

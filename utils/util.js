@@ -24,7 +24,7 @@ const updateActivity = (id1, id2) => {
   console.log("id1: " + id1 + " -id2: " + id2);
   const date = new Date();
   User.findOneAndUpdate(
-    { _id: id1, "tandems._id": id2 },
+    { _id: id1, "tandems.user": id2 },
     { $set: { "tandems.$.lastActivity": date } }
   ).catch(err => console.log(err));
 };
