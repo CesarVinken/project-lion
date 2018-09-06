@@ -1,4 +1,5 @@
 const Message = require("../models/Message");
+const Util = require("../utils/util");
 
 // List of all connected clients
 const clients = new Map();
@@ -109,6 +110,7 @@ module.exports = function(http) {
     // message
     socket.on("message", function(msg) {
       const client = clients.get(socket.dbId);
+      Util.updateActivity(client.receiverDbId, socket.dbId);
       if (client.receiverOn) {
         private.to(`${client.receiverIoId}`).emit("message", msg);
       }
