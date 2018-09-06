@@ -1,4 +1,5 @@
 {{> navbar user}}
+<script src="/javascripts/dashboard.js"></script>
 <h1>Hello {{user.name}}</h1>
 <div class="background-wrapper">
     {{!-- <img src="{{picture}}"> --}}
@@ -11,7 +12,9 @@
         <ul>
             {{#each tandems}} {{> tandem_tile_small this}} {{/each}}
         </ul>
-        {{else}}
+        {{#if tandemsMore}}
+        <button class="white-btn" id="more-tandems">More...</button>
+        {{/if}} {{else}}
         <p>You have no ongoing conversations. <a href="/tandems/find">Find somebody to practice a language with here</a></p>
         {{/if}}
     </div>
@@ -20,8 +23,9 @@
         {{#if events}}
         <ul>
             {{#each events}} {{> event_tile_small this}} {{/each}}
-        </ul>
-        {{else}}
+        </ul> {{#if eventsMore}}
+        <button class="white-btn" id="more-events">More...</button>
+        {{/if}} {{else}}
         <p>You are not subscribed to any upcoming events. <a href=" /events/find">Find an event here</a></p>
         {{/if}}
     </div>

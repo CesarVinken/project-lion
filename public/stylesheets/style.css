@@ -418,6 +418,15 @@ form {
   flex-direction: column;
   align-items: center; }
 
+.white-btn {
+  background-color: white;
+  color: black;
+  width: 200px;
+  padding: 8px 0;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  text-align: center; }
+
 .success-btn {
   background-color: #20a2ff;
   color: #ffffff;
