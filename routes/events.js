@@ -81,7 +81,10 @@ router.post("/new", (req, res, next) => {
     }).save();
   })
     .then(event => {
-      User.findOneAndUpdate({ _id: req.user._id }, { $push: { events: event._id } });
+      User.findOneAndUpdate(
+        { _id: req.user._id },
+        { $push: { events: event._id } }
+      );
       return event;
     })
     .then(event => {
@@ -102,6 +105,11 @@ router.get("/:id", (req, res, next) => {
       } else {
         event.userAttending = true;
       }
+
+      if (event.user.equals(req.user._id)) {
+        event.own = true;
+      }
+      console.log(event);
       res.render("events/show", { event, user: req.user });
     }
   });
@@ -119,10 +127,14 @@ router.post("/edit/:id", (req, res, next) => {
     if (picture !== "/images/placeholderEvent.png") {
       req.body.picture = picture;
     }
-    Event.findOneAndUpdate({ $and: [{ _id: req.params.id }, { user: req.user._id }] }, req.body, {
-      new: true,
-      runValidators: true
-    })
+    Event.findOneAndUpdate(
+      { $and: [{ _id: req.params.id }, { user: req.user._id }] },
+      req.body,
+      {
+        new: true,
+        runValidators: true
+      }
+    )
       .then(event => {
         res.redirect("/events/" + req.params.id);
       })
@@ -148,7 +160,10 @@ router.get("/edit/:id", (req, res, next) => {
 });
 
 router.get("/delete/:id", (req, res, next) => {
-  User.findOneAndUpdate({ id: req.params.id }, { $pull: { ownEvents: req.params.id } });
+  User.findOneAndUpdate(
+    { id: req.params.id },
+    { $pull: { ownEvents: req.params.id } }
+  );
   User.update(
     { events: req.params.id },
     { $pull: { events: req.params.id } },

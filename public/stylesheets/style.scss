@@ -8,6 +8,7 @@ $screen-large: "(min-width : 1024px)";
 $btn-text-a: #aaaaaa;
 $btn-text-b: #ffffff;
 $navbar-height: 44px;
+$tile-picture-xl: 180px;
 $tile-picture-l: 120px;
 $tile-picture-s: 80px;
 $tile-picture-xs: 60px;
@@ -16,6 +17,7 @@ $tile-picture-xs: 60px;
 @import "./profile";
 @import "./dashboard";
 @import "./search";
+@import "./event";
 
 * {
   margin: 0;
@@ -61,6 +63,16 @@ form {
   flex-direction: column;
   align-items: center;
   margin: 0 0 20px 0;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
 }
 
 .success-btn {
