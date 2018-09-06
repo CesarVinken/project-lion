@@ -65,11 +65,19 @@ router.get("/:id?", (req, res, next) => {
       next(error);
     } else {
       if (req.params.id != null) {
+        for (let tandem of tandems) {
+          //if (tandem._id.equals(req.params.id)) {
+          if (tandem._id == req.params.id) {
+            console.log("selected one");
+            tandem.selected = true;
+          }
+        }
         User.findById(req.params.id).then(tandem => {
           current = tandem;
           res.render("tandems/index", { tandems, current, user: req.user });
         });
       } else {
+        tandems[0].selected = true;
         current = tandems[0];
         res.render("tandems/index", { tandems, current, user: req.user });
       }

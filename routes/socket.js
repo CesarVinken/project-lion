@@ -100,13 +100,11 @@ module.exports = function(http) {
         .then(messages => {
           private.to(`${client.ioId}`).emit("init", messages);
         });
-      console.log(clients);
     });
     // disconnect
     socket.on("disconnect", function() {
       removeClient(socket);
       console.log("user disconnected");
-      console.log(clients);
     });
     // message
     socket.on("message", function(msg) {
