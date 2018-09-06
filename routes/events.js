@@ -120,7 +120,7 @@ router.get("/:id", (req, res, next) => {
       if (event.user.equals(req.user._id)) {
         event.own = true;
       }
-      if (event.attendees.indexOf(user._id) === -1) {
+      if (event.attendees.indexOf(req.user._id) === -1) {
         event.attending = true;
       }
       res.render("events/show", { event, user: req.user });

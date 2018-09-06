@@ -26,10 +26,13 @@ router.get("/", (req, res, next) => {
       User.find({ tandems: req.user._id })
         .sort({ name: -1 })
         .limit(3),
+      User.count({ tandems: req.user._id }),
       Event.find({ attendees: req.user._id })
         .sort({ date: 1 })
-        .limit(3)
+        .limit(3),
+      User.count({ tandems: req.user._id })
     ]).then(values => {
+      console.log;
       res.render("dashboard", {
         tandems: values[0],
         events: values[1],
