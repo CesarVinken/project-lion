@@ -1,4 +1,5 @@
 const express = require("express");
+const moment = require("moment");
 const router = express.Router();
 const Event = require("../models/Event");
 const User = require("../models/User");
@@ -34,11 +35,23 @@ router.get("/find", (req, res, next) => {
 });
 
 router.post("/find", (req, res, next) => {
+  console.log(req.body);
   let query = {
-    attendees: { $ne: req.user._id }
+    //attendees: { $ne: req.user._id }
   };
-  if (req.body.language !== "") {
-    query.language = req.body.language;
+  let minDate = new Date();
+  minDate.setHours(0, 0, 0, 0);
+  let maxDate = new Date(minDate.getFullYear() + 1, minDate.getMonth(), minDate.getDay());
+
+  if (req.body.minDate !== "") {
+    minDate = req.body.minDate;
+  }
+  if (req.body.maxDate !== "" && req.body.maxDate >= minDate) {
+    maxDate = req.body.maxDate;
+  }
+  query.date = { $gte: minDate, $lte: maxDate };
+  if (req.body.language !== undefined) {
+    query.language = { $in: req.body.language };
   }
   if (req.body.country !== "") {
     query["location.country"] = req.body.country;
@@ -70,6 +83,7 @@ router.post("/new", (req, res, next) => {
       description: req.body.description,
       language: req.body.language,
       date: req.body.date,
+      dateStr: moment(req.body.date).format("ddd DD/MM/YYYY"),
       user: req.user,
       attendees: [req.user._id],
       location: {
@@ -119,6 +133,7 @@ router.post("/edit/:id", (req, res, next) => {
     if (picture !== "/images/placeholderEvent.png") {
       req.body.picture = picture;
     }
+    req.body.dateStr = moment(req.body.date).format("ddd DD/MM/YYYY");
     Event.findOneAndUpdate({ $and: [{ _id: req.params.id }, { user: req.user._id }] }, req.body, {
       new: true,
       runValidators: true

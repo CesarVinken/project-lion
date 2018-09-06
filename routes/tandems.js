@@ -31,7 +31,6 @@ router.post("/find", (req, res, next) => {
       { tandems: { $ne: req.user._id } }
     ]
   };
-  //if (req.body.country != "" || req.body.city != "") query.location = {};
 
   let maxAge = 100;
   const minAge = parseInt(req.body.ageStart);
@@ -39,8 +38,8 @@ router.post("/find", (req, res, next) => {
     maxAge = parseInt(req.body.ageEnd);
   }
   query.age = { $gte: minAge, $lte: maxAge };
-  if (req.body.language !== "") {
-    query.knownLanguages = req.body.language;
+  if (req.body.language.length !== 0) {
+    query.knownLanguages = { $in: req.body.language };
   }
   if (req.body.country !== "") {
     query["location.country"] = req.body.country;
@@ -79,15 +78,9 @@ router.get("/:id?", (req, res, next) => {
 });
 
 router.get("/add/:id", (req, res, next) => {
-  User.findOneAndUpdate(
-    { _id: req.params.id },
-    { $push: { tandems: req.user._id } }
-  )
+  User.findOneAndUpdate({ _id: req.params.id }, { $push: { tandems: req.user._id } })
     .then(user => {
-      return User.findOneAndUpdate(
-        { _id: req.user._id },
-        { $push: { tandems: req.params.id } }
-      );
+      return User.findOneAndUpdate({ _id: req.user._id }, { $push: { tandems: req.params.id } });
     })
     .then(user => {
       res.redirect("/tandems/" + req.params.id);
@@ -106,10 +99,7 @@ router.get("/block/:id", (req, res, next) => {
     }
   )
     .then(user => {
-      return User.findOneAndUpdate(
-        { _id: req.params.id },
-        { $pull: { tandems: req.user._id } }
-      );
+      return User.findOneAndUpdate({ _id: req.params.id }, { $pull: { tandems: req.user._id } });
     })
     .then(user => {
       res.redirect("/tandems/");

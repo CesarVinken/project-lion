@@ -35,19 +35,33 @@ const removeClient = socket => {
 
 module.exports = function(http) {
   const io = require("socket.io")(http);
-  //   var nsp = io.of("/events");
-  //   nsp.on("connection", function(socket) {
-  //     //console.log(socket);
-  //     console.log(data);
-  //     socket.on("disconnect", function() {
-  //       console.log("user disconnected");
-  //     });
-  //     socket.on("message", function(msg) {
-  //       socket.emit("message", msg);
-  //       console.log("message: " + msg);
-  //     });
-  //   });
-  //   nsp.emit("hi", "everyone!");
+    var nsp = io.of("/events");
+    nsp.on("connection", function(socket) {
+      console.log("user connected");
+      // join room
+      socket.on("join", function(data) {
+        socket.join(data.eventId);
+        socket.dbId = data.senderId;
+        socket.eventId = data.eventId;
+        Message.find({
+          to: data.EventId
+        })
+          .limit(100)
+          .sort([["date", 1]])
+          .then(messages => {
+            nsp.to(`${socket.id}`).emit("init", messages);
+          });
+      });
+      // message
+      socket.on("message", function(msg){
+        nsp.to('some room').emit('some event');
+      })
+      // disconnect
+      socket.on("disconnect", function() {
+        removeClient(socket);
+        console.log("user disconnected");
+        console.log(clients);
+      });
 
   io.on("connection", function(socket) {
     console.log("user connected");
@@ -59,7 +73,8 @@ module.exports = function(http) {
         $or: [
           { $and: [{ from: data.sender }, { to: data.receiver }] },
           { $and: [{ from: data.receiver }, { to: data.sender }] }
-        ]
+        ],
+        type: "Tandem"
       })
         .limit(100)
         .sort([["date", 1]])
@@ -68,6 +83,14 @@ module.exports = function(http) {
         });
       console.log(clients);
     });
+    // join room (event)
+    socket.on("join", function(eventId) {
+      socket.join("eventId");
+    });
+    // message (event)
+    socket.on("msgEvent", function(msg){
+      io.to('some room').emit('some event');
+    })
     // disconnect
     socket.on("disconnect", function() {
       removeClient(socket);
@@ -86,7 +109,7 @@ module.exports = function(http) {
           to: client.receiverDbId,
           type: "Tandem",
           content: msg,
-          date: Date.now(),
+          date: new Date(),
           delivered: client.receiverOn
         },
         function(err, message) {

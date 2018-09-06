@@ -1,9 +1,10 @@
 $(function() {
   // Connect
-  const myId = $("#sender").val();
-  const socket = io();
+  const senderId = $("#sender").val();
+  const eventId = $("#event").val();
+  const socket = io("/events");
   socket.on("connect", function() {
-    socket.emit("userid", { sender: myId, receiver: $("#receiver").val() });
+    socket.emit("join", { senderId, eventId });
   });
   $("form").submit(function() {
     let date = moment(new Date()).format("ddd h:mm");
@@ -20,7 +21,7 @@ $(function() {
     $("#messages").empty();
     for (const msg of messages) {
       const date = moment(new Date(msg.date)).format("ddd h:mm");
-      if (msg.from === myId) {
+      if (msg.from === senderId) {
         $("#messages").append($("<li>").text(date + " My: " + msg.content));
       } else {
         $("#messages").append($("<li>").text(date + ": " + msg.content));

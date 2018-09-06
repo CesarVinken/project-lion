@@ -8,6 +8,7 @@ const eventSchema = new Schema(
       required: true
     },
     date: Date,
+    dateStr: String,
     picture: String,
     location: {
       country: String,
