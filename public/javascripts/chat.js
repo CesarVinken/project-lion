@@ -1,7 +1,7 @@
 $(function() {
   // Connect
   const myId = $("#sender").val();
-  const socket = io();
+  const socket = io("/private");
   socket.on("connect", function() {
     socket.emit("userid", { sender: myId, receiver: $("#receiver").val() });
   });

@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const messageSchema = new Schema({
   from: Schema.Types.ObjectId,
+  name: String,
   to: Schema.Types.ObjectId,
   type: {
     type: String,
