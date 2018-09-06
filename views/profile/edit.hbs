@@ -5,48 +5,50 @@
 <script src='/javascripts/util/language-init.js'></script>
 <script src='/javascripts/util/country-init.js'></script>
 
-<h3>Edit Profile</h3>
+</br>
 <div class="flex-column-center">
-    <form method="POST" action="/profile/edit" encType="multipart/form-data">
-        <div class="form-group">
-
+    <h2>Edit Profile</h2>
+    <div class="flex-column-center">
+        <form method="POST" action="/profile/edit" encType="multipart/form-data">
             <h3>Basic Information</h3>
-            <label>Name:</label>
-            <input type="text" name="name" placeholder="Name" value="{{ user.name}}" required>
-            <label>E-mail address:</label>
-            <input type="text" name="email" placeholder="E-mail address" value="{{ user.email}}" required>
-            <label>Age:</label>
-            <input type="number" name="age" placeholder="Age" value="{{ user.age}}" required>
-            <label>About me:</label>
-            <textarea rows="4" type="text" name="description" placeholder="Something about me..">{{ user.description}}</textarea>
-        </div>
-        <h3>Profile Picture</h3>
-        <div class="form-group">
-            <input type="file" name="picture">
-        </div>
-        </br>
-        </br>
-        <div class="form-group" type="hidden" hidden>
+            <div class="form-group">
+                <label>Name:</label>
+                <input type="text" name="name" placeholder="Name" value="{{ user.name}}" required>
+                <label>E-mail address:</label>
+                <input type="text" name="email" placeholder="E-mail address" value="{{ user.email}}" required>
+                <label>Age:</label>
+                <input type="number" name="age" placeholder="Age" value="{{ user.age}}" required>
+                <label>About me:</label>
+                <textarea rows="4" type="text" name="description" placeholder="Something about me..">{{ user.description}}</textarea>
+            </div>
+            <h3>Profile Picture</h3>
+            <div class="form-group">
+                <input type="file" name="picture">
+            </div>
+            </br>
+            </br>
             <h3>My Languages</h3>
-            <label>Languages I know:</label>
-            <select name="known-languages" class="search selection" multiple="" id="multi-select-known">
-                <option value="">Select a language</option>
-            </select>
-            <label>Languages I am learning:</label>
-            <select name="learning-languages" class="search selection" multiple="" id="multi-select-learning">
-                <option value="">Select a language</option>
-            </select>
-        </div>
-        </br>
-        <div class="form-group">
+            <div class="form-group" type="hidden" hidden>
+                <label>Languages I know:</label>
+                <select name="known-languages" class="search selection" multiple="" id="multi-select-known">
+                    <option value="">Select a language</option>
+                </select>
+                <label>Languages I am learning:</label>
+                <select name="learning-languages" class="search selection" multiple="" id="multi-select-learning">
+                    <option value="">Select a language</option>
+                </select>
+            </div>
+            </br>
             <h3>My Location</h3>
-            <label for="country">Country</label>
-            <select class="ui search selection dropdown" name="country" id="user-country">
-                <option value="">Country</option>
-            </select>
-            <label>City:</label>
-            <input type="text" name="city" placeholder="City" value="{{ user.location.city}}">
-        </div> </br>
-        <button type="submit" name="" id="submit" class="success-btn">Save Changes</button>
-    </form>
+            <div class="form-group">
+                <label for="country">Country</label>
+                <select class="ui search selection dropdown" name="country" id="user-country">
+                    <option value="">Country</option>
+                </select>
+                <label>City:</label>
+                <input type="text" name="city" placeholder="City" value="{{ user.location.city}}">
+            </div> </br>
+            <button type="submit" name="" id="submit" class="success-btn">Save Changes</button>
+        </form>
+    </div>
 </div>

@@ -42,7 +42,9 @@ a {
   color: $main-color-a;
 }
 
+h1,
 h2 {
+  margin-left: 22px;
 }
 
 textarea {
@@ -87,6 +89,9 @@ form {
   display: flex;
   flex-direction: column;
   align-items: center;
+  h2 {
+    margin-left: 0;
+  }
 }
 
 .white-btn {
