@@ -9,16 +9,27 @@ $(function() {
   });
   $("form").submit(function() {
     socket.emit("message", $("#m").val());
-    // $("#messages").append($("<li>").text(date + " My: " + $("#m").val()));
     $("#m").val("");
     return false;
   });
   socket.on("message", function(data) {
     let date = moment(new Date()).format("ddd h:mm");
     if ((data.name = name)) {
-      $("#messages").append($("<li>").text(date + " Me : " + data.msg));
+      $("#messages").append(
+        $(
+          `<div class='message-container'><div class='inline-message self'>${date} Me: ${
+            data.msg
+          }</div></div>`
+        )
+      );
     } else {
-      $("#messages").append($("<li>").text(date + " " + data.name + ": " + data.msg));
+      $("#messages").append(
+        $(
+          `<div class='message-container'><div class='inline-message other'>${date}" "${
+            data.name
+          }: ${data.msg}</div></div>`
+        )
+      );
     }
   });
 
@@ -27,9 +38,21 @@ $(function() {
     for (const msg of messages) {
       const date = moment(new Date(msg.date)).format("ddd h:mm");
       if (msg.from === senderId) {
-        $("#messages").append($("<li>").text(date + " Me:" + msg.content));
+        $("#messages").append(
+          $(
+            `<div class='message-container'><div class='inline-message self'>${date} Me: ${
+              msg.content
+            }</div></div>`
+          )
+        );
       } else {
-        $("#messages").append($("<li>").text(date + " " + msg.name + ": " + msg.content));
+        $("#messages").append(
+          $(
+            `<div class='message-container'><div class='inline-message other'>${date} ${
+              msg.name
+            }: ${msg.content}</div></div>`
+          )
+        );
       }
     }
   });
