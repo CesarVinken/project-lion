@@ -15,6 +15,7 @@ $tile-picture-l: 120px;
 $tile-picture-s: 80px;
 $tile-picture-xs: 50px;
 $filter-width: 320px;
+$shadow: 0px 2px 2px grey;
 
 @import "./landing-page";
 @import "./navigation";
@@ -102,6 +103,7 @@ form {
   border-radius: 4px;
   font-size: 1.1rem;
   text-align: center;
+  box-shadow: 0px 2px 2px lightgray;
 }
 
 .success-btn {
@@ -112,6 +114,7 @@ form {
   border-radius: 4px;
   font-size: 1.1rem;
   text-align: center;
+  box-shadow: $shadow;
 }
 
 .success-btn:hover {
@@ -127,6 +130,7 @@ form {
   border-radius: 4px;
   font-size: 1.1rem;
   text-align: center;
+  box-shadow: $shadow;
 }
 .danger-btn:hover {
   color: $btn-text-b;

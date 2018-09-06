@@ -6,6 +6,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: $shadow;
   .nav-group {
     display: flex;
     justify-content: flex-start;
