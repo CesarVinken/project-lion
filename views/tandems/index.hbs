@@ -1,16 +1,23 @@
 {{> navbar user}}
+<div class="flex-column-center"></div>
 <h2>My Tandems</h2>
 <div class="flex-row">
     <div class="flex-column tandem-list">
         <ul>
-            {{#each tandems}}
-            <li><a href="/tandems/{{this._id}}">{{this.name}}</a></li>
-            {{/each }}
+            {{#each tandems}} {{#if this.current}}
+            <li class="current">
+                {{else}}
+                <li>{{/if}}
+                    <div class="tile-image">
+                        <img src="{{this.picture}}" alt="">
+                    </div>
+                    <a href="/tandems/{{this._id}}">{{this.name}}</a>
+                </li>
+                {{/each }}
         </ul>
     </div>
     <div class="flex-column messages">
         <ul id="messages">
-
         </ul>
         <form action="" id="user-input">
             <button>Send</button>
