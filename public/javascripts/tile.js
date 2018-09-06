@@ -4,6 +4,6 @@ $(document).ready(function() {
   });
 
   $(".tile-interactive.tandem").click(e => {
-    window.location = `/tandems/${e.currentTarget.id}`;
+    window.location = `/profile/${e.currentTarget.id}`;
   });
 });
