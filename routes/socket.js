@@ -1,5 +1,6 @@
 const Message = require("../models/Message");
 const Util = require("../utils/util");
+const moment = require("moment");
 
 // List of all connected clients
 const clients = new Map();
@@ -48,7 +49,7 @@ module.exports = function(http) {
       socket.eventId = data.eventId;
       socket.userName = data.name;
       Message.find({
-        to: data.EventId
+        to: data.eventId
       })
         .limit(100)
         .sort([["date", 1]])
@@ -110,9 +111,10 @@ module.exports = function(http) {
     // message
     socket.on("message", function(msg) {
       const client = clients.get(socket.dbId);
+      const date = moment(new Date()).format("ddd h:mm");
       Util.updateActivity(client.receiverDbId, socket.dbId);
       if (client.receiverOn) {
-        private.to(`${client.receiverIoId}`).emit("message", msg);
+        private.to(`${client.receiverIoId}`).emit("message", { msg, date });
       }
       Message.create(
         {
