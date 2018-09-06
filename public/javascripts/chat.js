@@ -19,10 +19,12 @@ $(function() {
     scrollToBottom();
     return false;
   });
-  socket.on("message", function(msg) {
+  socket.on("message", function(data) {
     $("#messages").append(
       $(
-        `<div class='message-container'><div class='inline-message other'>${msg}</div></div>`
+        `<div class='message-container'><div class='inline-message other'>${data.date}: ${
+          data.msg
+        }</div></div>`
       )
     );
     scrollToBottom();
