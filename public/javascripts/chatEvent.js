@@ -1,4 +1,4 @@
-$(function() {
+$(() => {
   // Connect
   const senderId = $("#sender").val();
   const eventId = $("#receiver").val();
@@ -31,6 +31,7 @@ $(function() {
         )
       );
     }
+    scrollToBottom();
   });
 
   socket.on("init", function(messages) {
@@ -55,5 +56,11 @@ $(function() {
         );
       }
     }
+    scrollToBottom();
   });
 });
+
+function scrollToBottom() {
+  var out = $("#messages");
+  out.scrollTop(out.prop("scrollHeight"));
+}

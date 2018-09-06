@@ -10,12 +10,13 @@ $(function() {
     socket.emit("message", $("#m").val());
     $("#messages").append(
       $(
-        `<div class='message-container'><div class='inline-message self'>${date} My: ${$(
+        `<div class='message-container'><div class='inline-message self'>${date}: ${$(
           "#m"
         ).val()}</div></div>`
       )
     );
     $("#m").val("");
+    scrollToBottom();
     return false;
   });
   socket.on("message", function(msg) {
@@ -24,6 +25,7 @@ $(function() {
         `<div class='message-container'><div class='inline-message other'>${msg}</div></div>`
       )
     );
+    scrollToBottom();
   });
 
   socket.on("init", function(messages) {
@@ -33,7 +35,7 @@ $(function() {
       if (msg.from === myId) {
         $("#messages").append(
           $(
-            `<div class='message-container'><div class='inline-message self'>${date} My: ${
+            `<div class='message-container'><div class='inline-message self'>${date}: ${
               msg.content
             }</div></div>`
           )
@@ -48,5 +50,11 @@ $(function() {
         );
       }
     }
+    scrollToBottom();
   });
 });
+
+function scrollToBottom() {
+  var out = $("#messages");
+  out.scrollTop(out.prop("scrollHeight"));
+}

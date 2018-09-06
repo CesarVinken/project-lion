@@ -4,8 +4,10 @@
 }
 
 .chat-wrapper {
-  margin: 0 10px;
+  margin: 10px;
   #messages {
+    margin-bottom: 14px;
+    overflow-y: auto;
     .message-container {
       margin: 5px 0;
       .inline-message {
