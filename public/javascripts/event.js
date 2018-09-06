@@ -1,3 +1,5 @@
+//This file is used for the Creating and Editing events.
+
 $(document).ready(function() {
   getEventLanguageList();
   getCountryList();
