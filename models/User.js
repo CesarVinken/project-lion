@@ -27,6 +27,7 @@ const userSchema = new Schema(
     events: [Schema.Types.ObjectId],
     tandems: [Schema.Types.ObjectId],
     picture: String,
+    lastActivity: Date,
     description: String,
     gender: {
       type: String,

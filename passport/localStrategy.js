@@ -1,6 +1,7 @@
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("../models/User");
+const Util = require("../utils/util");
 const bcrypt = require("bcrypt");
 
 passport.use(
@@ -22,7 +23,6 @@ passport.use(
           next(null, false, { message: "Incorrect password" });
           return;
         }
-
         next(null, foundUser);
       });
     }

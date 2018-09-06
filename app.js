@@ -92,6 +92,8 @@ app.use("/", authRoutes);
 
 app.use(util.checkAuthentication);
 
+app.all("*", util.updateActivity);
+
 const eventRoutes = require("./routes/events");
 app.use("/events", eventRoutes);
 
