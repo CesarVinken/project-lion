@@ -15,18 +15,18 @@ router.get("/", (req, res, next) => {
       Event.find({ attendees: req.user._id })
         .sort({ date: 1 })
         .limit(3),
-      Event.count({ tandems: req.user._id })
+      Event.count({ attendees: req.user._id })
     ]).then(values => {
       console.log(values);
       let tandems = values[0].tandems.sort((a, b) => a.lastActivity < b.lastActivity);
-      tandems = tandems.slice(0, 4);
+      tandems = tandems.slice(0, 3);
       tandems = tandems.map(el => {
         el.dateStr = moment(el.lastActivity).format("ddd h:mm");
         return el;
       });
       let tandemsMore = false;
       let eventsMore = false;
-      if (tandems.length > 4) {
+      if (values[0].tandems.length > 3) {
         tandemsMore = true;
       }
       if (values[2] > 3) {
