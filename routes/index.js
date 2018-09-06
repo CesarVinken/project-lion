@@ -11,7 +11,7 @@ router.get("/", (req, res, next) => {
     const picture = "https://picsum.photos/200/300/?random";
 
     Promise.all([
-      User.find({ tandems: req.user._id })
+      User.find({ "tandems.user": req.user._id })
         .sort({ name: -1 })
         .limit(3),
       User.count({ tandems: req.user._id }),
@@ -20,6 +20,7 @@ router.get("/", (req, res, next) => {
         .limit(3),
       Event.count({ tandems: req.user._id })
     ]).then(values => {
+      console.log(values);
       let tandemsMore = false;
       let eventsMore = false;
       if (values[1] > 3) {

@@ -55,6 +55,7 @@ authRoutes.post("/signup", util.checkLogout, (req, res, next) => {
         email,
         name: req.body.name,
         picture,
+        description: req.body.description,
         knownLanguages: req.body.knownLanguages,
         learningLanguages: req.body.learningLanguages,
         password: hashPass,
