@@ -314,17 +314,20 @@ nav {
   height: calc(100vh - 44px - 120px); }
 
 .chat-wrapper {
-  margin: 0 10px; }
-  .chat-wrapper #messages .message-container {
-    margin: 5px 0; }
-    .chat-wrapper #messages .message-container .inline-message {
-      padding: 8px;
-      border-radius: 14px;
-      display: inline-block; }
-    .chat-wrapper #messages .message-container .other {
-      background-color: #20a2ff; }
-    .chat-wrapper #messages .message-container .self {
-      background-color: white; }
+  margin: 10px; }
+  .chat-wrapper #messages {
+    margin-bottom: 14px;
+    overflow-y: auto; }
+    .chat-wrapper #messages .message-container {
+      margin: 5px 0; }
+      .chat-wrapper #messages .message-container .inline-message {
+        padding: 8px;
+        border-radius: 14px;
+        display: inline-block; }
+      .chat-wrapper #messages .message-container .other {
+        background-color: #20a2ff; }
+      .chat-wrapper #messages .message-container .self {
+        background-color: white; }
 
 #user-input {
   width: calc(100vw - 200px - 38px);
