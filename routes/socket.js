@@ -64,7 +64,7 @@ module.exports = function(http) {
       Message.create(
         {
           from: socket.dbId,
-          to: socket.evenId,
+          to: socket.eventId,
           name: name,
           type: "Event",
           content: msg,
