@@ -1,8 +1,9 @@
 {{> navbar user}}
-<script>let tandemId = null;</script>
 <script>const user = {{{ userString }}}</script>
 <script src='/javascripts/data.js'></script>
 <script src='/javascripts/user-info.js'></script>
+<script src='/javascripts/language-init.js'></script>
+<script src='/javascripts/tile.js'></script>
 
 <h3>Find Tandems</h3>
 <div class="search-container">
@@ -31,9 +32,13 @@
         </form>
     </div>
 
-    <div class=" results-container ">
+    <div class="results-container">
         <ul>
-            {{#each tandems}} {{> tandem_tile this}} {{/each }}
+            {{#each tandems}}
+            <div class="tile-interactive tandem" id="{{this.id}}">
+                {{> tandem_tile this}}
+            </div>
+            {{/each }}
         </ul>
     </div>
 </div>

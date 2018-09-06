@@ -1,21 +1,16 @@
 {{> navbar user}}
+<script src='/javascripts/tile.js'></script>
+
 <h3>
     My events
 </h3>
-
-<ul>
-    {{#each events}}
-    <li>
-        <a href="/events/{{ this._id}}">
-            {{ this.title}}<span> - {{ this.description }}</span>
-        </a>
-        | {{#if this.own}}
-        <a href="/events/edit/{{ this._id}}">Edit</a>
-        |
-        <a href="/events/delete/{{ this._id}}">Delete</a>
-        {{/if}}
-    </li>
-    {{/each }}<br>
+<div class="content-wrapper">
+    <ul>
+        {{#each events}}
+        <div class="tile-interactive event" id="{{this.id}}">
+            {{> event_tile this}}
+        </div>{{/each }}
+    </ul>
+    <br>
     <a href="/events/new">Create new event</a>
-</ul>
-</di
+</div>

@@ -161,36 +161,39 @@ nav {
 .search-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center; }
+  justify-content: flex-start; }
   @media (min-width: 660px) {
     .search-container {
       flex-direction: row;
       justify-content: flex-start; } }
   .search-container .filter-container {
     height: 380px;
-    width: 320px;
-    padding: 0 0 0 8px;
+    width: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center; }
     @media (min-width: 660px) {
       .search-container .filter-container {
+        width: 320px;
         height: calc(100vh - 44px - 160px);
+        padding: 0 0 0 8px;
         border-right: 1px solid black; } }
     .search-container .filter-container .age {
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      margin: 14px 0; }
+      padding: 14px 0; }
     .search-container .filter-container #min-age,
     .search-container .filter-container #max-age {
       width: 25%; }
   .search-container .results-container {
-    padding: 0 0 0 8px; }
+    padding: 0 8px 0 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
 
-.tile-search {
+.tile-interactive {
   border: 1px solid #e6e6e6;
   height: 120px;
   margin: 2px 0;
@@ -198,13 +201,13 @@ nav {
   align-items: center;
   width: 96vw; }
   @media (min-width: 480px) {
-    .tile-search {
+    .tile-interactive {
       width: 80vw; } }
   @media (min-width: 660px) {
-    .tile-search {
+    .tile-interactive {
       padding: 0 4px;
-      width: calc( 100vw - 320px - 8px - 8px); } }
-  .tile-search .tile-image {
+      width: calc(100vw - 320px - 8px - 8px); } }
+  .tile-interactive .tile-image {
     height: 80px;
     width: 80px;
     border: 1px solid #e6e6e6;
@@ -212,18 +215,18 @@ nav {
     justify-content: center;
     align-items: center; }
     @media (min-width: 660px) {
-      .tile-search .tile-image {
+      .tile-interactive .tile-image {
         height: 120px;
         width: 120px; } }
-    .tile-search .tile-image img {
+    .tile-interactive .tile-image img {
       max-width: 100%;
       max-height: 100%; }
-  .tile-search .tile-content {
+  .tile-interactive .tile-content {
     padding: 0 8px;
     width: calc(100% - 80px - 30px);
     font-size: 0.9rem; }
     @media (min-width: 660px) {
-      .tile-search .tile-content {
+      .tile-interactive .tile-content {
         width: calc(100% - 120px); } }
 
 * {

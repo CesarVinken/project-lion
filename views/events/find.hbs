@@ -2,6 +2,9 @@
 <script>const user = {{{ userString }}}</script>
 <script src='/javascripts/data.js'></script>
 <script src='/javascripts/user-info.js'></script>
+<script src='/javascripts/tile.js'></script>
+<script src='/javascripts/language-init.js'></script>
+
 
 <script>let eventId = null</script>
 <h3>Find Events</h3>
@@ -32,9 +35,14 @@
         </br>
         <a href="/events/new ">Create own event</a>
     </div>
-    <div class="results-container ">
+
+    <div class="results-container">
         <ul>
-            {{#each events}} {{> event_tile this}} {{/each }}
+            {{#each events}}
+            <div class="tile-interactive event" id="{{this.id}}">
+                {{> event_tile this}}
+            </div>
+            {{/each }}
         </ul>
     </div>
 </div>

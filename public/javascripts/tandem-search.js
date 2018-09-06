@@ -2,9 +2,9 @@ $(document).ready(function() {
   getLanguageList();
   getCountryList();
 
-  $(".tile").click(e => {
-    window.location = `/tandem/${tandemId}`;
-  });
+  // $(".tile-interactive").click(e => {
+  //   window.location = `/tandem/${tandemId}`;
+  // });
 
   if (user) {
     setUserLanguages();
