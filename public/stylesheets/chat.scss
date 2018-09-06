@@ -1,0 +1,38 @@
+#messages.tandem {
+  width: calc(100vw - 200px - 38px); //full width - tandem list - padding;
+  height: calc(100vh - #{$navbar-height} - 120px);
+}
+
+.chat-wrapper {
+  margin: 0 10px;
+  #messages {
+    .message-container {
+      margin: 5px 0;
+      .inline-message {
+        padding: 8px;
+        border-radius: 14px;
+        display: inline-block;
+      }
+      .other {
+        background-color: $main-color-b;
+      }
+      .self {
+        background-color: white;
+      }
+    }
+  }
+}
+
+#user-input {
+  width: calc(100vw - 200px - 38px); //full width - tandem list - padding;
+  display: flex;
+  flex-direction: row;
+  button {
+    height: 30px;
+    width: 80px;
+  }
+  input {
+    height: 30px;
+    width: 100%;
+  }
+}
