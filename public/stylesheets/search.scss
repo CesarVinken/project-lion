@@ -41,7 +41,6 @@
 }
 
 .tile-interactive {
-  border: 1px solid #e6e6e6;
   height: $tile-picture-l;
   margin: 2px 0;
   display: flex;
@@ -63,7 +62,6 @@
       height: $tile-picture-l;
       width: $tile-picture-l;
     }
-    border: 1px solid #e6e6e6;
     display: flex;
     justify-content: center;
     align-items: center;
