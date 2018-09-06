@@ -12,10 +12,7 @@ $chat-height: calc(100vh - #{$navbar-height} - 320px);
       margin-left: 5px;
     }
     margin: 4px;
-
-    //justify-content: flex-start;
     justify-content: space-between;
-    // background-color: aquamarine;
     height: 560px;
     .flex-column {
       justify-content: flex-start;
@@ -32,14 +29,11 @@ $chat-height: calc(100vh - #{$navbar-height} - 320px);
     }
     .chat-wrapper {
       width: 66vw;
-      // height: calc(100vh - #{$navbar-height} - 320px);
       height: 600px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      // background-color: blue;
-      // border: 1px solid grey;
-      // margin: 4px;
+
       #user-input {
         width: 66vw;
       }
@@ -66,7 +60,6 @@ $chat-height: calc(100vh - #{$navbar-height} - 320px);
   height: $tile-picture-xl;
   width: $tile-picture-xl;
   margin: 4px;
-  border: 1px solid #e6e6e6;
   display: flex;
   justify-content: center;
   align-items: center;

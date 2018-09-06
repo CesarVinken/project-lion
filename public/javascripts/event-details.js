@@ -12,4 +12,12 @@ $(document).ready(function() {
   $("#unattend").click(() => {
     window.location = `/events/unattend/${id}`;
   });
+
+  $("#edit").click(() => {
+    window.location = `/events/edit/${id}`;
+  });
+
+  $("#delete").click(() => {
+    window.location = `/events/delete/${id}`;
+  });
 });

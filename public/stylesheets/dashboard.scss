@@ -42,8 +42,6 @@
 }
 
 .tile-dashboard {
-  border: 1px solid #e6e6e6;
-
   height: $tile-picture-s;
   padding: 0 4px;
   margin: 2px 0;
@@ -53,7 +51,6 @@
     height: $tile-picture-s;
     width: $tile-picture-s;
 
-    border: 1px solid #e6e6e6;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -36,14 +36,15 @@
       <p>Language:</p>
       <p>{{event.language}}</p>
       <p>Date:</p>
-      <p>{{event.date}}</p>
+      <p>{{event.dateStr}}</p>
       <p>Attendees: {{event.counter}}</p> {{#if event.userAttending}}
       <button class="white-btn" id="unattend">Unattend Event</button>
       {{else}}
       <button class="white-btn" id="attend">Attend Event</button>
-      {{/if}} {{#if event.own}}<a href="/events/edit/{{event._id}}">Edit Event
-      </a>{{/if}}
-      <br>
+      {{/if}} {{#if event.own}}</br><button class="white-btn" id="edit">Edit Event</button></br>
+      <button class="white-btn" id="delete">Delete Event</button>
+      {{/if}}
+      </br>
     </div>
   </div>
 </div>
