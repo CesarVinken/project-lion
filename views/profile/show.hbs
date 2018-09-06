@@ -52,7 +52,7 @@
           <p class="info-category">Languages I know:</p>
           <ul class="lang-list">{{#each user.knownLanguages}}
             <li>
-              <script>document.write(isoLangs.{{ this}}.name)</script>
+              {{this}}
             </li>{{/each}}
           </ul>
         </div>
@@ -61,7 +61,7 @@
           <p class="info-category">Languages I am learning:</p>
           <ul class="lang-list">{{#each user.learningLanguages}}
             <li>
-              <script>document.write(isoLangs.{{ this}}.name)</script>
+              {{this}}
             </li>{{/each}}
           </ul>
         </div>
