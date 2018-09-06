@@ -1,4 +1,5 @@
 const express = require("express");
+const moment = require("moment");
 const router = express.Router();
 const User = require("../models/User");
 
@@ -68,9 +69,8 @@ router.get("/:id?", (req, res, next) => {
 
   User.findById(req.user._id)
     .populate("tandems.user")
-    // .sort([["lastActivity", -1]])
     .then(user => {
-      let tandems = user.tandems;
+      let tandems = user.tandems.toObject().sort((a, b) => a.lastActivity < b.lastActivity);
       console.log(tandems);
       if (req.params.id != null) {
         for (let tandem of tandems) {
@@ -79,7 +79,6 @@ router.get("/:id?", (req, res, next) => {
             current = tandem;
           }
         }
-        console.log("current", current);
         res.render("tandems/index", { tandems, current, user: req.user });
       } else {
         if (tandems.length > 0) {

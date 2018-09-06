@@ -17,7 +17,7 @@ function checkLogout(req, res, next) {
 }
 
 const randomNumber = max => {
-  return Math.floor(Math.random() * max);
+  return Math.floor(Math.random() * max) + 1;
 };
 
 const updateActivity = (id1, id2) => {
@@ -29,4 +29,4 @@ const updateActivity = (id1, id2) => {
   ).catch(err => console.log(err));
 };
 
-module.exports = { checkAuthentication, checkLogout, randomNumber, updateActivity };
+module.exports = { checkAuthentication, checkLogout, randomNumber, updateActivity, randomNumber };

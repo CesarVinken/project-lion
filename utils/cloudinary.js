@@ -1,5 +1,6 @@
 const cloudinary = require("cloudinary");
 const fs = require("fs");
+const Util = require("./util");
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
@@ -8,6 +9,11 @@ cloudinary.config({
 });
 
 const picUpload = (files, type) => {
+  if (type === "Profile") {
+    type = "/profile/Profile" + Util.randomNumber(8);
+  } else {
+    type = "placeholderEvent";
+  }
   return Object.keys(files).length !== 0
     ? new Promise((resolve, reject) => {
         const { picture } = files;
@@ -22,7 +28,7 @@ const picUpload = (files, type) => {
           });
         });
       })
-    : Promise.resolve("/images/placeholder" + type + ".png");
+    : Promise.resolve("/images/" + type + ".png");
 };
 
 function upload(path) {
