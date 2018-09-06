@@ -70,8 +70,13 @@ router.get("/:id?", (req, res, next) => {
   User.findById(req.user._id)
     .populate("tandems.user")
     .then(user => {
-      let tandems = user.tandems.toObject().sort((a, b) => a.lastActivity < b.lastActivity);
-      console.log(tandems);
+      let tandems = user.tandems.sort((a, b) => a.lastActivity < b.lastActivity);
+      //tandems = tandems.slice(0, 20);
+      tandems = tandems.map(el => {
+        el.dateStr = moment(el.lastActivity).format("ddd h:mm");
+        return el;
+      });
+      console.log("datestr", tandems);
       if (req.params.id != null) {
         for (let tandem of tandems) {
           if (tandem.user._id == req.params.id) {
@@ -85,7 +90,6 @@ router.get("/:id?", (req, res, next) => {
           tandems[0].user.selected = true;
           current = tandems[0];
         }
-
         res.render("tandems/index", { tandems, current, user: req.user });
       }
     })

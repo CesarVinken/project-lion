@@ -1,38 +1,41 @@
 const express = require("express");
+const moment = require("moment");
 const router = express.Router();
 const User = require("../models/User");
 const Event = require("../models/Event");
 
 router.get("/", (req, res, next) => {
   if (!req.isAuthenticated()) {
-    console.log("hello");
     res.render("index");
   } else {
     const picture = "https://picsum.photos/200/300/?random";
 
     Promise.all([
-      User.find({ "tandems.user": req.user._id })
-        .sort({ name: -1 })
-        .limit(3),
-      User.count({ tandems: req.user._id }),
+      User.findById(req.user._id).populate("tandems.user"),
       Event.find({ attendees: req.user._id })
         .sort({ date: 1 })
         .limit(3),
       Event.count({ tandems: req.user._id })
     ]).then(values => {
       console.log(values);
+      let tandems = values[0].tandems.sort((a, b) => a.lastActivity < b.lastActivity);
+      tandems = tandems.slice(0, 4);
+      tandems = tandems.map(el => {
+        el.dateStr = moment(el.lastActivity).format("ddd h:mm");
+        return el;
+      });
       let tandemsMore = false;
       let eventsMore = false;
-      if (values[1] > 3) {
+      if (tandems.length > 4) {
         tandemsMore = true;
       }
-      if (values[3] > 3) {
+      if (values[2] > 3) {
         eventsMore = true;
       }
       res.render("dashboard", {
-        tandems: values[0],
+        tandems,
         tandemsMore,
-        events: values[2],
+        events: values[1],
         eventsMore,
         picture,
         user: req.user
