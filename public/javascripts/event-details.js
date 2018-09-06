@@ -16,4 +16,8 @@ $(document).ready(function() {
   $("#edit").click(() => {
     window.location = `/events/edit/${id}`;
   });
+
+  $("#delete").click(() => {
+    window.location = `/events/delete/${id}`;
+  });
 });
