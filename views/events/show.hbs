@@ -12,12 +12,18 @@
       </div>
     </div>
     <div class="chat-wrapper">
+      <ul id="messages"></ul>
+      <form action="">
+        <input id="m" autocomplete="off" /><button>Send</button>
+      </form>
+      <input type="hidden" id="sender" value="{{user._id}}">
+      <input type="hidden" id="receiver" value="{{event._id}}">
     </div>
   </div>
   <div class="flex-column">
     <div class="map-wrapper">
 
-    </div>
+      {{!-- </div>
     <div class="info-wrapper">
       <p>Location:</p>
       <p>{{#if event.location.city}}{{event.location.city}}, {{/if}}{{event.location.country}}{{#if event.location.street}},</br>{{event.location.street}}</p>{{/if}}
@@ -26,11 +32,14 @@
       <p>Date:</p>
       <p>{{event.date}}</p>
       <p>Attendees: {{event.counter}}</p> { {#if event.userAttending}}
-      <a href="/events/unattend/{{event._id}}">Unattend Event</a><br> {{else}}
+      <a href="/events/unattend/{{event._id}}">Unattend Event</a><br>{{#if}}
       <a href="/events/attend/{{event._id}}">Attend Event</a><br> {{/if}} {{#if event.own}}<a href="/events/edit/{{event._id}}">Edit
         Event
       </a>
       <br> {{/if}}
-    </div>
+    </div> --}}
   </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+<script src="/javascripts/chatEvent.js"></script>

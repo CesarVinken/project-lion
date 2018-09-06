@@ -1,7 +1,7 @@
 $(function() {
   // Connect
   const senderId = $("#sender").val();
-  const eventId = $("#event").val();
+  const eventId = $("#receiver").val();
   const socket = io("/events");
   socket.on("connect", function() {
     socket.emit("join", { senderId, eventId });

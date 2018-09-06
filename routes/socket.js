@@ -37,9 +37,10 @@ module.exports = function(http) {
   const io = require("socket.io")(http);
   var nsp = io.of("/events");
   nsp.on("connection", function(socket) {
-    console.log("user connected");
+    console.log("user connected to events");
     // join room
     socket.on("join", function(data) {
+      console.log("join", data.senderId);
       socket.join(data.eventId);
       socket.dbId = data.senderId;
       socket.eventId = data.eventId;
