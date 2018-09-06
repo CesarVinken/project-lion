@@ -29,7 +29,9 @@ mongoose
   });
 
 const app_name = require("./package.json").name;
-const debug = require("debug")(`${app_name}:${path.basename(__filename).split(".")[0]}`);
+const debug = require("debug")(
+  `${app_name}:${path.basename(__filename).split(".")[0]}`
+);
 
 const app = express();
 
@@ -72,7 +74,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
 hbs.registerHelper("ifUndefined", (value, options) => {
-  if (arguments.length < 2) throw new Error("Handlebars Helper ifUndefined needs 1 parameter");
+  if (arguments.length < 2)
+    throw new Error("Handlebars Helper ifUndefined needs 1 parameter");
   if (typeof value !== undefined) {
     return options.inverse(this);
   } else {
@@ -82,7 +85,7 @@ hbs.registerHelper("ifUndefined", (value, options) => {
 hbs.registerPartials(__dirname + "/views/partials");
 
 // default value for title local
-app.locals.title = "Project Lion";
+app.locals.title = "WeSpeak";
 
 const index = require("./routes/index");
 app.use("/", index);
