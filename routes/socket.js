@@ -36,14 +36,16 @@ const removeClient = socket => {
 module.exports = function(http) {
   const io = require("socket.io")(http);
   var nsp = io.of("/events");
+  var private = io.of("/private");
   nsp.on("connection", function(socket) {
     console.log("user connected to events");
     // join room
     socket.on("join", function(data) {
-      console.log("join", data.senderId);
+      console.log("join", data.eventId);
       socket.join(data.eventId);
       socket.dbId = data.senderId;
       socket.eventId = data.eventId;
+      socket.userName = data.name;
       Message.find({
         to: data.EventId
       })
@@ -55,17 +57,32 @@ module.exports = function(http) {
     });
     // message
     socket.on("message", function(msg) {
-      nsp.to("some room").emit("some event");
+      console.log("message from " + socket.dbId + " to " + socket.eventId);
+      let name = socket.userName;
+      nsp.to(socket.eventId).emit("message", { msg, name });
+      Message.create(
+        {
+          from: socket.dbId,
+          to: socket.evenId,
+          name: name,
+          type: "Event",
+          content: msg,
+          date: new Date(),
+          delivered: true
+        },
+        function(err, message) {
+          if (err) return console.log(err.message);
+        }
+      );
     });
     // disconnect
     socket.on("disconnect", function() {
-      removeClient(socket);
       console.log("user disconnected");
       console.log(clients);
     });
   });
 
-  io.on("connection", function(socket) {
+  private.on("connection", function(socket) {
     console.log("user connected");
     // user data
     socket.on("userid", function(data) {
@@ -81,17 +98,9 @@ module.exports = function(http) {
         .limit(100)
         .sort([["date", 1]])
         .then(messages => {
-          io.to(`${client.ioId}`).emit("init", messages);
+          private.to(`${client.ioId}`).emit("init", messages);
         });
       console.log(clients);
-    });
-    // join room (event)
-    socket.on("join", function(eventId) {
-      socket.join("eventId");
-    });
-    // message (event)
-    socket.on("msgEvent", function(msg) {
-      io.to("some room").emit("some event");
     });
     // disconnect
     socket.on("disconnect", function() {
@@ -103,7 +112,7 @@ module.exports = function(http) {
     socket.on("message", function(msg) {
       const client = clients.get(socket.dbId);
       if (client.receiverOn) {
-        io.to(`${client.receiverIoId}`).emit("message", msg);
+        private.to(`${client.receiverIoId}`).emit("message", msg);
       }
       Message.create(
         {
