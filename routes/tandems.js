@@ -7,7 +7,7 @@ router.get("/find", (req, res, next) => {
     {
       $and: [
         { _id: { $ne: req.user._id, $nin: req.user.blockedUsers } },
-        { tandems: { $ne: req.user._id } }
+        { "tandems._id": { $ne: req.user._id } }
       ]
     },
     (error, tandems) => {
@@ -28,18 +28,24 @@ router.post("/find", (req, res, next) => {
   let query = {
     $and: [
       { _id: { $ne: req.user._id, $nin: req.user.blockedUsers } },
-      { tandems: { $ne: req.user._id } }
+      { "tandems._id": { $ne: req.user._id } }
     ]
   };
 
   let maxAge = 100;
-  const minAge = parseInt(req.body.ageStart);
+  let minAge = 18;
   if (req.body.ageEnd !== "") {
     maxAge = parseInt(req.body.ageEnd);
   }
+  if (req.body.ageStart !== "") {
+    minAge = parseInt(req.body.ageStart);
+  }
   query.age = { $gte: minAge, $lte: maxAge };
-  if (req.body.language.length !== 0) {
+  console.log(req.body);
+  if (req.body.language != undefined && typeof req.body.language !== "string") {
     query.knownLanguages = { $in: req.body.language };
+  } else if (req.body.language != undefined) {
+    query.knownLanguages = req.body.language;
   }
   if (req.body.country !== "") {
     query["location.country"] = req.body.country;
@@ -60,15 +66,12 @@ router.post("/find", (req, res, next) => {
 router.get("/:id?", (req, res, next) => {
   let current = {};
 
-  User.find({ tandems: req.user._id }, (error, tandems) => {
-    if (error) {
-      next(error);
-    } else {
+  User.find({ "tandems._id": req.user._id })
+    .sort([["lastAcitivity", -1]])
+    .then(tandems => {
       if (req.params.id != null) {
         for (let tandem of tandems) {
-          //if (tandem._id.equals(req.params.id)) {
           if (tandem._id == req.params.id) {
-            console.log("selected one");
             tandem.selected = true;
           }
         }
@@ -77,23 +80,27 @@ router.get("/:id?", (req, res, next) => {
           res.render("tandems/index", { tandems, current, user: req.user });
         });
       } else {
-        tandems[0].selected = true;
-        current = tandems[0];
+        if (tandems.length > 0) {
+          tandems[0].selected = true;
+          current = tandems[0];
+        }
+
         res.render("tandems/index", { tandems, current, user: req.user });
       }
-    }
-  });
+    })
+    .catch(err => next(err));
 });
 
 router.get("/add/:id", (req, res, next) => {
+  const date = new Date();
   User.findOneAndUpdate(
     { _id: req.params.id },
-    { $push: { tandems: req.user._id } }
+    { $push: { tandems: { _id: req.user._id, lastActivity: date } } }
   )
     .then(user => {
       return User.findOneAndUpdate(
         { _id: req.user._id },
-        { $push: { tandems: req.params.id } }
+        { $push: { tandems: { _id: req.params.id, lastActivity: date } } }
       );
     })
     .then(user => {
@@ -109,13 +116,13 @@ router.get("/block/:id", (req, res, next) => {
     { _id: req.user._id },
     {
       $push: { blockedUsers: req.params.id },
-      $pull: { tandems: req.params.id }
+      $pull: { tandems: { _id: req.params.id } }
     }
   )
     .then(user => {
       return User.findOneAndUpdate(
         { _id: req.params.id },
-        { $pull: { tandems: req.user._id } }
+        { $pull: { tandems: { _id: req.user._id } } }
       );
     })
     .then(user => {

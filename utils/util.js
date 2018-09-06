@@ -20,11 +20,13 @@ const randomNumber = max => {
   return Math.floor(Math.random() * max);
 };
 
-const updateActivity = (req, res, next) => {
+const updateActivity = (id1, id2) => {
+  console.log("id1: " + id1 + " -id2: " + id2);
   const date = new Date();
-  User.findByIdAndUpdate({ _id: req.user._id }, { lastActivity: date })
-    .then(result => next())
-    .catch(err => console.log(err));
+  User.findOneAndUpdate(
+    { _id: id1, "tandems._id": id2 },
+    { $set: { "tandems.$.lastActivity": date } }
+  ).catch(err => console.log(err));
 };
 
 module.exports = { checkAuthentication, checkLogout, randomNumber, updateActivity };
