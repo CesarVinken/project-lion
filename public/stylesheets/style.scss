@@ -12,17 +12,20 @@ $tile-picture-xl: 180px;
 $tile-picture-l: 120px;
 $tile-picture-s: 80px;
 $tile-picture-xs: 60px;
+$filter-width: 320px;
 
 @import "./navigation";
 @import "./profile";
 @import "./dashboard";
 @import "./search";
 @import "./event";
+@import "./tandem";
 
 * {
   margin: 0;
   padding: 0;
   color: black;
+  list-style: none;
 }
 
 body {
@@ -32,6 +35,9 @@ body {
 
 a {
   color: $main-color-a;
+}
+
+h2 {
 }
 
 textarea {

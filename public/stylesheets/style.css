@@ -363,10 +363,45 @@ nav .nav-img img {
   margin: 4px;
 }
 
+.tandem-list {
+  width: 200px;
+  height: calc(100vh - 44px);
+  font-size: 1.2rem;
+}
+.tandem-list li {
+  width: 100%;
+  height: 30px;
+  padding: 0 0 0 5px;
+  border-right: 1px solid lightgray;
+  display: flex;
+  align-items: center;
+}
+
+#messages {
+  width: calc(100vw - 200px - 38px);
+  height: calc(100vh - 44px - 120px);
+  margin: 0 8px;
+}
+#user-input {
+  width: calc(100vw - 200px - 38px);
+  display: flex;
+  flex-direction: row;
+  margin: 0 8px;
+}
+#user-input button {
+  height: 30px;
+  width: 80px;
+}
+#user-input input {
+  height: 30px;
+  width: 100%;
+}
+
 * {
   margin: 0;
   padding: 0;
   color: black;
+  list-style: none;
 }
 
 body {
