@@ -19,6 +19,9 @@ $chat-height: calc(100vh - #{$navbar-height} - 320px);
     height: 560px;
     .flex-column {
       justify-content: flex-start;
+      button {
+        margin: 4px;
+      }
       .flex-row {
         .description {
           height: 100%;
