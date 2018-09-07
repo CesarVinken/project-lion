@@ -3,12 +3,13 @@ const moment = require("moment");
 const router = express.Router();
 const User = require("../models/User");
 const Event = require("../models/Event");
+const Util = require("../utils/util");
 
 router.get("/", (req, res, next) => {
   if (!req.isAuthenticated()) {
     res.render("index");
   } else {
-    const picture = "https://picsum.photos/200/300/?random";
+    const picture = "/images/dashboard-background-" + Util.randomNumber(4) + ".jpg";
 
     Promise.all([
       User.findById(req.user._id).populate("tandems.user"),
