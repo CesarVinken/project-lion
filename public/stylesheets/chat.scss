@@ -1,10 +1,10 @@
 #messages.tandem {
   width: calc(100vw - 200px - 38px); //full width - tandem list - padding;
-  height: calc(100vh - #{$navbar-height} - 120px);
+  height: calc(100vh - #{$navbar-height} - 180px);
 }
 
 .chat-wrapper {
-  margin: 10px;
+  margin: 0 10px;
   #messages {
     margin-bottom: 14px;
     overflow-y: auto;

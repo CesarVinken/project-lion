@@ -340,11 +340,12 @@ nav {
 
 #messages.tandem {
   width: calc(100vw - 200px - 38px);
-  height: calc(100vh - 44px - 120px); }
+  height: calc(100vh - 44px - 180px); }
 
 .chat-wrapper {
-  margin: 10px; }
+  margin: 0 10px; }
   .chat-wrapper #messages {
+    background-color: red;
     margin-bottom: 14px;
     overflow-y: auto; }
     .chat-wrapper #messages .message-container {
