@@ -253,10 +253,21 @@ nav {
   .tile-interactive .tile-content {
     padding: 0 8px;
     width: calc(100% - 80px - 30px);
+    height: 100%;
     font-size: 0.9rem; }
     @media (min-width: 660px) {
       .tile-interactive .tile-content {
         width: calc(100% - 120px); } }
+    .tile-interactive .tile-content h3 {
+      margin: 4px 0 0 0; }
+    .tile-interactive .tile-content p {
+      margin: 0; }
+    .tile-interactive .tile-content .description {
+      overflow: hidden;
+      height: 75px;
+      padding-top: 2px; }
+    .tile-interactive .tile-content .date-location p {
+      color: gray; }
 
 .flex-column-center.event {
   flex-direction: column;
@@ -279,6 +290,7 @@ nav {
         margin-bottom: 8px; }
         .flex-column-center.event .flex-column .flex-column .flex-row .description {
           height: 100%;
+          width: 100%;
           padding: 0 4px; }
     .flex-column-center.event .flex-column .chat-wrapper {
       width: 66vw;

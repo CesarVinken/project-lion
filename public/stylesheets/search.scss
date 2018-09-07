@@ -77,9 +77,26 @@
   .tile-content {
     padding: 0 8px;
     width: calc(100% - #{$tile-picture-s} - 30px);
+    height: 100%;
     font-size: 0.9rem;
     @media #{$screen-middle-large} {
       width: calc(100% - #{$tile-picture-l});
+    }
+    h3 {
+      margin: 4px 0 0 0;
+    }
+    p {
+      margin: 0;
+    }
+    .description {
+      overflow: hidden;
+      height: 75px;
+      padding-top: 2px;
+    }
+    .date-location {
+      p {
+        color: gray;
+      }
     }
   }
 }
