@@ -206,6 +206,8 @@ nav {
     .search-container .filter-container #min-age,
     .search-container .filter-container #max-age {
       width: 25%; }
+    .search-container .filter-container .white-btn {
+      width: 280px; }
   .search-container .results-container {
     padding: 0 8px 0 8px;
     display: flex;
