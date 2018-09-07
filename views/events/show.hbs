@@ -16,11 +16,13 @@
 
     <div class="chat-wrapper">
       <div class="event" id="messages"></div>
+      {{#if event.userAttending}}
       <form action="" class="event" id="user-input">
-        <button>Send</button>
+        <button class="white-btn">Send</button>
         <input id="m" autocomplete="off" />
         <div id="typing" style="color:white"></div>
       </form>
+      {{/if}}
       <input type="hidden" id="sender" value="{{user._id}}">
       <input type="hidden" id="name" value="{{user.name}}">
       <input type="hidden" id="receiver" value="{{event._id}}">

@@ -9,6 +9,9 @@ $screen-middle-large: "(min-width : 660px)";
 $screen-large: "(min-width : 1024px)";
 $btn-text-a: #aaaaaa;
 $btn-text-b: #ffffff;
+$btn-wide: 280px;
+$btn-middle-wide: 180px;
+$btn-narrow: 120px;
 $navbar-height: 44px;
 $tile-picture-xl: 180px;
 $tile-picture-l: 120px;
@@ -109,7 +112,7 @@ form {
 .success-btn {
   background-color: $main-color-b;
   color: $btn-text-b;
-  width: 280px;
+  width: $btn-wide;
   padding: 8px 0;
   border-radius: 4px;
   font-size: 1.1rem;
@@ -125,7 +128,7 @@ form {
 .danger-btn {
   background-color: rgb(187, 17, 17);
   color: $btn-text-b;
-  width: 280px;
+  width: $btn-wide;
   padding: 8px 0;
   border-radius: 4px;
   font-size: 1.1rem;
