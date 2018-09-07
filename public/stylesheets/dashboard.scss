@@ -1,21 +1,10 @@
-.background-wrapper {
-  img {
-    background-position: center;
-    background-size: cover;
-    background-repeat: repeat;
-    width: 100vw;
-    height: 100vh;
-  }
-}
-
 .dashboard-wrapper {
-  width: 100vw;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
 
   @media #{$screen-middle} {
-    align-items: flex-end;
+    align-items: flex-start;
   }
 
   .dashboard-group {
@@ -24,12 +13,12 @@
     padding: 4px;
     background: rgba(243, 243, 243, 0.2);
     border-radius: 4px;
-    @media #{$screen-middle} {
-      margin-right: 60px;
-    }
-    @media #{$screen-large} {
-      margin-right: 100px;
-    }
+    // @media #{$screen-middle} {
+    //   margin-right: 60px;
+    // }
+    // @media #{$screen-large} {
+    //   margin-right: 100px;
+    // }
 
     h3 {
       font-size: 1.8rem;
@@ -37,6 +26,14 @@
     a,
     p {
       font-size: 1.1rem;
+    }
+    .image-wrapper {
+      img {
+        margin: 4px 0;
+        max-width: 32vw;
+        max-height: 32vw;
+        border-radius: 12px;
+      }
     }
   }
 }

@@ -1,11 +1,14 @@
 {{> navbar user}}
 <script src="/javascripts/dashboard.js"></script>
 <h1>Hi {{user.name}}!</h1>
-<div class="background-wrapper">
-    {{!-- <img src="{{picture}}"> --}}
-</div>
 
 <div class="dashboard-wrapper">
+    <div class="dashboard-group">
+
+        <div class="image-wrapper"><img src="/images/dashboard-background-1.jpg"></div>
+        {{!--
+        <div class="image-wrapper"><img src="{{picture}}"></div> --}}
+    </div>
     <div class="dashboard-group">
         <h3>My Tandems</h3>
         {{#if tandems}}
