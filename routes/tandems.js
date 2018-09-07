@@ -59,7 +59,7 @@ router.post("/find", (req, res, next) => {
     if (error) {
       next(error);
     } else {
-      res.render("tandems/find", { tandems, user: req.user });
+      res.render("tandems/find", { tandems, user: req.user, userString: JSON.stringify(req.user) });
     }
   });
 });
