@@ -12,7 +12,9 @@
                         <img src="{{this.user.picture}}" alt="">
                     </div>
                     <a href="/tandems/{{this.user._id}}">{{this.user.name}}</a>
-                    {{!-- {{this.lastActivity}} moment(new Date(msg.date)).format("ddd h:mm")--}}
+                    <div class="last-active">
+                        <p>active: {{this.dateStr}}</p>
+                    </div>
                 </li>
                 {{/each }}
         </ul>
@@ -37,9 +39,6 @@
                             <div class="item" data-value="block">Block</div>
                         </div>
                     </div>
-                    {{!--
-                    <button class="white-btn" id="more">More about me</button>
-                    <button class="danger-btn" id="block">Block</button> --}}
                 </div>
             </div>
             <ul class="tandem" id="messages">

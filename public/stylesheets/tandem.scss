@@ -1,9 +1,8 @@
 .tandem-list {
-  width: 200px;
   height: calc(100vh - #{$navbar-height});
   font-size: 1.2rem;
   li {
-    width: 100%;
+    width: 260px;
     height: $tile-picture-xs;
     padding: 0 0 0 5px;
     border-right: 1px solid lightgray;
@@ -19,6 +18,17 @@
       img {
         max-width: 100%;
         max-height: 100%;
+      }
+    }
+
+    .last-active {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      padding: 0 4px;
+      p {
+        color: gray;
+        font-size: 0.7rem;
       }
     }
   }

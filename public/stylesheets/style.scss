@@ -1,5 +1,6 @@
 $main-color-a: #5533ff;
 $main-color-b: #20a2ff;
+$main-color-c: #d9efff;
 $main-color-b-hover: #258cd6;
 
 $background-color-a: #f6f6f8;
@@ -18,7 +19,8 @@ $tile-picture-l: 120px;
 $tile-picture-s: 80px;
 $tile-picture-xs: 50px;
 $filter-width: 320px;
-$shadow: 0px 2px 2px grey;
+$shadow-a: 0px 2px 2px grey;
+$shadow-b: 0px 2px 2px lightgray;
 
 @import "./landing-page";
 @import "./navigation";
@@ -106,7 +108,7 @@ form {
   border-radius: 4px;
   font-size: 1.1rem;
   text-align: center;
-  box-shadow: 0px 2px 2px lightgray;
+  box-shadow: $shadow-b;
 }
 
 .success-btn {
@@ -117,7 +119,7 @@ form {
   border-radius: 4px;
   font-size: 1.1rem;
   text-align: center;
-  box-shadow: $shadow;
+  box-shadow: $shadow-b;
 }
 
 .success-btn:hover {
@@ -133,7 +135,7 @@ form {
   border-radius: 4px;
   font-size: 1.1rem;
   text-align: center;
-  box-shadow: $shadow;
+  box-shadow: $shadow-b;
 }
 .danger-btn:hover {
   color: $btn-text-b;
