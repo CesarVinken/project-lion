@@ -10,9 +10,9 @@ $(function() {
     socket.emit("message", $("#m").val());
     $("#messages").append(
       $(
-        `<div class='message-container'><div class='inline-message self'>${date}: ${$(
+        `<div class='message-container'><div class='inline-message self'>${$(
           "#m"
-        ).val()}</div></div>`
+        ).val()}</div><p class="small">${date}</p></div>`
       )
     );
     $("#m").val("");
@@ -22,9 +22,9 @@ $(function() {
   socket.on("message", function(data) {
     $("#messages").append(
       $(
-        `<div class='message-container'><div class='inline-message other'>${data.date}: ${
+        `<div class='message-container'><div class='inline-message other'>${
           data.msg
-        }</div></div>`
+        }</div><p class="small">${data.date}</p></div>`
       )
     );
     scrollToBottom();
@@ -37,17 +37,17 @@ $(function() {
       if (msg.from === myId) {
         $("#messages").append(
           $(
-            `<div class='message-container'><div class='inline-message self'>${date}: ${
+            `<div class='message-container'><div class='inline-message self'>${
               msg.content
-            }</div></div>`
+            }</div><p class="small">${date}</p></div>`
           )
         );
       } else {
         $("#messages").append(
           $(
-            `<div class='message-container'><div class='inline-message other'>${date}: ${
+            `<div class='message-container'><div class='inline-message other'>${
               msg.content
-            }</div></div>`
+            }</div><p class="small">${date}</p></div>`
           )
         );
       }

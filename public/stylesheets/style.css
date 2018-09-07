@@ -420,7 +420,13 @@ nav {
     overflow-y: auto;
     background-color: white; }
     .chat-wrapper #messages .message-container {
-      margin: 6px 0; }
+      margin: 6px 0;
+      display: flex;
+      align-items: center; }
+      .chat-wrapper #messages .message-container .small {
+        margin-left: 8px;
+        font-size: 0.8rem;
+        color: gray; }
       .chat-wrapper #messages .message-container .inline-message {
         padding: 8px;
         border-radius: 14px;
