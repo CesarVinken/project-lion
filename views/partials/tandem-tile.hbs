@@ -1,9 +1,18 @@
 <div class="tile-image">
   <img src={{this.picture}} alt="profile picture">
 </div>
-<div class="tile-content">
-  <h3>{{ this.name}}</h3>
-  <p>{{ this.description }}</p>
-  <p>{{ this.location.country }}, {{this.location.city}}</p>
-  <a href="/tandems/add/{{ this._id}}">Add</a>
+<div class="tile-content tandem">
+  <h3>{{this.name}}</h3>
+  <div class="date-location">
+    <p>{{this.location.country}}{{#if this.location.city}}, {{this.location.city}}{{/if}}{{#if this.location.street}}, {{this.location.street}}{{/if}}
+  </div>
+  <div class="languages">
+    <p>I Learn: {{#each this.knownLanguages}}{{this}}; {{/each}}</p>
+    <p>I Know: {{#each this.learningLanguages}}{{this}}; {{/each}}</p>
+  </div>
+  <a href="/tandems/add/{{ this._id}}" class="white-btn">Add</a>
+</div>
+<div class="tandem-description">
+  <p></p>{{ this.description }}
+  </p>
 </div>
