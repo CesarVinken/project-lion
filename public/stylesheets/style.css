@@ -326,8 +326,8 @@ nav {
       @media (min-width: 660px) {
         .flex-column-center.event .flex-column .map-wrapper {
           display: inline-block;
-          width: 230px;
-          height: 230px;
+          width: 250px;
+          height: 250px;
           background-color: lightblue; } }
     .flex-column-center.event .flex-column .info-wrapper {
       padding: 0 0 0 4px;
@@ -373,13 +373,37 @@ nav {
 
 #messages.tandem {
   width: calc(100vw - 200px - 38px);
-  height: calc(100vh - 44px - 180px);
+  height: calc(100vh - 44px - 180px - 50px);
   padding: 0 0 14px 6px; }
 
 #messages.event {
   height: 440px;
   padding: 0 0 0 6px;
   margin-bottom: 6px; }
+
+.tandem-info-wrapper {
+  height: 60px;
+  padding: 2px 8px;
+  background-color: #e9e9e9;
+  border-bottom: 1px solid #f6f6f8;
+  display: flex;
+  justify-content: space-between; }
+  .tandem-info-wrapper .tandem-info {
+    display: flex;
+    flex-direction: column; }
+    .tandem-info-wrapper .tandem-info .row {
+      display: flex;
+      justify-content: space-between;
+      margin-right: 40px;
+      width: 430px; }
+  .tandem-info-wrapper .options-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; }
+    .tandem-info-wrapper .options-container .menu {
+      right: 0;
+      left: auto; }
 
 .chat-wrapper {
   margin: 0 10px; }

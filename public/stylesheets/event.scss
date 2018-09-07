@@ -43,8 +43,8 @@ $chat-height: calc(100vh - #{$navbar-height} - 320px);
       display: none;
       @media #{$screen-middle-large} {
         display: inline-block;
-        width: 230px;
-        height: 230px;
+        width: 250px;
+        height: 250px;
         background-color: lightblue;
       }
     }

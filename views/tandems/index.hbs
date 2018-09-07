@@ -19,6 +19,29 @@
     </div>
     <div class="chat-wrapper">
         <div class="flex-column">
+            <div class="tandem-info-wrapper">
+                <div class="tandem-info">
+                    <h3>{{current.user.name}}</h3>
+                    <div class="row">
+                        <p>Location: {{current.user.location.country}}{{#if current.user.location.city}}, {{current.user.location.city}}{{/if}}</p>
+                        <p>Speaks: {{#each current.user.knownLanguages}}{{this}}; {{/each}} </p>
+                    </div>
+                </div>
+                <div class="options-container">
+                    <div class="ui dropdown tandem">
+                        <div class="nav-img">
+                            <h4>Options</h4>
+                        </div>
+                        <div class="menu">
+                            <div class="item" data-value="more">More about me</div>
+                            <div class="item" data-value="block">Block</div>
+                        </div>
+                    </div>
+                    {{!--
+                    <button class="white-btn" id="more">More about me</button>
+                    <button class="danger-btn" id="block">Block</button> --}}
+                </div>
+            </div>
             <ul class="tandem" id="messages">
             </ul>
             <form action="" id="user-input">
@@ -37,3 +60,4 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
 <script src="/javascripts/chat.js"></script>
+<script src="/javascripts/tandem-details.js"></script>
