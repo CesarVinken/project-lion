@@ -262,8 +262,11 @@ nav {
       overflow: hidden;
       height: 75px;
       padding-top: 2px; }
-    .tile-interactive .tile-content .date-location p {
-      color: gray; }
+    .tile-interactive .tile-content .date-location {
+      display: flex;
+      justify-content: space-between; }
+      .tile-interactive .tile-content .date-location p {
+        color: gray; }
     .tile-interactive .tile-content a {
       width: 80px;
       height: 20px;
