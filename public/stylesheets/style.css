@@ -326,8 +326,8 @@ nav {
       @media (min-width: 660px) {
         .flex-column-center.event .flex-column .map-wrapper {
           display: inline-block;
-          width: 250px;
-          height: 250px;
+          width: 230px;
+          height: 230px;
           background-color: lightblue; } }
     .flex-column-center.event .flex-column .info-wrapper {
       padding: 0 0 0 4px;
