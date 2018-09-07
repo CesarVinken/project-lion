@@ -17,17 +17,17 @@ $(() => {
     if ((data.name = name)) {
       $("#messages").append(
         $(
-          `<div class='message-container'><div class='inline-message self'>${date}: ${
+          `<div class='message-container'><div class='inline-message self'>${
             data.msg
-          }</div></div>`
+          }</div><p class="small">${date}</p></div>`
         )
       );
     } else {
       $("#messages").append(
         $(
-          `<div class='message-container'><div class='inline-message other'>${date}: ${
+          `<div class='message-container'><div class='inline-message other'>${
             data.name
-          }: ${data.msg}</div></div>`
+          }: ${data.msg}</div><p class="small">${date}</p></div>`
         )
       );
     }
@@ -41,17 +41,17 @@ $(() => {
       if (msg.from === senderId) {
         $("#messages").append(
           $(
-            `<div class='message-container'><div class='inline-message self'>${date}: ${
+            `<div class='message-container'><div class='inline-message self'>${
               msg.content
-            }</div></div>`
+            }</div><p class="small">${date}</p></div>`
           )
         );
       } else {
         $("#messages").append(
           $(
-            `<div class='message-container'><div class='inline-message other'>${date}: ${
+            `<div class='message-container'><div class='inline-message other'>${
               msg.name
-            }: ${msg.content}</div></div>`
+            }: ${msg.content}</div><p class="small">${date}</p></div>`
           )
         );
       }
