@@ -19,7 +19,9 @@ router.post("/edit/", (req, res, next) => {
       knownLanguages: req.body["known-languages"],
       learningLanguages: req.body["learning-languages"]
     };
-    if (picture !== "/images/placeholderProfile.png") {
+    console.log(picture);
+    if (picture.indexOf("/images/") === -1) {
+      console.log("new picture");
       newData.picture = picture;
     }
     User.findOneAndUpdate({ _id: req.user._id }, newData, { new: true, runValidators: true })
