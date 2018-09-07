@@ -18,7 +18,7 @@ function getEventLanguageList() {
     firstLanguage = data.user.knownLanguages[0];
 
   for (const language in isoLangs) {
-    if (language === firstLanguage) {
+    if (isoLangs[language].name === firstLanguage) {
       languageList += `<option class="item" data-value='${
         isoLangs[language].name
       }' selected="selected">${isoLangs[language].name}</option>`;
@@ -32,19 +32,13 @@ function getEventLanguageList() {
 }
 
 function setUserLanguages() {
-  console.log("set LANGUAGE");
-
   if (user.knownLanguages) {
     user.knownLanguages.forEach(language => {
-      console.log("set selected language: " + language);
-
       $("#multi-select-known").dropdown("set selected", language);
     });
   }
   if (user.learningLanguages) {
     user.learningLanguages.forEach(language => {
-      console.log("set selected language: " + language);
-
       $("#multi-select-learning").dropdown("set selected", language);
     });
   }
