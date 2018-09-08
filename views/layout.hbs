@@ -8,12 +8,18 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css" />
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/8.1.0/i18next.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-i18next/1.2.0/jquery-i18next.min.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <link rel='stylesheet' href='/stylesheets/style.css' />
   <link rel="icon" href="/images/favicon.ico?v=1.1">
 </head>
 
 <body>
   <div class="body-wrapper">
+    <button onclick="SetLanguage('en')">Set To English</button>
+    <button onclick="SetLanguage('de')">Set To German</button>
+    <button onclick="SetLanguage('nl')">Set To Dutch</button>
     {{{body}}}
   </div>
   <footer></footer>
