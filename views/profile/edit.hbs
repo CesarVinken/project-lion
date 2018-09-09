@@ -1,11 +1,5 @@
 {{> navbar user}}
-<script>const user = {{{ userString }}}</script>
-<script src='/javascripts/data.js'></script>
-<script src='/javascripts/user-info.js'></script>
-<script src='/javascripts/util/language-init.js'></script>
-<script src='/javascripts/util/country-init.js'></script>
 
-</br>
 <div class="flex-column-center">
     <h2 data-i18n="profile.editHeader">Edit Profile</h2>
     <div class="flex-column-center">
@@ -52,3 +46,9 @@
         </form>
     </div>
 </div>
+
+<script>const user = {{{ userString }}}</script>
+<script src='/javascripts/data.js'></script>
+<script src='/javascripts/user-info.js'></script>
+<script src='/javascripts/util/language-init.js'></script>
+<script src='/javascripts/util/country-init.js'></script>

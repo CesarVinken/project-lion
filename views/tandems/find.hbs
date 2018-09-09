@@ -1,11 +1,7 @@
 {{> navbar user}}
-<script>const user = {{{ userString }}}</script>
-<script src='/javascripts/data.js'></script>
-<script src='/javascripts/user-info.js'></script>
-<script src='/javascripts/util/language-init.js'></script>
-<script src='/javascripts/util/country-init.js'></script>
-<script src='/javascripts/tile.js'></script>
+
 <h2 data-i18n="tandem.findTandems">Find Tandems</h2>
+
 <div class="search-container">
     <div class="filter-container">
         <form action="/tandems/find" method="POST" id="form-container">
@@ -42,3 +38,10 @@
         </ul>
     </div>
 </div>
+
+<script>const user = {{{ userString }}}</script>
+<script src='/javascripts/data.js'></script>
+<script src='/javascripts/user-info.js'></script>
+<script src='/javascripts/util/language-init.js'></script>
+<script src='/javascripts/util/country-init.js'></script>
+<script src='/javascripts/tile.js'></script>

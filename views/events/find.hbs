@@ -1,13 +1,5 @@
 {{> navbar user}}
-<script>const user = {{{ userString }}}</script>
-<script src='/javascripts/data.js'></script>
-<script src='/javascripts/user-info.js'></script>
-<script src='/javascripts/tile.js'></script>
-<script src='/javascripts/util/language-init.js'></script>
-<script src='/javascripts/util/country-init.js'></script>
 
-
-<script>let eventId = null</script>
 <h2 data-i18n="event.findHeader">Find Events</h2>
 
 <div class="search-container">
@@ -46,3 +38,11 @@
         </ul>
     </div>
 </div>
+
+<script>const user = {{{ userString }}}</script>
+<script src='/javascripts/data.js'></script>
+<script src='/javascripts/user-info.js'></script>
+<script src='/javascripts/tile.js'></script>
+<script src='/javascripts/util/language-init.js'></script>
+<script src='/javascripts/util/country-init.js'></script>
+<script>let eventId = null</script>

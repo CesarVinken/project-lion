@@ -1,11 +1,5 @@
 {{> navbar user}}
-<script>const data = {{{ dataString }}}</script>
-<script src='/javascripts/data.js'></script>
-<script src='/javascripts/event.js'></script>
-<script src='/javascripts/util/language-init.js'></script>
-<script src='/javascripts/util/country-init.js'></script>
 
-</br>
 <div class="flex-column-center">
     <h2 data-i18n="event.createEvent">Create new Event</h2>
     <form method="POST" action="/events/new" encType="multipart/form-data">
@@ -44,3 +38,9 @@
         </br>
     </form>
 </div>
+
+<script>const data = {{{ dataString }}}</script>
+<script src='/javascripts/data.js'></script>
+<script src='/javascripts/event.js'></script>
+<script src='/javascripts/util/language-init.js'></script>
+<script src='/javascripts/util/country-init.js'></script>

@@ -1,8 +1,4 @@
-<script>const user = null</script>
-<script src='/javascripts/data.js'></script>
-<script src='/javascripts/user-info.js'></script>
-<script src='/javascripts/util/language-init.js'></script> {{> navbar user}}
-<script src='/javascripts/util/country-init.js'></script>
+{{> navbar user}}
 
 <div class="flex-column-center">
   <div id="content-wrapper-profile">
@@ -76,3 +72,9 @@
   <a href="/profile/delete/" class="danger-btn" data-i18n="profile.delete">Delete Account</a><br> {{else}}
   <a href="/tandems/add/{{this.user._id}}" class="success-btn" data-i18n="profile.startConversation">Start conversation</a>{{/if}}
 </div>
+
+<script>const user = null</script>
+<script src='/javascripts/data.js'></script>
+<script src='/javascripts/user-info.js'></script>
+<script src='/javascripts/util/language-init.js'></script>
+<script src='/javascripts/util/country-init.js'></script>
