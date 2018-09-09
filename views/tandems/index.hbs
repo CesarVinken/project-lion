@@ -1,6 +1,6 @@
 {{> navbar user}}
 <div class="flex-column-center"></div>
-<h2>My Tandems</h2>
+<h2 data-i18n="tandem.myTandems">My Tandems</h2>
 <div class="flex-row">
     <div class="flex-column tandem-list">
         <ul>
@@ -13,7 +13,7 @@
                     </div>
                     <a href="/tandems/{{this.user._id}}">{{this.user.name}}</a>
                     <div class="last-active">
-                        <p>active: {{this.dateStr}}</p>
+                        <p data-i18n="tandem.active">active: {{this.dateStr}}</p>
                     </div>
                 </li>
                 {{/each }}
@@ -25,18 +25,20 @@
                 <div class="tandem-info">
                     <h3>{{current.user.name}}</h3>
                     <div class="row">
-                        <p>Location: {{current.user.location.country}}{{#if current.user.location.city}}, {{current.user.location.city}}{{/if}}</p>
-                        <p>Speaks: {{#each current.user.knownLanguages}}{{this}}; {{/each}} </p>
+                        <p data-i18n="tandem.location">Location: {{current.user.location.country}}{{#if current.user.location.city}},
+                            {{current.user.location.city}}{{/if}}
+                        </p>
+                        <p data-i18n="tandem.speaks">Speaks: {{#each current.user.knownLanguages}}{{this}}; {{/each}} </p>
                     </div>
                 </div>
                 <div class="options-container">
                     <div class="ui dropdown tandem">
                         <div class="nav-img">
-                            <h4>Options</h4>
+                            <h4 data-i18n="tandem.options">Options</h4>
                         </div>
                         <div class="menu">
-                            <div class="item" data-value="more">More about me</div>
-                            <div class="item" data-value="block">Block</div>
+                            <div class="item" data-value="more" data-i18n="tandem.more">More about me</div>
+                            <div class="item" data-value="block" data-i18n="tandem.block">Block</div>
                         </div>
                     </div>
                 </div>
@@ -44,7 +46,7 @@
             <ul class="tandem" id="messages">
             </ul>
             <form action="" id="user-input">
-                <button>Send</button>
+                <button data-i18n="tandem.send">Send</button>
                 <div id="typing" style="color:white"></div>
                 <input id="m" autocomplete="off" />
             </form>

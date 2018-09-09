@@ -7,48 +7,48 @@
 
 </br>
 <div class="flex-column-center">
-    <h2>Edit Profile</h2>
+    <h2 data-i18n="profile.editHeader">Edit Profile</h2>
     <div class="flex-column-center">
         <form method="POST" action="/profile/edit" encType="multipart/form-data">
-            <h3>Basic Information</h3>
+            <h3 data-i18n="profile.basicInfo">Basic Information</h3>
             <div class="form-group">
-                <label>Name:</label>
+                <label data-i18n="profile.name">Name:</label>
                 <input type="text" name="name" placeholder="Name" value="{{ user.name}}" required>
-                <label>E-mail address:</label>
+                <label data-i18n="profile.email">E-mail address:</label>
                 <input type="text" name="email" placeholder="E-mail address" value="{{ user.email}}" required>
-                <label>Age:</label>
+                <label data-i18n="profile.age">Age:</label>
                 <input type="number" name="age" placeholder="Age" value="{{ user.age}}" required>
-                <label>About me:</label>
+                <label data-i18n="profile.description">About me:</label>
                 <textarea rows="4" type="text" name="description" placeholder="Something about me..">{{ user.description}}</textarea>
             </div>
-            <h3>Profile Picture</h3>
+            <h3 data-i18n="profile.picture">Profile Picture</h3>
             <div class="form-group">
                 <input type="file" name="picture">
             </div>
             </br>
             </br>
-            <h3>My Languages</h3>
+            <h3 data-i18n="profile.myLanguages">My Languages</h3>
             <div class="form-group" type="hidden" hidden>
-                <label>Languages I know:</label>
+                <label data-i18n="profile.knownLanguages">Languages I know:</label>
                 <select name="known-languages" class="search selection" multiple="" id="multi-select-known">
-                    <option value="">Select a language</option>
+                    <option value="" data-i18n="profile.selectLanguage">Select a language</option>
                 </select>
-                <label>Languages I am learning:</label>
+                <label data-i18n="profile.learningLanguage">Languages I am learning:</label>
                 <select name="learning-languages" class="search selection" multiple="" id="multi-select-learning">
-                    <option value="">Select a language</option>
+                    <option value="" data-i18n="profile.selectLanguage">Select a language</option>
                 </select>
             </div>
             </br>
-            <h3>My Location</h3>
+            <h3 data-i18n="profile.myLocation">My Location</h3>
             <div class="form-group">
-                <label for="country">Country</label>
+                <label for="country" data-i18n="profile.country">Country</label>
                 <select class="ui search selection dropdown" name="country" id="user-country">
-                    <option value="">Country</option>
+                    <option value="" data-i18n="profile.country">Country</option>
                 </select>
-                <label>City:</label>
+                <label data-i18n="profile.city">City:</label>
                 <input type="text" name="city" placeholder="City" value="{{ user.location.city}}">
             </div> </br>
-            <button type="submit" name="" id="submit" class="success-btn">Save Changes</button>
+            <button type="submit" name="" id="submit" class="success-btn" data-i18n="profile.save">Save Changes</button>
         </form>
     </div>
 </div>

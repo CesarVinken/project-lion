@@ -7,36 +7,36 @@
 
 </br>
 <div class="flex-column-center">
-    <h2>Create new Event</h2>
+    <h2 data-i18n="event.createEvent">Create new Event</h2>
     <form method="POST" action="/events/new" encType="multipart/form-data">
-        <h3>Basic Info</h3>
+        <h3 data-i18n="event.basicInfo">Basic Info</h3>
         <div class="form-group">
-            <label for="title">Event title</label>
+            <label for="title" data-i18n="event.title">Event title</label>
             <input type="text" id="title" name="title" placeholder="Title" required>
-            <label for="description" required>Event description</label>
-            <textarea rows="4" type="text" id="description" name="description" placeholder="My event is about.."></textarea>
-            <label for="date" required>Event date</label>
-            <input type="date" id="date" name="date" placeholder="Date">
-            <label for="language" required>Event language</label>
+            <label for="description" data-i18n="event.description">Event description</label>
+            <textarea rows="4" type="text" id="description" name="description" placeholder="My event is about.." required></textarea>
+            <label for="date" data-i18n="event.date">Event date</label>
+            <input type="date" id="date" name="date" placeholder="Date" required>
+            <label for="language" data-i18n="event.language" required>Event language</label>
             <select class="ui search selection dropdown" name="language" id="event-language">
             </select>
         </div>
         </br>
-        <h3>Event Picture</h3>
+        <h3 data-i18n="event.picture">Event Picture</h3>
         <div class="form-group">
-            <label for="picture">Upload a Picture for your event</label>
+            <label for="picture" data-i18n="event.uploadPicture">Upload a Picture for your event</label>
             <input type="file" name="picture">
         </div>
         </br>
-        <h3>Address</h3>
+        <h3 data-i18n="event.address">Address</h3>
         <div class="form-group">
-            <label for="country">Country</label>
+            <label for="country" data-i18n="event.country">Country</label>
             <select class="ui search selection dropdown" name="country" id="user-country">
-                <option value="">Country</option>
+                <option value="" data-i18n="event.country">Country</option>
             </select>
-            <label for="city">City</label>
+            <label for="city" data-i18n="event.city">City</label>
             <input type="text" id="city" name="city" placeholder="City">
-            <label for="street">Street</label>
+            <label for="street" data-i18n="event.street">Street</label>
             <input type="text" id="street" name="street" placeholder="Street">
         </div>
         </br>

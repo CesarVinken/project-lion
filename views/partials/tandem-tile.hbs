@@ -7,10 +7,10 @@
     <p>{{this.location.country}}{{#if this.location.city}}, {{this.location.city}}{{/if}}
   </div>
   <div class="languages">
-    <p>I Learn: {{#each this.learningLanguages}}{{this}} {{/each}}</p>
-    <p>I Know: {{#each this.knownLanguages }}{{this}} {{/each}}</p>
+    <p data-i18n="tandem.iLearn">I Learn: {{#each this.learningLanguages}}{{this}} {{/each}}</p>
+    <p data-i18n="tandem.iKnow">I Know: {{#each this.knownLanguages }}{{this}} {{/each}}</p>
   </div>
-  <a href="/tandems/add/{{ this._id}}" class="white-btn">Add</a>
+  <a href="/tandems/add/{{ this._id}}" class="white-btn" data-i18n="tandem.add">Add</a>
 </div>
 <div class="tandem-description">
   <p></p>{{ this.description }}

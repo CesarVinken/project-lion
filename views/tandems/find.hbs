@@ -5,25 +5,25 @@
 <script src='/javascripts/util/language-init.js'></script>
 <script src='/javascripts/util/country-init.js'></script>
 <script src='/javascripts/tile.js'></script>
-<h2>Find Tandems</h2>
+<h2 data-i18n="tandem.findTandems">Find Tandems</h2>
 <div class="search-container">
     <div class="filter-container">
         <form action="/tandems/find" method="POST" id="form-container">
             <div class="form-group">
-                <label>Language:</label>
+                <label data-i18n="tandem.language">Language:</label>
                 <select name="language" class="search selection" multiple="" id="multi-select-learning">
-                    <option value="">Select a language</option>
+                    <option value="" data-i18n="tandem.selectLanguage">Select a language</option>
                 </select>
-                <label for="country">Country</label>
+                <label for="country" data-i18n="tandem.country">Country</label>
                 <select class="ui search selection dropdown" name="country" id="user-country">
-                    <option value="">Country</option>
+                    <option value="" data-i18n="tandem.country">Country</option>
                 </select>
-                <label for="city">City:</label>
+                <label for="city" data-i18n="tandem.city">City:</label>
                 <input type="text" name="city" placeholder="City" value="" id="user-city">
                 <div class="age">
-                    <label for="age">Min age:</label>
+                    <label for="age" data-i18n="tandem.minAge">Min age:</label>
                     <input type="number" name="ageStart" min="18" maxlength="2" id="min-age">
-                    <label for="age">Max age:</label>
+                    <label for="age" data-i18n="tandem.maxAge">Max age:</label>
                     <input type="number" name="ageEnd" min="18" maxlength="2" id="max-age">
                 </div>
             </div>

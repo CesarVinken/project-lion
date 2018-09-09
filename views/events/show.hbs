@@ -2,7 +2,7 @@
 <div class="flex-column-center event">
   <div class="flex-column">
     <div class="flex-column">
-      <button class="white-btn" id="back">Back to my events</button>
+      <button class="white-btn" id="back" data-i18n="event.back">Back to my events</button>
       <div class="flex-row">
         <div class="tile-image">
           <img src="{{event.picture}}" alt="event picture">
@@ -18,7 +18,7 @@
       <div class="event" id="messages"></div>
       {{#if event.userAttending}}
       <form action="" class="event" id="user-input">
-        <button class="white-btn">Send</button>
+        <button class="white-btn" data-i18n="event.send">Send</button>
         <input id="m" autocomplete="off" />
         <div id="typing" style="color:white"></div>
       </form>
@@ -35,18 +35,18 @@
     </div>
 
     <div class="info-wrapper">
-      <p>Location:</p>
+      <p data-i18n="event.location">Location:</p>
       <p>{{#if event.location.city}}{{event.location.city}}, {{/if}}{{event.location.country}}{{#if event.location.street}},</br>{{event.location.street}}</p>{{/if}}
-      <p>Language:</p>
+      <p data-i18n="event.language">Language:</p>
       <p>{{event.language}}</p>
-      <p>Date:</p>
+      <p data-i18n="event.date">Date:</p>
       <p>{{event.dateStr}}</p>
-      <p>Attendees: {{event.counter}}</p> {{#if event.userAttending}}
-      <button class="white-btn" id="unattend">Unattend Event</button>
+      <p data-i18n="event.attendees">Attendees: {{event.counter}}</p> {{#if event.userAttending}}
+      <button class="white-btn" id="unattend" data-i18n="event.unattend">Unattend Event</button>
       {{else}}
-      <button class="white-btn" id="attend">Attend Event</button>
-      {{/if}} {{#if event.own}}</br><button class="white-btn" id="edit">Edit Event</button></br>
-      <button class="white-btn" id="delete">Delete Event</button>
+      <button class="white-btn" id="attend" data-i18n="event.attend">Attend Event</button>
+      {{/if}} {{#if event.own}}</br><button class="white-btn" id="edit" data-i18n="event.edit">Edit Event</button></br>
+      <button class="white-btn" id="delete" data-i18n="event.delete">Delete Event</button>
       {{/if}}
       </br>
     </div>

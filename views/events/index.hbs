@@ -1,7 +1,7 @@
 {{> navbar user}}
 <script src='/javascripts/tile.js'></script>
 
-<h2>My events</h2>
+<h2 data-i18n="event.myEvents">My events</h2>
 <div class="flex-column-center">
     <ul>
         {{#each events}}
@@ -10,5 +10,5 @@
         </div>{{/each }}
     </ul>
     <br>
-    <a href="/events/new">Create new event</a>
+    <a href="/events/new" data-i18n="event.createEvent">Create new event</a>
 </div>

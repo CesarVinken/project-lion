@@ -13,13 +13,13 @@
       <section id="location">
         <hr>
 
-        <h3>Location</h3>
+        <h3 data-i18n="profile.location">Location</h3>
         <div class="row">
-          <p class="info-category">Country:</p>
+          <p class="info-category" data-i18n="profile.country">Country:</p>
           <p>{{user.location.country}}</p>
         </div>
         <div class="row">
-          <p class="info-category">City:</p>
+          <p class="info-category" data-i18n="profile.city">City:</p>
           <p>{{user.location.city}}</p>
         </div>
       </section>
@@ -32,24 +32,24 @@
         </div>
         {{#if user.ownProfile}}
         <div class="row">
-          <p class="info-category">Email address:</p>
+          <p class="info-category" data-i18n="profile.email">Email address:</p>
           <p>{{user.email}}</p>
         </div>
         {{/if}}
         <div class="row">
-          <p class="info-category">Age:</p>
+          <p class="info-category" data-i18n="profile.age">Age:</p>
           <p>{{user.age}}</p>
         </div>
         <div>
-          <p class="info-category">About me:</p>
+          <p class="info-category" data-i18n="profile.description">About me:</p>
           <textarea readonly rows="4" cols="50">{{user.description}}</textarea>
         </div>
       </section>
       <section id="language">
         <hr>
-        <h3>Languages</h3>
+        <h3 data-i18n="profile.languages">Languages</h3>
         <div class="row">
-          <p class="info-category">Languages I know:</p>
+          <p class="info-category" data-i18n="profile.knownLanguages">Languages I know:</p>
           <ul class="lang-list">{{#each user.knownLanguages}}
             <li>
               {{this}}
@@ -58,7 +58,7 @@
         </div>
         </br>
         <div class="row">
-          <p class="info-category">Languages I am learning:</p>
+          <p class="info-category" data-i18n="profile.learningLanguages">Languages I am learning:</p>
           <ul class="lang-list">{{#each user.learningLanguages}}
             <li>
               {{this}}
@@ -72,7 +72,7 @@
   </br>
   </br>
   {{#if user.ownProfile}}
-  <a href="/profile/edit" class="success-btn">Edit</a><br>
-  <a href="/profile/delete/" class="danger-btn">Delete Account</a><br> {{else}}
-  <a href="/tandems/add/{{this.user._id}}" class="success-btn">Start conversation</a>{{/if}}
+  <a href="/profile/edit" class="success-btn" data-i18n="profile.edit">Edit</a><br>
+  <a href="/profile/delete/" class="danger-btn" data-i18n="profile.delete">Delete Account</a><br> {{else}}
+  <a href="/tandems/add/{{this.user._id}}" class="success-btn" data-i18n="profile.startConversation">Start conversation</a>{{/if}}
 </div>

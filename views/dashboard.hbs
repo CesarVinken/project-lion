@@ -1,31 +1,33 @@
 {{> navbar user}}
 <script src="/javascripts/dashboard.js"></script>
-<h1>Hi {{user.name}}!</h1>
+<h1 data-i18n="dashboard.greeting">Hi {{user.name}}!</h1>
 
 <div class="dashboard-wrapper">
     <div class="dashboard-group">
     </div>
     <div class="dashboard-group">
-        <h3>My Tandems</h3>
+        <h3 data-i18n="dashboard.tandemsHeader">My Tandems</h3>
         {{#if tandems}}
         <ul>
             {{#each tandems}} {{> tandem_tile_small this}} {{/each}}
         </ul>
         {{#if tandemsMore}}
-        <button class="white-btn" id="more-tandems">More...</button>
+        <button class="white-btn" id="more-tandems" data-i18n="dashboard.more">More...</button>
         {{/if}} {{else}}
-        <p>You have no ongoing conversations. <a href="/tandems/find">Find somebody to practice a language with here</a></p>
+        <p data-i18n="dashboard.noTandems">You have no ongoing conversations. <a href="/tandems/find" data-i18n="dashboard.findTandem">Find
+                somebody to practice a language with here</a></p>
         {{/if}}
     </div>
     <div class="dashboard-group">
-        <h3>My Events</h3>
+        <h3 data-i18n="dashboard.eventsHeader">My Events</h3>
         {{#if events}}
         <ul>
             {{#each events}} {{> event_tile_small this}} {{/each}}
         </ul> {{#if eventsMore}}
-        <button class="white-btn" id="more-events">More...</button>
+        <button class="white-btn" id="more-events" data-i18n="dashboard.more">More...</button>
         {{/if}} {{else}}
-        <p>You are not subscribed to any upcoming events. <a href=" /events/find">Find an event here</a></p>
+        <p data-i18n="dashboard.noEvents">You are not subscribed to any upcoming events. <a href=" /events/find" data-i18n="dashboard.findEvent">Find
+                an event here</a></p>
         {{/if}}
     </div>
 </div>

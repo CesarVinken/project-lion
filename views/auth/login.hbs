@@ -4,9 +4,9 @@
   <form action="/login" method="POST" id="form-container">
 
     <div class="form-group">
-      <label for="email">Email</label>
+      <label for="email" data-i18n="auth.email">Email</label>
       <input id="email" type="text" name="email" placeholder="jon@snow.com">
-      <label for="password">Password</label>
+      <label for="password" data-i18n="auth.password">Password</label>
       <input id="password" type="password" name="password" placeholder="Your password">
     </div>
 
@@ -16,11 +16,11 @@
     </br>
 
     <div class="form-group">
-      <button class="success-btn">Log in</button>
+      <button class="success-btn" data-i18n="auth.login">Log in</button>
       </br>
-      <p class="account-message">
+      <p class="account-message" data-i18n="auth.noAccount">
         Don't have an account yet?
-        <a href="/signup">Sign up</a>
+        <a href="/signup" data-i18n="auth.signup">Sign up</a>
       </p>
     </div>
   </form>
