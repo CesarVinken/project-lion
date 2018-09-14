@@ -25,5 +25,30 @@
     "createAccount": "Maak account aan",
     "alreadyAccount": "Heb je al een account?"
   },
-  "event": {}
+  "event": {
+    "findHeader": "Vind Evenementen",
+    "basicInfo": "Basisinformatie",
+    "title": "Naam",
+    "description": "Beschrijving",
+    "date": "Datum",
+    "language": "Taal",
+    "picture": "Afbeelding",
+    "uploadPicture": "Afbeelding uploaden",
+    "location": "Locatie",
+    "country": "Land",
+    "city": "Stad",
+    "street": "Straat",
+    "selectLanguage": "Selecteer Taal",
+    "from": "Van: ",
+    "to": "Tot: ",
+    "myEvents": "Mijn Evenementen",
+    "createEvent": "Maak evenement aan",
+    "edit": "Evenement bewerken",
+    "delete": "Verwijder evenement",
+    "back": "Terug naar Mijn Evenementen",
+    "send": "Verstuur",
+    "attendees": "Aanwezig",
+    "attend": "Deelnemen",
+    "unattend": "Nietß deelnemen"
+  }
 }
