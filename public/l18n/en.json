@@ -1,8 +1,15 @@
-{
-  "nav": {
-    "findEvents": "Find Events",
-    "findTandems": "Find Tandems",
-    "myProfile": "My profile",
-    "logOut": "Log out"
-  }
-}
+// {
+//   "nav": {
+//     "findEvents": "Find Events",
+//     "findTandems": "Find Tandems",
+//     "myProfile": "My profile",
+//     "logOut": "Log out"
+//   },
+//   "auth": {
+//     "email": "Email",
+//     "password": "Password",
+//     "login": "Log in",
+//     "noAccount": "Don't have an account yet?",
+//     "signUp": "Sign up"
+//   }
+// }

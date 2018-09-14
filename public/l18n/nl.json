@@ -4,5 +4,26 @@
     "findTandems": "Vind tandems",
     "myProfile": "Mijn profiel",
     "logOut": "Uitloggen"
-  }
+  },
+  "auth": {
+    "password": "Wachtwoord",
+    "login": "Log in",
+    "noAccount": "Nog geen account?",
+    "signUp": "Registreren",
+    "basicInfo": "",
+    "name": "Naam",
+    "email": "Email",
+    "age": "Leeftijd",
+    "about": "Over mij",
+    "profilePicture": "Afbeelding",
+    "myLanguages": "Ik spreek:",
+    "knownLanguages": "Ik leer:",
+    "selectLanguage": "Selecteer een taal",
+    "myLocation": "Mijn Locatie",
+    "country": "Land",
+    "city": "Stad",
+    "createAccount": "Maak account aan",
+    "alreadyAccount": "Heb je al een account?"
+  },
+  "event": {}
 }

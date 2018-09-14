@@ -23,9 +23,11 @@ $(document).ready(function() {
   });
 });
 
+console.log(navigator.language);
+
 i18next.init(
   {
-    lng: "en",
+    lng: navigator.language,
     resources: {
       en: {},
       de: {}
@@ -33,7 +35,7 @@ i18next.init(
   },
   function(err, t) {
     jqueryI18next.init(i18next, $);
-
+    console.log(i18next.language);
     const language = i18next.language;
 
     axios.get(`/l18n/${language}.json`).then(res => {
@@ -44,6 +46,12 @@ i18next.init(
 
 function SetLanguage(language) {
   console.log("set language to " + language);
+
+  //we do not keep a specific EN translation file. Instead no localisation file should be loaded, and the default text should be used.
+  if (language === "en" || language === "en-US") {
+    location.reload();
+    return;
+  }
 
   i18next.changeLanguage(language, (err, t) => {
     if (err) return console.log("something went wrong loading", err);

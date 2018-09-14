@@ -1,42 +1,42 @@
-<h2>Signup</h2>
+<h2 data-i18n="auth.signUp">Sign up</h2>
 <div class="flex-column-center">
   <form action="/signup" method="POST" id="form-container" encType="multipart/form-data">
     <div class="form-group">
 
-      <h3>Basic Information</h3>
-      <label for="name">Name:</label>
+      <h3 data-i18n="auth.basicInfo">Basic Information</h3>
+      <label for="name" data-i18n="auth.name">Name:</label>
       <input type="text" name="name" placeholder="Name" value="" required>
-      <label for="email">E-mail address:</label>
+      <label for="email" data-i18n="auth.email">E-mail address:</label>
       <input type="text" name="email" placeholder="E-mail address" value="" required>
-      <label for="Age">Age:</label>
+      <label for="Age" data-i18n="auth.age">Age:</label>
       <input type="number" name="age" placeholder="Age" value="" required>
-      <label for="description">About me:</label>
+      <label for="description" data-i18n="auth.about">About me:</label>
       <textarea rows="4" type="text" name="description" placeholder="Something about me.."></textarea>
-      <label for="password">Password:</label>
+      <label for="password" data-i18n="auth.password">Password:</label>
       <input id="password" type="password" name="password" placeholder="Your password" required>
-      <label for="picture">Profile Picture</label>
+      <label for="picture" data-i18n="auth.profilePicture">Profile Picture</label>
       <input type="file" name="picture">
     </div>
     </br>
     <div class="form-group">
-      <h3>My Languages</h3>
-      <label>Languages I know:</label>
+      <h3 data-i18n="auth.myLanguages">My Languages</h3>
+      <label data-i18n="auth.knownLanguages">Languages I know:</label>
       <select name="knownLanguages" class="search selection" multiple="" id="multi-select-known">
-        <option value="">Select a language</option>
+        <option data-i18n="auth.selectLanguage" value="">Select a language</option>
       </select>
-      <label>Languages I am learning:</label>
+      <label data-i18n="auth.learningLanguages">Languages I am learning:</label>
       <select name="learningLanguages" class="search selection" multiple="" id="multi-select-learning">
-        <option value="">Select a language</option>
+        <option data-i18n="auth.selectLanguage" value="">Select a language</option>
       </select>
     </div>
     </br>
     <div class="form-group">
-      <h3>My Location</h3>
-      <label for="country">Country</label>
+      <h3 data-i18n="auth.myLocation">My Location</h3>
+      <label data-i18n="auth.country" for="country">Country</label>
       <select class="ui search selection dropdown" name="country" id="user-country">
-        <option value="">Country:</option>
+        <option data-i18n="auth.country" value="">Country:</option>
       </select>
-      <label for="city">City:</label>
+      <label data-i18n="auth.city" for="city">City:</label>
       <input type="text" name="city" placeholder="City" value="">
     </div>
     </br>
@@ -46,12 +46,12 @@
     {{/if}}
     <div class="form-group">
       </br>
-      <button class="success-btn">Create account</button>
+      <button class="success-btn" data-i18n="auth.createAccount">Create account</button>
       </br>
 
-      <p class="account-message">
+      <p class="account-message" data-i18n="auth.alreadyAccount">
         Do you already have an account?
-        <a href="/login">Log in</a>
+        <a href="/login" data-i18n="auth.login">Log in</a>
       </p>
     </div>
   </form>
