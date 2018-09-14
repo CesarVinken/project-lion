@@ -6,12 +6,13 @@
         <h3 data-i18n="event.basicInfo">Basic Info</h3>
         <div class="form-group">
             <label for="title" data-i18n="event.title">Event title</label>
-            <input type="text" id="title" name="title" placeholder="Title" required>
+            <input type="text" id="title" name="title" data-i18n="[placeholder]event.titlePlaceholder" placeholder="Give your event a name"
+                required>
             <label for="description" data-i18n="event.description">Event description</label>
-            <textarea rows="4" type="text" id="description" name="description" placeholder="My event is about.."
+            <textarea rows="4" type="text" id="description" name="description" data-i18n="[placeholder]event.descriptionPlaceholder" placeholder="My event is about.."
                 required></textarea>
             <label for="date" data-i18n="event.date">Event date</label>
-            <input type="date" id="date" name="date" placeholder="Date" required>
+            <input type="date" id="date" name="date" required>
             <label for="language" data-i18n="event.language" required>Event language</label>
             <select class="ui search selection dropdown" name="language" id="event-language">
             </select>
@@ -30,12 +31,12 @@
                 <option value="" data-i18n="event.country">Country</option>
             </select>
             <label for="city" data-i18n="event.city">City</label>
-            <input type="text" id="city" name="city" placeholder="City">
+            <input type="text" id="city" name="city" placeholder="">
             <label for="street" data-i18n="event.street">Street</label>
-            <input type="text" id="street" name="street" placeholder="Street">
+            <input type="text" id="street" name="street" placeholder="">
         </div>
         </br>
-        <input type="submit" name="" id="submit" class="success-btn">
+        <input type="submit" name="" id="submit" class="success-btn" data-i18n="[value]event.submit" value="Submit">
         </br>
     </form>
 </div>

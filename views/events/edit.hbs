@@ -7,11 +7,13 @@
         <h3 data-i18n="event.basicInfo">Basic Information</h3>
         <div class="form-group">
             <label for="title" data-i18n="event.title">Event title</label>
-            <input type="text" id="title" name="title" placeholder="Title" value="{{ event.title}}">
+            <input type="text" id="title" name="title" data-i18n="[placeholder]event.titlePlaceholder" placeholder="Give your event a name"
+                value="{{ event.title}}">
             <label for="description" data-i18n="event.description">Event description</label>
-            <textarea rows="4" type="text" id="description" name="description" placeholder="My event is about..">{{ event.description}}</textarea>
+            <textarea rows="4" type="text" id="description" name="description" data-i18n="[placeholder]event.descriptionPlaceholder"
+                placeholder="My event is about..">{{ event.description}}</textarea>
             <label for="date" data-i18n="event.date">Event date</label>
-            <input type="date" id="date" name="date" placeholder="Date" value="{{ event.date}}">
+            <input type="date" id="date" name="date" value="{{ event.date}}">
             <label for="language" data-i18n="event.language">Event language</label>
             <select class="ui search selection dropdown" name="language" id="event-language">
             </select>
@@ -25,13 +27,13 @@
         <h3 data-i18n="event.location">Location</h3>
         <div class="form-group">
             <label for="country" data-i18n="event.country">Country</label>
-            <select class="ui search selection dropdown" name="country" id="user-country" placeholder="Country">
+            <select class="ui search selection dropdown" name="country" id="user-country" placeholder="">
                 <option value="" data-i18n="event.country">Country</option>
             </select>
             <label for="city" data-i18n="event.city">City</label>
-            <input type="text" id="city" name="city" placeholder="City" value="{{ event.location.city}}">
+            <input type="text" id="city" name="city" placeholder="" value="{{ event.location.city}}">
             <label for="street" data-i18n="event.street">Street</label>
-            <input type="text" id="street" name="street" placeholder="Street" value="{{ event.location.street}}">
+            <input type="text" id="street" name="street" placeholder="" value="{{ event.location.street}}">
         </div>
         </br>
         <input type="submit" name=" " id="submit" class="success-btn">

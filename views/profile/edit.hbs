@@ -7,13 +7,16 @@
             <h3 data-i18n="profile.basicInfo">Basic Information</h3>
             <div class="form-group">
                 <label data-i18n="profile.name">Name:</label>
-                <input type="text" name="name" placeholder="Name" value="{{ user.name}}" required>
+                <input type="text" name="name" data-i18n="[placeholder]profile.name" placeholder="Name" value="{{ user.name}}"
+                    required>
                 <label data-i18n="profile.email">E-mail address:</label>
-                <input type="text" name="email" placeholder="E-mail address" value="{{ user.email}}" required>
+                <input type="text" name="email" placeholder="someone@example.com" value="{{ user.email}}" required>
                 <label data-i18n="profile.age">Age:</label>
-                <input type="number" name="age" placeholder="Age" value="{{ user.age}}" required>
+                <input type="number" name="age" data-i18n="[placeholder]profile.age" placeholder="Age" value="{{ user.age}}"
+                    required>
                 <label data-i18n="profile.description">About me:</label>
-                <textarea rows="4" type="text" name="description" placeholder="Something about me..">{{ user.description}}</textarea>
+                <textarea rows="4" type="text" name="description" data-i18n="[placeholder]profile.descriptionPlaceholder"
+                    placeholder="Something about me..">{{ user.description}}</textarea>
             </div>
             <h3 data-i18n="profile.picture">Profile Picture</h3>
             <div class="form-group">

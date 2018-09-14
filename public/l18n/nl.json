@@ -1,4 +1,9 @@
 {
+  "landing": {
+    "subtitle": "Makkelijk talen leren",
+    "login": "Log in",
+    "signUp": "Registreren"
+  },
   "nav": {
     "findEvents": "Vind events",
     "findTandems": "Vind tandems",
@@ -15,6 +20,7 @@
     "email": "Email",
     "age": "Leeftijd",
     "about": "Over mij",
+    "aboutPlaceholder": "Iets over mij",
     "profilePicture": "Afbeelding",
     "myLanguages": "Ik spreek:",
     "knownLanguages": "Ik leer:",
@@ -26,10 +32,12 @@
     "alreadyAccount": "Heb je al een account?"
   },
   "event": {
-    "findHeader": "Vind Evenementen",
+    "find": "Vind Evenementen",
     "basicInfo": "Basisinformatie",
     "title": "Naam",
+    "titlePlaceholder": "Geef je evenement een naam..",
     "description": "Beschrijving",
+    "descriptionPlaceholder": "Mijn evenement gaat over..",
     "date": "Datum",
     "language": "Taal",
     "picture": "Afbeelding",
@@ -49,7 +57,8 @@
     "send": "Verstuur",
     "attendees": "Aanwezig",
     "attend": "Deelnemen",
-    "unattend": "Niet deelnemen"
+    "unattend": "Niet deelnemen",
+    "submit": "OK"
   },
   "profile": {
     "editHeader": "Profiel bewerken",
@@ -58,11 +67,12 @@
     "email": "Email",
     "age": "Leeftijd",
     "description": "Beschrijving",
+    "descriptionPlaceholder": "Iets over mij..",
     "picture": "Afbeelding",
     "myLanguages": "Mijn talen:",
     "knownLanguages": "Ik spreek:",
     "selectLanguage": "Selecteer Taal",
-    "learningLanguage": "Ik leer",
+    "learningLanguages": "Ik leer",
     "myLocation": "Mijn Locatie",
     "location": "Locatie",
     "country": "Land",
@@ -72,7 +82,7 @@
     "delete": "Verwijder",
     "startConversation": "Begin gesprek"
   },
-  "tandems": {
+  "tandem": {
     "findTandems": "Vind tandems",
     "language": "Taal",
     "selectLanguage": "Selecteer een taal",
@@ -86,7 +96,10 @@
     "options": "Opties",
     "more": "Meer",
     "block": "Blokkeer",
-    "send": "Verstuur"
+    "send": "Verstuur",
+    "iLearn": "Ik leer",
+    "iKnow": "Ik spreek",
+    "add": "Toevoegen"
   },
   "dashboard": {
     "greeting": "Hallo",
