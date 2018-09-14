@@ -49,6 +49,53 @@
     "send": "Verstuur",
     "attendees": "Aanwezig",
     "attend": "Deelnemen",
-    "unattend": "Nietß deelnemen"
+    "unattend": "Niet deelnemen"
+  },
+  "profile": {
+    "editHeader": "Profiel bewerken",
+    "basicInfo": "Basisinformatie",
+    "name": "Naam",
+    "email": "Email",
+    "age": "Leeftijd",
+    "description": "Beschrijving",
+    "picture": "Afbeelding",
+    "myLanguages": "Mijn talen:",
+    "knownLanguages": "Ik spreek:",
+    "selectLanguage": "Selecteer Taal",
+    "learningLanguage": "Ik leer",
+    "myLocation": "Mijn Locatie",
+    "location": "Locatie",
+    "country": "Land",
+    "city": "Stad",
+    "save": "Opslaan",
+    "edit": "Bewerken",
+    "delete": "Verwijder",
+    "startConversation": "Begin gesprek"
+  },
+  "tandems": {
+    "findTandems": "Vind tandems",
+    "language": "Taal",
+    "selectLanguage": "Selecteer een taal",
+    "country": "Land",
+    "city": "Stad",
+    "minAge": "Min. Leeftijd",
+    "maxAge": "Max. Leeftijd",
+    "myTandems": "Mijn tandems",
+    "active": "Actief",
+    "speaks": "Spreekt",
+    "options": "Opties",
+    "more": "Meer",
+    "block": "Blokkeer",
+    "send": "Verstuur"
+  },
+  "dashboard": {
+    "greeting": "Hallo",
+    "tandemsHeader": "Mijn Tandems",
+    "more": "Meer...",
+    "noTandems": "Je hebt nog geen gesprekken.",
+    "findTandem": "Vind hier iemand on een taal mee te oefenen",
+    "eventsHeader": "Mijn Evenementen",
+    "noEvents": "Je bent voor geen evenementen aangemeld",
+    "findEvent": "Zoek een evenement hier"
   }
 }
